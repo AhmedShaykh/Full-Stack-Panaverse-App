@@ -1,1 +1,1 @@
-# Full Stack Panaverse App!
+# Full Stack E-Commerce App!
