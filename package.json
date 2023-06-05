@@ -24,6 +24,8 @@
     "drizzle-orm": "^0.26.2",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
+    "flowbite": "^1.6.5",
+    "flowbite-react": "^0.4.7",
     "next": "13.0.0",
     "next-sanity": "4.3.3",
     "postcss": "8.4.23",

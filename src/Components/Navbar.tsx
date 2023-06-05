@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { CgShoppingCart } from 'react-icons/cg';
 import Link from "next/link";
 import Image from "next/image";
 
@@ -78,6 +79,11 @@ const Navbar = () => {
                                     </Link>
                                 )
                             })}
+                            <Link href="/cart">
+                                <button className="bg-gray-400 p-2 rounded-full text-black">
+                                    <CgShoppingCart size={22} />
+                                </button>
+                            </Link>
                         </div>
                     </div>
                 </div>
