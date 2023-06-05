@@ -33,7 +33,7 @@ const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
 
     return (
-        <header className="w-full mx-auto px-8 sm:px-20 fixed top-0 z-50 shadow">
+        <header className="w-full mx-auto px-8 sm:px-20 z-10 top-0 shadow">
             <div className="justify-between md:items-center md:flex">
                 <div>
                     <div className="flex items-center justify-between py-6 md:py-8 md:block">
@@ -68,12 +68,13 @@ const Navbar = () => {
                                     <Link
                                         key={idx}
                                         href={item.page}
-                                        className={
-                                            "block lg:inline-block text-black cursor-pointer font-medium text-lg"
-                                        }
                                         onClick={() => setNavbar(!navbar)}
                                     >
-                                        {item.label}
+                                        <h2
+                                            className="block lg:inline-block text-gray-900 cursor-pointer font-medium text-lg"
+                                        >
+                                            {item.label}
+                                        </h2>
                                     </Link>
                                 )
                             })}

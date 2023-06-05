@@ -1,0 +1,73 @@
+import React from 'react';
+import Link from 'next/link';
+import Image from "next/image";
+import {
+    AiOutlineGithub,
+    AiOutlineInstagram,
+    AiOutlineLinkedin,
+    AiOutlineTwitter,
+} from "react-icons/ai";
+
+const Footer = () => {
+    return (
+        <footer className="px-8 sm:px-20">
+            <div className="mx-auto w-full max-w-screen-xl py-6 lg:py-8">
+                <div className="md:flex md:justify-between">
+                    <div className="mb-6 md:mb-0">
+                        <div className="mb-5">
+                            <Link href="/">
+                                <Image
+                                    src="/Logo.webp"
+                                    alt="Logo"
+                                    width={150}
+                                    height={150}
+                                />
+                            </Link>
+                        </div>
+
+                        <div className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start space-x-4">
+                            <Link className='cursor-pointer bg-gray-900 p-1 text-white rounded-lg' href="https://www.instagram.com/AHMXMusic/" target="_blank">
+                                <AiOutlineInstagram className='w-5 h-5' />
+                            </Link>
+                            <Link className='cursor-pointer bg-gray-900 p-1 text-white rounded-lg' href="https://twitter.com/AHMXMusic/" target="_blank">
+                                <AiOutlineTwitter className='w-5 h-5' />
+                            </Link>
+                            <Link className='cursor-pointer bg-gray-900 p-1 text-white rounded-lg' href="https://github.com/AhmedShaykh/" target="_blank">
+                                <AiOutlineGithub className='w-5 h-5' />
+                            </Link>
+                            <Link className='cursor-pointer bg-gray-900 p-1 text-white rounded-lg' href="https://www.linkedin.com/in/ahmedshaykh/" target="_blank">
+                                <AiOutlineLinkedin className='w-5 h-5' />
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+                        <div>
+                            <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">Company</h2>
+                            <h2 className="mb-4 text-md text-gray-900">About</h2>
+                            <h2 className="mb-4 text-md text-gray-900">Terms of Use</h2>
+                            <h2 className="mb-4 text-md text-gray-900">Privacy Policy</h2>
+                            <h2 className="mb-4 text-md text-gray-900">How it Works</h2>
+                            <h2 className="mb-4 text-md text-gray-900">Contact Us</h2>
+                        </div>
+
+                        <div>
+                            <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">Support</h2>
+                            <h2 className="mb-4 text-md text-gray-900">Support Carrer</h2>
+                            <h2 className="mb-4 text-md text-gray-900">24h Service</h2>
+                            <h2 className="mb-4 text-md text-gray-900">Quick Chat</h2>
+                        </div>
+
+                        <div>
+                            <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">Contact</h2>
+                            <h2 className="mb-4 text-md text-gray-900">Whatsapp</h2>
+                            <h2 className="mb-4 text-md text-gray-900">Support 24h</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    )
+};
+
+export default Footer;
