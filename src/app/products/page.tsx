@@ -1,10 +1,10 @@
 import React from 'react';
 
-const page = () => {
+const Products = () => {
     return (
         <>
         </>
     )
 };
 
-export default page;
+export default Products;

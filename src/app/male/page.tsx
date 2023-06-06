@@ -1,10 +1,10 @@
 import React from 'react';
 
-const page = () => {
+const Male = () => {
     return (
         <>
         </>
     )
 };
 
-export default page;
+export default Male;
