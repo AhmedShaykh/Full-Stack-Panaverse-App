@@ -1,67 +1,51 @@
-import { client } from '../../sanity/lib/client';
+"use client";
+import { FC } from 'react';
 import { urlForImage } from '../../sanity/lib/image';
-import { Image as IImage } from 'sanity';
+import { useRouter } from 'next/navigation';
 import Image from "next/image";
 
-export const HeroData = async () => {
+const Hero: FC<any> = ({ sale, title, description, image }) => {
 
-    const res = await client.fetch(`
-    *[_type=="herosection"] {
-        sale,
-        title,
-        description,
-        image,
-      }
-    `);
-
-    return res;
-
-};
-
-interface Types {
-    sale: string;
-    title: string;
-    description: string;
-    image: IImage;
-};
-
-
-const Hero = async () => {
-
-    const data: Types[] = await HeroData();
+    const router = useRouter();
 
     return (
-        <div>
-            {data.map(item => (
-                <section className="text-gray-600 body-font">
-                    <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-                        <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
-                            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-                                {item.title}
-                            </h1>
-                            <p className="mb-8 leading-relaxed">
-                                {item.description}
-                            </p>
-                            <div className="flex justify-center">
-                                <button className="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg">
-                                    Button
-                                </button>
-                            </div>
-                        </div>
-                        <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
-                            <Image
-                                className="object-cover object-center rounded"
-                                src={urlForImage(item.image).url()}
-                                alt="hero"
-                                width={400}
-                                height={600}
-                            />
-                        </div>
-                    </div>
-                </section>
+        <section className="my-16 mx-24 relative flex justify-between gap-16">
+            <div className="flex flex-1 flex-col justify-between py-12 pt-0 pb-4">
 
-            ))}
-        </div>
+                <div className="flex flex-col justify-center gap-[2.5rem]">
+                    <h3 className="text-[#2B00FF] font-semibold bg-[#e1edff] h-[40px] w-[100px] flex justify-center items-center rounded-lg">
+                        Sale {sale}
+                    </h3>
+
+                    <h1 className="text-5xl text-black font-extrabold">
+                        {title}
+                    </h1>
+
+                    <p className="text-lg font-medium text-gray-700 max-w-lg">
+                        {description}
+                    </p>
+
+                    <button
+                        className="bg-black text-white p-4 w-40"
+                        onClick={() => router.push("/products")}
+                        type="button"
+                    >
+                        Start Shopping
+                    </button>
+                </div>
+            </div>
+
+            <div className="flex flex-1">
+                <div className="bg-[#FFECE3] rounded-full">
+                    <Image
+                        src={urlForImage(image).url()}
+                        alt="hero"
+                        width={500}
+                        height={600}
+                    />
+                </div>
+            </div>
+        </section>
     )
 };
 
