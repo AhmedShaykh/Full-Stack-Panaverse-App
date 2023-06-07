@@ -80,7 +80,7 @@ const Navbar = () => {
                                 )
                             })}
                             <Link href="/cart">
-                                <button className="bg-gray-400 p-2 rounded-full text-black">
+                                <button className="bg-gray-300 p-2 rounded-full text-black">
                                     <CgShoppingCart size={22} />
                                 </button>
                             </Link>
