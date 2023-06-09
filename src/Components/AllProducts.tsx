@@ -8,11 +8,11 @@ interface Props {
     title: string;
     image: IImage;
     price: number;
-    // dresstype: string;
-    // category: string;
+    dresstype: string;
+    category: string;
 };
 
-const AllProducts: FC<any> = ({ image, title, price, dresstype, category }) => {
+const AllProducts: FC<Props> = ({ image, title, price, dresstype, category }) => {
 
     return (
         <div
@@ -34,25 +34,25 @@ const AllProducts: FC<any> = ({ image, title, price, dresstype, category }) => {
                 $ {price}
             </h3>
 
-            {/* <div className="flex flex-col">
-                <h3 className="uppercase text-gray-400 font-bold text-lg">
+            <div className="flex flex-col">
+                <h3 className="uppercase text-gray-700 font-bold text-lg">
                     Category:
                 </h3>
 
                 <h3 className="font-bold text-lg">
                     {category}
                 </h3>
-            </div> */}
+            </div>
 
-            {/* <div className="flex flex-col">
-                <h3 className="uppercase text-gray-400 font-bold text-lg">
+            <div className="flex flex-col">
+                <h3 className="uppercase text-gray-700 font-bold text-lg">
                     Dress Type:
                 </h3>
 
                 <h3 className="font-bold text-lg">
                     {dresstype}
                 </h3>
-            </div> */}
+            </div>
 
             <button
                 className="my-2 py-2 px-6 rounded bg-blue-700 text-white font-semibold"

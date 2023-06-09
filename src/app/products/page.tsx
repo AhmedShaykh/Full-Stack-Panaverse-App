@@ -12,8 +12,10 @@ export const getProductData = async () => {
         title,
         image,
         price,
-        dresstype,
         category -> {
+            name
+        },
+        dresstype -> {
             name
         }
       }
@@ -26,10 +28,12 @@ interface IProduct {
     title: string;
     image: Image;
     price: number;
-    // dresstype: string;
-    // category: {
-    //     name: string;
-    // }
+    category: {
+        name: string;
+    }
+    dresstype: {
+        name: string;
+    }
 };
 
 const Products = async () => {
@@ -39,15 +43,15 @@ const Products = async () => {
     return (
         <>
             <Navbar />
-            <div className="my-8 grid grid-cols-[repeat(2,auto)] justify-center gap-x-10">
+            <div className="my-8 grid grid-cols-[repeat(3,auto)] justify-center gap-x-10 gap-y-12">
                 {data.map((item, i: number) => (
                     <div key={i}>
                         <AllProducts
                             title={item.title}
                             image={item.image}
                             price={item.price}
-                        // dresstype={item.dresstype}
-                        // category={item.category.name}
+                            category={item.category.name}
+                            dresstype={item.dresstype.name}
                         />
                     </div>
                 ))}

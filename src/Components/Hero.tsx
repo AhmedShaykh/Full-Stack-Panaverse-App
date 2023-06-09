@@ -2,9 +2,17 @@
 import { FC } from 'react';
 import { urlForImage } from '../../sanity/lib/image';
 import { useRouter } from 'next/navigation';
+import { Image as IImage } from 'sanity';
 import Image from "next/image";
 
-const Hero: FC<any> = ({ sale, title, description, image }) => {
+interface Props {
+    sale: string;
+    title: string;
+    description: string;
+    image: IImage;
+};
+
+const Hero: FC<Props> = ({ sale, title, description, image }) => {
 
     const router = useRouter();
 
