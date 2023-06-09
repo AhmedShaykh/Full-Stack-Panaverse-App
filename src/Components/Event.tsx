@@ -32,7 +32,7 @@ const Event = () => {
                     <div className="flex flex-col justify-between items-center pt-6 bg-[#EFE1C7]">
                         <div className="w-[100%] ml-10">
                             <p className="font-medium text-lg mb-2">Flex Sweatshirt</p>
-                            <div className="space-x-4">
+                            <div className="space-x-4 mb-2">
                                 <del>$100.00</del>
                                 <span className="text-xl font-semibold">$75.00</span>
                             </div>
@@ -42,7 +42,7 @@ const Event = () => {
                     <div className="flex flex-col justify-between items-center pt-6 bg-[#D7D7D9]">
                         <div className="w-[100%] ml-10">
                             <p className="font-medium text-lg mb-2">Flex Push Button Bomber</p>
-                            <div className="space-x-4">
+                            <div className="space-x-4 mb-2">
                                 <del>$225.00</del>
                                 <span className="text-xl font-semibold">$190.00</span>
                             </div>
