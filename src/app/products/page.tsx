@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '@/Components/Navbar';
-import Footer from '@/Components/Footer';
 import AllProducts from '@/Components/AllProducts';
+import Footer from '@/Components/Footer';
 import { client } from '../../../sanity/lib/client';
 import { Image } from 'sanity';
 
@@ -38,7 +38,7 @@ interface IProduct {
 
 const Products = async () => {
 
-    const data: any[] = await getProductData();
+    const data: IProduct[] = await getProductData();
 
     return (
         <>
