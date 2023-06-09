@@ -16,7 +16,7 @@ const Event = () => {
                             <h3 className="font-bold text-3xl mb-2 text-black">GET UP TO <span className="font-bolder text-4xl">60%</span></h3>
                             <p className="text-xl text-black">For the summer season</p>
                         </div>
-                        <Image src="/assets/image.png" alt="..." width={250} height={250} />
+                        <Image src="/assets/image.png" alt="..." width={270} height={200} />
                     </div>
 
                     <div className="flex flex-col justify-center items-center pt-12 px-8 pb-8 bg-zinc-900 text-white">
@@ -28,27 +28,26 @@ const Event = () => {
                     </div>
                 </div>
 
-                <div className='event-banner-right'>
-                    <div className='event-banner-right-1'>
-                        <div className='details'>
-                            <p>Flex Sweatshirt</p>
-                            <div className='price'>
-                                <span>$100.00</span>
-                                <span>$75.00</span>
+                <div className="flex flex-1 justify-between items-center gap-4">
+                    <div className="flex flex-col justify-between items-center pt-6 bg-[#EFE1C7]">
+                        <div className="w-[100%] ml-10">
+                            <p className="font-medium text-lg mb-2">Flex Sweatshirt</p>
+                            <div className="space-x-4">
+                                <del>$100.00</del>
+                                <span className="text-xl font-semibold">$75.00</span>
                             </div>
                         </div>
-                        {/* <Image src={event2} alt='event'  */}
-                    </div>
+                        <Image src="/assets/image2.png" alt="..." width={270} height={200} />                   </div>
 
-                    <div className='event-banner-right-2'>
-                        <div className='details'>
-                            <p>Flex Push Button Bomber</p>
-                            <div className='price'>
-                                <span>$225.00</span>
-                                <span>$190.00</span>
+                    <div className="flex flex-col justify-between items-center pt-6 bg-[#D7D7D9]">
+                        <div className="w-[100%] ml-10">
+                            <p className="font-medium text-lg mb-2">Flex Push Button Bomber</p>
+                            <div className="space-x-4">
+                                <del>$225.00</del>
+                                <span className="text-xl font-semibold">$190.00</span>
                             </div>
                         </div>
-                        {/* <Image src={event3} alt='event' /> */}
+                        <Image src="/assets/image3.png" alt="..." width={270} height={200} />
                     </div>
                 </div>
             </div>

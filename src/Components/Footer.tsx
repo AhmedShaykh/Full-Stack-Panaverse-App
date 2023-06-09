@@ -14,6 +14,7 @@ const Footer = () => {
             <div className="mx-auto w-full max-w-screen-xl py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
+
                         <div className="mb-5">
                             <Link href="/">
                                 <Image
@@ -44,24 +45,24 @@ const Footer = () => {
                     <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                         <div>
                             <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">Company</h2>
-                            <h2 className="mb-4 text-md text-gray-900">About</h2>
-                            <h2 className="mb-4 text-md text-gray-900">Terms of Use</h2>
-                            <h2 className="mb-4 text-md text-gray-900">Privacy Policy</h2>
-                            <h2 className="mb-4 text-md text-gray-900">How it Works</h2>
-                            <h2 className="mb-4 text-md text-gray-900">Contact Us</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">About</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">Terms of Use</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">Privacy Policy</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">How it Works</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">Contact Us</h2>
                         </div>
 
                         <div>
                             <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">Support</h2>
-                            <h2 className="mb-4 text-md text-gray-900">Support Carrer</h2>
-                            <h2 className="mb-4 text-md text-gray-900">24h Service</h2>
-                            <h2 className="mb-4 text-md text-gray-900">Quick Chat</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">Support Carrer</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">24h Service</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">Quick Chat</h2>
                         </div>
 
                         <div>
                             <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">Contact</h2>
-                            <h2 className="mb-4 text-md text-gray-900">Whatsapp</h2>
-                            <h2 className="mb-4 text-md text-gray-900">Support 24h</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">Whatsapp</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">Support 24h</h2>
                         </div>
                     </div>
                 </div>
