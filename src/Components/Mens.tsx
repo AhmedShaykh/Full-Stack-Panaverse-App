@@ -16,7 +16,7 @@ const Mens: FC<Props> = ({ image, title, price, dresstype, category }) => {
 
     return (
         <div
-            className="border border-gray-500 py-4 px-6 rounded-md"
+            className="py-4 px-6"
         >
             <Image
                 src={urlForImage(image).url()}
