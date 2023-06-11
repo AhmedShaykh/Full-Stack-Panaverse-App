@@ -1,18 +1,8 @@
 "use client";
-import { FC } from 'react';
-import { urlForImage } from '../../sanity/lib/image';
 import { useRouter } from 'next/navigation';
-import { Image as IImage } from 'sanity';
 import Image from "next/image";
 
-interface Props {
-    sale: string;
-    title: string;
-    description: string;
-    image: IImage;
-};
-
-const Hero: FC<Props> = ({ sale, title, description, image }) => {
+const Hero = () => {
 
     const router = useRouter();
 
@@ -22,15 +12,15 @@ const Hero: FC<Props> = ({ sale, title, description, image }) => {
 
                 <div className="flex flex-col justify-center gap-[2.5rem]">
                     <h3 className="text-[#2B00FF] font-semibold bg-[#e1edff] h-[40px] w-[100px] flex justify-center items-center rounded-lg">
-                        Sale {sale}
+                        Sale 70 %
                     </h3>
 
                     <h1 className="text-5xl text-black font-extrabold">
-                        {title}
+                        An Industrial Take on Streetwear
                     </h1>
 
                     <p className="text-lg font-medium text-gray-700 max-w-lg">
-                        {description}
+                        Anyone can beat you but no one can beat your outfit as long as you wear Dine outfits.
                     </p>
 
                     <button
@@ -46,7 +36,7 @@ const Hero: FC<Props> = ({ sale, title, description, image }) => {
             <div className="flex flex-1">
                 <div className="bg-[#FFECE3] rounded-full">
                     <Image
-                        src={urlForImage(image).url()}
+                        src="/assets/hero.png"
                         alt="hero"
                         width={500}
                         height={600}
