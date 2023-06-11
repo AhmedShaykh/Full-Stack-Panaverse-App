@@ -1,28 +1,28 @@
-"use client";
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '@/Components/Navbar';
-import { client } from '@/lib/sanityClient';
+import Kid from '@/Components/Kid';
 import Footer from '@/Components/Footer';
+import { client } from '@/lib/sanityClient';
 import { Image } from 'sanity';
 
-// export const getProductData = async () => {
+export const getProductData = async () => {
 
-//     const res = await client.fetch(`
-//     *[_type=="product" && category -> name == "Kids"] {
-//         title,
-//         image,
-//         price,
-//         category -> {
-//             name
-//         },
-//         dresstype -> {
-//             name
-//         }
-//       }
-//     `);
+    const res = await client.fetch(`
+    *[_type=="product" && category -> name == "Kids"] {
+        title,
+        image,
+        price,
+        category -> {
+            name
+        },
+        dresstype -> {
+            name
+        }
+      }
+    `);
 
-//     return res;
-// };
+    return res;
+};
 
 interface IProduct {
     title: string;
@@ -38,47 +38,29 @@ interface IProduct {
 
 const Kids = async () => {
 
-    const [data, setData] = useState<any>([""]);
-
-    useEffect(() => {
-        async function fetchData() {
-            const res = await client.fetch(`
-        *[_type=="product" && category -> name == "Kids"] {
-          title,
-          image,
-          price,
-          category -> {
-            name
-          },
-          dresstype -> {
-            name
-          }
-        }
-      `);
-
-            setData(res);
-        }
-
-        fetchData();
-    }, []);
+    const data: IProduct[] = await getProductData();
 
     return (
         <>
             <Navbar />
             {data.length > 0 ? (
                 <div className="my-8 grid grid-cols-[repeat(3,auto)] justify-center gap-x-10 gap-y-12">
-                    {data.map((product: any) => (
-                        <div key={product.id}>
-                            <h2>{product.title}</h2>
-                            <img src={product.image} alt={product.title} />
-                            <p>Price: ${product.price}</p>
-                            {/* <p>Category: {product.category.name}</p>
-                            <p>Dresstype: {product.dresstype.name}</p> */}
+                    {data.map((item, i: number) => (
+                        <div key={i}>
+                            <Kid
+                                title={item.title}
+                                image={item.image}
+                                price={item.price}
+                                category={item.category.name}
+                                dresstype={item.dresstype.name}
+                            />
                         </div>
                     ))}
                 </div>
             ) : (
-                <h1>No products found</h1>
+                <div className="py-16 px-24 flex justify-center items-center">
+                    <h1 className="text-5xl font-extrabold leading-[3rem]">No Products Found</h1>
+                </div>
             )}
             <Footer />
         </>
