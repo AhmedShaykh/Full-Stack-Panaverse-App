@@ -5,7 +5,7 @@ import { cartActions } from "@/Store/slice/CartSlice";
 import { useDispatch } from "react-redux";
 import { Image as IImage } from "sanity";
 import Image from "next/image";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 interface Props {
     title: string;

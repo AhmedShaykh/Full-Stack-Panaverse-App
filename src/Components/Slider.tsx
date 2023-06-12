@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC } from "react";
 import { urlForImage } from "../../sanity/lib/image";
 import { Image as IImage } from "sanity";
-import Image from 'next/image';
+import Image from "next/image";
 
-interface Image {
+interface Props {
     image: IImage;
 };
 
-const Slider: FC<Image> = ({ image }) => {
+const Slider: FC<Props> = ({ image }) => {
     return (
         <>
             <Image

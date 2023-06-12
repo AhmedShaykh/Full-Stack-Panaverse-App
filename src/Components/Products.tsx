@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 import { client } from "@/lib/sanityClient";
 import { Image } from "sanity";
-import Slider from './Slider';
+import Slider from "./Slider";
 
 export const getProductData = async () => {
 
@@ -15,13 +15,13 @@ export const getProductData = async () => {
 
 };
 
-interface Images {
+interface IData {
     image: Image;
 };
 
 const Products = async () => {
 
-    const data: Images[] = await getProductData();
+    const data: IData[] = await getProductData();
 
     return (
         <div className="py-16 px-24">
@@ -30,11 +30,12 @@ const Products = async () => {
                 <h2 className="font-bold text-3xl">Check What We Have</h2>
             </div>
 
-
             <div className="carousel gap-8 mt-6 mb-3">
                 {data.map((item, i: number) => (
                     <div key={i} className="carousel-item">
-                        <Slider image={item.image} />
+                        <Slider
+                            image={item.image}
+                        />
                     </div>
                 ))}
             </div>
