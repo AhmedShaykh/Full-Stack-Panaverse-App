@@ -1,5 +1,5 @@
 "use client";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const Hero = () => {
@@ -7,7 +7,7 @@ const Hero = () => {
     const router = useRouter();
 
     return (
-        <section className="my-16 mx-24 relative flex justify-between gap-16">
+        <div className="my-16 mx-24 relative flex justify-between gap-16">
             <div className="flex flex-1 flex-col justify-between py-12 pt-0 pb-4">
 
                 <div className="flex flex-col justify-center gap-[2.5rem]">
@@ -43,7 +43,7 @@ const Hero = () => {
                     />
                 </div>
             </div>
-        </section>
+        </div>
     )
 };
 

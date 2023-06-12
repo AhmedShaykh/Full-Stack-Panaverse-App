@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { Bars2Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { CgShoppingCart } from 'react-icons/cg';
+import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { CgShoppingCart } from "react-icons/cg";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -34,7 +34,7 @@ const Navbar = () => {
     const [navbar, setNavbar] = useState(false);
 
     return (
-        <header className="w-full mx-auto px-8 sm:px-20 z-10 top-0 shadow">
+        <div className="w-full mx-auto px-8 sm:px-20 z-10 top-0 shadow">
             <div className="justify-between md:items-center md:flex">
                 <div>
                     <div className="flex items-center justify-between py-6 md:py-8 md:block">
@@ -52,7 +52,7 @@ const Navbar = () => {
                                 className="p-2 text-black font-semibold rounded-md outline-none"
                                 onClick={() => setNavbar(!navbar)}
                             >
-                                {navbar ? <XMarkIcon className='h-6 w-6' /> : <Bars2Icon className='h-6 w-6' />}
+                                {navbar ? <XMarkIcon className="h-6 w-6" /> : <Bars2Icon className="h-6 w-6" />}
                             </button>
                         </div>
                     </div>
@@ -88,7 +88,7 @@ const Navbar = () => {
                     </div>
                 </div>
             </div>
-        </header>
+        </div>
     )
 };
 

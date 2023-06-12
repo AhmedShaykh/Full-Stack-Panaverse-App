@@ -1,9 +1,9 @@
-import React from 'react';
-import Navbar from '@/Components/Navbar';
-import Mens from '@/Components/Mens';
-import Footer from '@/Components/Footer';
-import { client } from '@/lib/sanityClient';
-import { Image } from 'sanity';
+import React from "react";
+import Navbar from "@/Components/Navbar";
+import Mens from "@/Components/Mens";
+import Footer from "@/Components/Footer";
+import { client } from "@/lib/sanityClient";
+import { Image } from "sanity";
 
 export const getProductData = async () => {
 

@@ -1,8 +1,8 @@
 "use client";
-import React, { FC } from 'react';
-import { urlForImage } from '../../sanity/lib/image';
+import React, { FC } from "react";
+import { urlForImage } from "../../sanity/lib/image";
 import Image from "next/image";
-import { Image as IImage } from 'sanity';
+import { Image as IImage } from "sanity";
 
 interface Props {
     title: string;

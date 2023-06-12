@@ -1,9 +1,9 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const Event = () => {
     return (
-        <section className='py-16 px-24'>
+        <div className="py-16 px-24">
             <div className="flex flex-col text-center gap-4 mb-8">
                 <h3 className="text-[#2B00FF] font-semibold">PROMOTIONS</h3>
                 <h2 className="font-bold text-3xl">Our Promotions Events</h2>
@@ -16,7 +16,7 @@ const Event = () => {
                             <h3 className="font-bold text-3xl mb-2 text-black">GET UP TO <span className="font-bolder text-4xl">60%</span></h3>
                             <p className="text-xl text-black">For the summer season</p>
                         </div>
-                        <Image src="/assets/image.png" alt="..." width={270} height={200} />
+                        <Image src="/assets/image.png" alt="image" width={270} height={200} />
                     </div>
 
                     <div className="flex flex-col justify-center items-center pt-12 px-8 pb-8 bg-zinc-900 text-white">
@@ -37,7 +37,7 @@ const Event = () => {
                                 <span className="text-xl font-semibold">$75.00</span>
                             </div>
                         </div>
-                        <Image src="/assets/image2.png" alt="..." width={270} height={200} />                   </div>
+                        <Image src="/assets/image2.png" alt="image" width={270} height={200} />                   </div>
 
                     <div className="flex flex-col justify-between items-center pt-6 bg-[#D7D7D9]">
                         <div className="w-[100%] ml-10">
@@ -47,11 +47,11 @@ const Event = () => {
                                 <span className="text-xl font-semibold">$190.00</span>
                             </div>
                         </div>
-                        <Image src="/assets/image3.png" alt="..." width={270} height={200} />
+                        <Image src="/assets/image3.png" alt="image" width={270} height={200} />
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
     )
 };
 
