@@ -1,7 +1,5 @@
 import React from "react";
-import Navbar from "@/Components/Navbar";
 import Kid from "@/Components/Kid";
-import Footer from "@/Components/Footer";
 import { client } from "@/lib/sanityClient";
 import { Image } from "sanity";
 
@@ -42,7 +40,6 @@ const Kids = async () => {
 
     return (
         <>
-            <Navbar />
             {data.length > 0 ? (
                 <div className="my-8 grid grid-cols-[repeat(3,auto)] justify-center gap-x-10 gap-y-12">
                     {data.map((item, i: number) => (
@@ -62,7 +59,6 @@ const Kids = async () => {
                     <h1 className="text-5xl font-extrabold leading-[3rem]">No Products Found</h1>
                 </div>
             )}
-            <Footer />
         </>
     )
 };

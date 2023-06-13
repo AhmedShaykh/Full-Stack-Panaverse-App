@@ -7,15 +7,16 @@ export const getProductData = async () => {
 
     const res = await client.fetch(`
     *[_type=="product"] {
+        _id,
         image,
       }
     `);
 
     return res;
-
 };
 
 interface IData {
+    _id: string;
     image: Image;
 };
 
@@ -34,6 +35,7 @@ const Products = async () => {
                 {data.map((item, i: number) => (
                     <div key={i} className="carousel-item">
                         <Slider
+                            id={item._id}
                             image={item.image}
                         />
                     </div>

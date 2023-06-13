@@ -1,6 +1,8 @@
-import Head from './Head';
-import Providers from '@/Redux/Providers';
-import './globals.css';
+import Head from "./Head";
+import Navbar from "@/Components/Navbar";
+import Providers from "@/Redux/Providers";
+import Footer from "@/Components/Footer";
+import "./globals.css";
 
 export default function RootLayout({
   children,
@@ -12,7 +14,9 @@ export default function RootLayout({
       <Head />
       <body>
         <Providers>
+          <Navbar />
           {children}
+          <Footer />
         </Providers>
       </body>
     </html>

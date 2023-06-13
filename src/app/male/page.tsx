@@ -1,7 +1,5 @@
 import React from "react";
-import Navbar from "@/Components/Navbar";
 import Mens from "@/Components/Mens";
-import Footer from "@/Components/Footer";
 import { client } from "@/lib/sanityClient";
 import { Image } from "sanity";
 
@@ -41,23 +39,19 @@ const Male = async () => {
     const data: IProduct[] = await getProductData();
 
     return (
-        <>
-            <Navbar />
-            <div className="my-8 grid grid-cols-[repeat(3,auto)] justify-center gap-x-10 gap-y-12">
-                {data.map((item, i: number) => (
-                    <div key={i}>
-                        <Mens
-                            title={item.title}
-                            image={item.image}
-                            price={item.price}
-                            category={item.category.name}
-                            dresstype={item.dresstype.name}
-                        />
-                    </div>
-                ))}
-            </div>
-            <Footer />
-        </>
+        <div className="my-8 grid grid-cols-[repeat(3,auto)] justify-center gap-x-10 gap-y-12">
+            {data.map((item, i: number) => (
+                <div key={i}>
+                    <Mens
+                        title={item.title}
+                        image={item.image}
+                        price={item.price}
+                        category={item.category.name}
+                        dresstype={item.dresstype.name}
+                    />
+                </div>
+            ))}
+        </div>
     )
 };
 
