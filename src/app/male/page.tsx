@@ -40,7 +40,7 @@ const Male = async () => {
 
     return (
         <div className="my-8 grid grid-cols-[repeat(3,auto)] justify-center gap-x-10 gap-y-12">
-            {data.map((item, i: number) => (
+            {data?.map((item, i: number) => (
                 <div key={i}>
                     <Mens
                         title={item.title}

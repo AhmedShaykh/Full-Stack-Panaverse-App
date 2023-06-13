@@ -32,7 +32,7 @@ const Products = async () => {
             </div>
 
             <div className="carousel gap-8 mt-6 mb-3">
-                {data.map((item, i: number) => (
+                {data?.map((item, i: number) => (
                     <div key={i} className="carousel-item">
                         <Slider
                             id={item._id}
