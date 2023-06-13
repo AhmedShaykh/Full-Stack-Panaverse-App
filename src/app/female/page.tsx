@@ -7,6 +7,7 @@ export const getProductData = async () => {
 
     const res = await client.fetch(`
     *[_type=="product" && category -> name == "Female"] {
+        _id,
         title,
         image,
         price,
@@ -20,9 +21,11 @@ export const getProductData = async () => {
     `);
 
     return res;
+
 };
 
 interface IProduct {
+    _id: string;
     title: string;
     image: Image;
     price: number;
@@ -43,6 +46,7 @@ const Female = async () => {
             {data?.map((item, i: number) => (
                 <div key={i}>
                     <Womens
+                        id={item._id}
                         title={item.title}
                         image={item.image}
                         price={item.price}
