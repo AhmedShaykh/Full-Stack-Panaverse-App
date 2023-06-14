@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Event = () => {
     return (
-        <div className="py-16 px-24">
+        <div className="my-16 mx-12 sm:mx-24">
             <div className="flex flex-col text-center gap-4 mb-8">
                 <h3 className="text-[#2B00FF] font-semibold">PROMOTIONS</h3>
                 <h2 className="font-bold text-3xl">Our Promotions Events</h2>
@@ -30,7 +30,7 @@ const Event = () => {
 
                 <div className="flex flex-1 justify-between items-center gap-4">
                     <div className="flex flex-col justify-between items-center pt-6 bg-[#EFE1C7]">
-                        <div className="w-[100%] ml-10">
+                        <div className="w-[100%] ml-10 flex flex-col">
                             <p className="font-medium text-lg mb-2">Flex Sweatshirt</p>
                             <div className="space-x-4 mb-2">
                                 <del>$100.00</del>

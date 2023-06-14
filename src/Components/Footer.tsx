@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
     return (
-        <div className="px-8 sm:px-20">
+        <div className="my-4 mx-12 sm:mx-20">
             <div className="mx-auto w-full max-w-screen-xl py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">

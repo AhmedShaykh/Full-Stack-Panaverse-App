@@ -25,7 +25,7 @@ const Products = async () => {
     const data: IData[] = await getProductData();
 
     return (
-        <div className="py-16 px-24">
+        <div className="my-16 mx-12 sm:mx-24">
             <div className="flex flex-col text-center gap-4 mb-8">
                 <h3 className="text-[#2B00FF] font-semibold">PRODUCTS</h3>
                 <h2 className="font-bold text-3xl">Check What We Have</h2>
