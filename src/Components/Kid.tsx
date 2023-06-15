@@ -30,9 +30,10 @@ const Kid: FC<Props> = ({ id, image, title, price, dresstype, category }) => {
 
     return (
         <div
-            className="py-4 px-6"
+            className="my-16 mx-12 sm:mx-24"
         >
-            <Link href={`product/${id}`}>
+            <Link href={`products/${id}`}>
+
                 <Image
                     src={urlForImage(image).url()}
                     alt="product"

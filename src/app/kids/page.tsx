@@ -59,7 +59,7 @@ const Kids = async () => {
                     ))}
                 </div>
             ) : (
-                <div className="py-16 px-24 flex justify-center items-center">
+                <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
                     <h1 className="text-5xl font-extrabold leading-[3rem]">No Products Found</h1>
                 </div>
             )}

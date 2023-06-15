@@ -32,7 +32,7 @@ const AllProducts: FC<Props> = ({ id, image, title, price, dresstype, category }
         <div
             className="py-4 px-6"
         >
-            <Link href={`product/${id}`}>
+            <Link href={`products/${id}`}>
                 <Image
                     src={urlForImage(image).url()}
                     alt="product"
