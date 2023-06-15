@@ -9,12 +9,12 @@ const Event = () => {
                 <h2 className="font-bold text-3xl">Our Promotions Events</h2>
             </div>
 
-            <div className="flex justify-between gap-8">
-                <div className="flex flex-2 flex-col gap-4">
-                    <div className="flex justify-between items-center px-8 bg-[#D6D6D8] text-[#212121]">
+            <div className="w-full flex flex-col py-2 xl:flex-row gap-8">
+                <div className="flex flex-col w-full xl:w-1/2 space-y-4">
+                    <div className="flex justify-around xl:justify-between sm:justify-between items-center px-4 sm:px-8 bg-[#D6D6D8] text-[#212121]">
                         <div>
-                            <h3 className="font-bold text-3xl mb-2 text-black">GET UP TO <span className="font-bolder text-4xl">60%</span></h3>
-                            <p className="text-xl text-black">For the summer season</p>
+                            <h3 className="font-bold text-xl sm:text-3xl mb-2 text-black">GET UP TO <span className="font-bolder text-2xl sm:text-4xl">60%</span></h3>
+                            <p className="text-lg sm:text-xl text-black">For the summer season</p>
                         </div>
                         <Image src="/assets/image.png" alt="image" width={270} height={200} />
                     </div>
@@ -29,8 +29,8 @@ const Event = () => {
                 </div>
 
                 <div className="flex flex-1 justify-between items-center gap-4">
-                    <div className="flex flex-col justify-between items-center pt-6 bg-[#EFE1C7]">
-                        <div className="w-[100%] ml-10 flex flex-col">
+                    <div className="flex w-full xl:w-1/2 flex-col justify-between items-center pt-6 bg-[#EFE1C7]">
+                        <div className="w-full xl:w-1/2 ml-6 flex flex-col">
                             <p className="font-medium text-lg mb-2">Flex Sweatshirt</p>
                             <div className="space-x-4 mb-2">
                                 <del>$100.00</del>
@@ -39,8 +39,8 @@ const Event = () => {
                         </div>
                         <Image src="/assets/image2.png" alt="image" width={270} height={200} />                   </div>
 
-                    <div className="flex flex-col justify-between items-center pt-6 bg-[#D7D7D9]">
-                        <div className="w-[100%] ml-10">
+                    <div className="flex w-full xl:w-1/2 flex-col justify-between items-center pt-6 bg-[#D7D7D9]">
+                        <div className="w-full xl:w-1/2 ml-6">
                             <p className="font-medium text-lg mb-2">Flex Push Button Bomber</p>
                             <div className="space-x-4 mb-2">
                                 <del>$225.00</del>

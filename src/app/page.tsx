@@ -8,7 +8,7 @@ const Home = async () => {
             <Hero />
             <Event />
             {/* @ts-ignore */}
-            <Products />
+            {/* <Products /> */}
         </>
     )
 };
