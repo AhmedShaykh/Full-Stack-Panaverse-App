@@ -1,38 +1,39 @@
 import React from "react";
 import { client } from "@/lib/sanityClient";
 
-const getProductById = async (id: string) => {
-
-    const res = await client.fetch(`
-      *[_type == "product" && _id == ${id}] {
-        title,
-        image,
-        price,
-        category {
-          name
-        },
-        dresstype {
-          name
-        }
-      }
-    `);
-
-    return res;
+type Props = {
+  params: {
+    id: string;
+  }
 };
 
-const Product = async ({ id }: { id: string }) => {
+const Product = async({ params: { id } }: Props) => {
 
-    const product = await getProductById(id);
+  // const res = await client.fetch(`
+  //     *[_type == "product" && _id = ${id}] {
+  //       title,
+  //       image,
+  //       price,
+  //       category {
+  //         name
+  //       },
+  //       dresstype {
+  //         name
+  //       }
+  //     }
+  //   `);
 
-    return (
-        <div className="my-16 mx-24">
-            <h1>{product!.title}</h1>
-            {/* <img src={product.image} /> */}
-            <p>Price: ${product!.price}</p>
-            {/* <p>Category: {product.category.name}</p>
-            <p>Dresstype: {product.dresstype.name}</p> */}
-        </div>
-    );
+  // console.log(res);
+
+  return (
+    <div className="my-16 mx-24">
+      {/* <h1>{product!.title}</h1>
+      {/* <img src={product.image} /> */}
+      {/* <p>Price: ${product!.price}</p> */}
+      {/* <p>Category: {product.category.name}</p>
+          <p>Dresstype: {product.dresstype.name}</p> */}
+    </div>
+  );
 };
 
 export default Product;
