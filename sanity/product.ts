@@ -39,15 +39,6 @@ export const product = defineType({
                     type: "dresstype"
                 }
             ]
-        }),
-        defineField({
-            name: 'slug',
-            title: 'Slug',
-            type: 'slug',
-            options: {
-                source: "title",
-                maxLength: 96,
-            },
         })
     ]
 });
