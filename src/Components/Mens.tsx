@@ -19,6 +19,8 @@ const Mens: FC<Props> = ({ id, image, title, price, dresstype, category }) => {
         toast.success("Product Added")
     };
 
+    // console.log(slug)
+
     return (
         <div
             className="py-4 px-6"

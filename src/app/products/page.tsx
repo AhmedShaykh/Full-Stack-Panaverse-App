@@ -17,6 +17,7 @@ const getProductData = async () => {
         dresstype -> {
             name
         }
+        "slug":slug.current
       }
     `);
 
@@ -32,6 +33,7 @@ const Products = async () => {
             {data?.map((item, i: number) => (
                 <div key={i}>
                     <AllProducts
+                        slug={item.slug}
                         id={item._id}
                         title={item.title}
                         image={item.image}

@@ -11,6 +11,7 @@ export interface IProduct {
     dresstype: {
         name: string;
     }
+    slug?: Slug;
 };
 
 export interface Props {
@@ -20,9 +21,16 @@ export interface Props {
     price: number;
     dresstype: string;
     category: string;
+    slug?: Slug;
 };
 
 export interface IData {
     _id: string;
     image: IImage;
 };
+
+
+interface Slug {
+    _type: string;
+    current: string;
+}

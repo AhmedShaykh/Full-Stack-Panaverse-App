@@ -1,14 +1,24 @@
-import React from "react";
+import { client } from "@/lib/sanityClient";
 
-const Product = () => {
+async function getProductData(id: string) {
+  const res = await client.fetch(`*[_type=="product" && _id=='${id}']{
+            title,
+            id,
+            images,
+        }`);
+  return res;
+}
+
+interface Params {
+  params: {
+    id: string
+  }
+}
+export default async function ProductPage({ params: { id } }: Params) {
+
+  const data = await getProductData(id)
 
   return (
-    <div className="my-16 mx-24">
-      <h1>
-        Product
-      </h1>
-    </div>
-  );
-};
-
-export default Product;
+    <div>{data.title}</div>
+  )
+}

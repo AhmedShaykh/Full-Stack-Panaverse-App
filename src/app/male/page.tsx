@@ -32,6 +32,7 @@ const Male = async () => {
             {data?.map((item, i: number) => (
                 <div key={i}>
                     <Mens
+                        // slug={item.slug}
                         id={item._id}
                         title={item.title}
                         image={item.image}
