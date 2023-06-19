@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 import toast from "react-hot-toast";
 
-const AllProducts: FC<Props> = ({ id, image, title, price, dresstype, category, slug }) => {
+const AllProducts: FC<Props> = ({ id, image, title, price, dresstype, category }) => {
 
     const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const AllProducts: FC<Props> = ({ id, image, title, price, dresstype, category, 
         <div
             className="py-4 px-6"
         >
-            <Link href={`products/${slug}`}>
+            <Link href={`products/${id}`}>
                 <Image
                     src={urlForImage(image).url()}
                     alt="product"
