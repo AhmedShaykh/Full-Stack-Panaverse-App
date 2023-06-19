@@ -1,7 +1,7 @@
 import React from "react";
 import Mens from "@/Components/Mens";
 import { client } from "@/lib/sanityClient";
-import { Image } from "sanity";
+import { IProduct } from "../../../Types";
 
 const getProductData = async () => {
 
@@ -21,20 +21,6 @@ const getProductData = async () => {
     `);
 
     return res;
-
-};
-
-interface IProduct {
-    _id: string;
-    title: string;
-    image: Image;
-    price: number;
-    category: {
-        name: string;
-    }
-    dresstype: {
-        name: string;
-    }
 };
 
 const Male = async () => {
