@@ -3,7 +3,7 @@ import AllProducts from "@/Components/AllProducts";
 import { client } from "@/lib/sanityClient";
 import { Image } from "sanity";
 
-export const getProductData = async () => {
+const getProductData = async () => {
 
     const res = await client.fetch(`
     *[_type=="product"] {

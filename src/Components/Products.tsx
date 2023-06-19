@@ -3,7 +3,7 @@ import { client } from "@/lib/sanityClient";
 import { Image } from "sanity";
 import Slider from "./Slider";
 
-export const getProductData = async () => {
+const getProductData = async () => {
 
     const res = await client.fetch(`
     *[_type=="product"] {
