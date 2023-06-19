@@ -12,3 +12,17 @@ export interface IProduct {
         name: string;
     }
 };
+
+export interface Props {
+    id: string;
+    title: string;
+    image: IImage;
+    price: number;
+    dresstype: string;
+    category: string;
+};
+
+export interface IData {
+    _id: string;
+    image: IImage;
+};

@@ -1,7 +1,7 @@
 import React from "react";
 import { client } from "@/lib/sanityClient";
-import { Image } from "sanity";
 import Slider from "./Slider";
+import { IData } from "../../Types";
 
 const getProductData = async () => {
 
@@ -13,11 +13,7 @@ const getProductData = async () => {
     `);
 
     return res;
-};
 
-interface IData {
-    _id: string;
-    image: Image;
 };
 
 const Products = async () => {

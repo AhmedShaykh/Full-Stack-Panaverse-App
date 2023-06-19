@@ -3,19 +3,10 @@ import React, { FC } from "react";
 import { urlForImage } from "../../sanity/lib/image";
 import { cartActions } from "@/Store/slice/CartSlice";
 import { useDispatch } from "react-redux";
+import { Props } from "../../Types";
 import Image from "next/image";
-import { Image as IImage } from "sanity";
 import Link from "next/link";
 import toast from "react-hot-toast";
-
-interface Props {
-    id: string;
-    title: string;
-    image: IImage;
-    price: number;
-    dresstype: string;
-    category: string;
-};
 
 const Womens: FC<Props> = ({ id, image, title, price, dresstype, category }) => {
 
