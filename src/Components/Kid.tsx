@@ -8,7 +8,7 @@ import Link from "next/link";
 const Kid: FC<Props> = ({ id, image, title, price, dresstype }) => {
     return (
         <div
-            className="my-16 mx-12 sm:mx-24"
+            className="p-4 lg:p-6"
         >
             <Link href={`products/${id}`}>
                 <Image

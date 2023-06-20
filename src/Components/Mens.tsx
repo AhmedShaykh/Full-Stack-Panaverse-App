@@ -8,7 +8,7 @@ import Link from "next/link";
 const Mens: FC<Props> = ({ id, image, title, price, dresstype }) => {
     return (
         <div
-            className="py-4 px-6"
+            className="p-4 lg:p-6"
         >
             <Link href={`products/${id}`}>
                 <Image
