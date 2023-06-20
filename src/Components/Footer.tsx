@@ -1,12 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-    AiOutlineGithub,
-    AiOutlineInstagram,
-    AiOutlineLinkedin,
-    AiOutlineTwitter,
-} from "react-icons/ai";
+import { Github, Instagram, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
     return (
@@ -27,17 +22,17 @@ const Footer = () => {
                         </div>
 
                         <div className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start space-x-4">
-                            <Link className="cursor-pointer bg-gray-900 p-1 text-white rounded-lg" href="https://www.instagram.com/AHMXMusic/" target="_blank">
-                                <AiOutlineInstagram className="w-5 h-5" />
+                            <Link className="cursor-pointer bg-gray-900 p-2 text-white rounded-lg" href="https://www.instagram.com/AHMXMusic/" target="_blank">
+                                <Instagram className="w-5 h-5" />
                             </Link>
-                            <Link className="cursor-pointer bg-gray-900 p-1 text-white rounded-lg" href="https://twitter.com/AHMXMusic/" target="_blank">
-                                <AiOutlineTwitter className="w-5 h-5" />
+                            <Link className="cursor-pointer bg-gray-900 p-2 text-white rounded-lg" href="https://twitter.com/AHMXMusic/" target="_blank">
+                                <Twitter className="w-5 h-5" />
                             </Link>
-                            <Link className="cursor-pointer bg-gray-900 p-1 text-white rounded-lg" href="https://github.com/AhmedShaykh/" target="_blank">
-                                <AiOutlineGithub className="w-5 h-5" />
+                            <Link className="cursor-pointer bg-gray-900 p-2 text-white rounded-lg" href="https://github.com/AhmedShaykh/" target="_blank">
+                                <Github className="w-5 h-5" />
                             </Link>
-                            <Link className="cursor-pointer bg-gray-900 p-1 text-white rounded-lg" href="https://www.linkedin.com/in/ahmedshaykh/" target="_blank">
-                                <AiOutlineLinkedin className="w-5 h-5" />
+                            <Link className="cursor-pointer bg-gray-900 p-2 text-white rounded-lg" href="https://www.linkedin.com/in/ahmedshaykh/" target="_blank">
+                                <Linkedin className="w-5 h-5" />
                             </Link>
                         </div>
                     </div>

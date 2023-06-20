@@ -28,6 +28,7 @@
     "eslint-config-next": "13.4.4",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.7",
+    "lucide-react": "^0.246.0",
     "next": "13.0.0",
     "next-sanity": "4.3.3",
     "postcss": "8.4.23",
