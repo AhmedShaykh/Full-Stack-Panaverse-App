@@ -1,24 +1,11 @@
 "use client";
 import React, { FC } from "react";
 import { urlForImage } from "../../sanity/lib/image";
-import { cartActions } from "@/Store/slice/CartSlice";
-import { useDispatch } from "react-redux";
 import { Props } from "../../Types";
 import Image from "next/image";
 import Link from "next/link";
-import toast from "react-hot-toast";
 
-const AllProducts: FC<Props> = ({ id, image, title, price, dresstype, category }) => {
-
-    const dispatch = useDispatch();
-
-    const addItems = () => {
-        dispatch(cartActions.addToCart({
-            quantity: 1
-        }));
-        toast.success("Product Added")
-    };
-
+const AllProducts: FC<Props> = ({ id, image, title, price, dresstype }) => {
     return (
         <div
             className="py-4 px-6"
@@ -36,37 +23,14 @@ const AllProducts: FC<Props> = ({ id, image, title, price, dresstype, category }
                     {title}
                 </h2>
 
-                <h3 className="text-lg my-1 font-bold">
-                    $ {price}
+                <h3 className="font-bold text-lg my-2">
+                    {dresstype}
                 </h3>
 
-                <div className="flex flex-col">
-                    <h3 className="uppercase text-gray-700 font-bold text-lg">
-                        Category:
-                    </h3>
-
-                    <h3 className="font-bold text-lg">
-                        {category}
-                    </h3>
-                </div>
-
-                <div className="flex flex-col">
-                    <h3 className="uppercase text-gray-700 font-bold text-lg">
-                        Dress Type:
-                    </h3>
-
-                    <h3 className="font-bold text-lg">
-                        {dresstype}
-                    </h3>
-                </div>
+                <h3 className="text-2xl my-4 font-bold">
+                    $ {price}
+                </h3>
             </Link>
-
-            <button
-                className="my-2 py-2 px-6 rounded bg-blue-700 text-white font-semibold"
-                onClick={addItems}
-            >
-                Add To Cart
-            </button>
         </div>
     )
 };

@@ -5,9 +5,6 @@ export interface IProduct {
     title: string;
     image: IImage;
     price: number;
-    category: {
-        name: string;
-    }
     dresstype: {
         name: string;
     }
@@ -19,7 +16,6 @@ export interface Props {
     image: IImage;
     price: number;
     dresstype: string;
-    category: string;
 };
 
 export interface IData {

@@ -11,9 +11,6 @@ const getProductData = async () => {
         title,
         image,
         price,
-        category -> {
-            name
-        },
         dresstype -> {
             name
         }
@@ -36,7 +33,6 @@ const Female = async () => {
                         title={item.title}
                         image={item.image}
                         price={item.price}
-                        category={item.category.name}
                         dresstype={item.dresstype.name}
                     />
                 </div>
