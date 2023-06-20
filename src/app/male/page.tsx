@@ -25,7 +25,7 @@ const Male = async () => {
     const data: IProduct[] = await getProductData();
 
     return (
-        <div className="my-8 grid grid-cols-[repeat(3,auto)] justify-center gap-x-10 gap-y-12">
+        <div className="my-16 mx-12 sm:mx-24 grid grid-cols-[repeat(3,auto)] justify-center gap-x-10 gap-y-12">
             {data?.map((item, i: number) => (
                 <div key={i}>
                     <Mens
