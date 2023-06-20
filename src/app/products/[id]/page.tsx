@@ -14,9 +14,6 @@ const getProductById = async (id: any) => {
       title,
       image,
       price,
-      category -> {
-        name
-      },
       dresstype -> {
         name
       }
@@ -42,29 +39,38 @@ const Product = async ({ params }: any) => {
   // };
 
   return (
-    <div className="my-16 mx-24">
-      <h1>
-        {product.title}
-      </h1>
-
-      <h2>
-        {product.price}
-      </h2>
-
+    <div className="my-16 mx-24 flex justify-center gap-x-12">
+      
       <Image
         src={urlForImage(product.image).url()}
         alt="product"
-        width={300}
-        height={300}
-        className="my-4 object-cover max-h-[300px]"
+        width={500}
+        height={400}
+        className="my-4 object-cover"
       />
 
-      <button
-        className="my-2 py-2 px-6 rounded bg-blue-700 text-white font-semibold"
-      // onClick={addItems}
-      >
-        Add To Cart
-      </button>
+      <div className="flex flex-col justify-center px-8">
+        <h1 className="text-4xl my-1 font-bold">
+          {product.title}
+        </h1>
+
+        <h3 className="font-bold text-2xl my-2 text-zinc-600">
+          {product.dresstype.name}
+        </h3>
+
+        <div className="flex gap-x-12 my-4 items-center">
+          <button
+            className="my-2 p-3 rounded bg-black text-white font-semibold w-40"
+          // onClick={addItems}
+          >
+            Add To Cart
+          </button>
+
+          <h2 className="text-3xl font-bold">
+            ${product.price}.00
+          </h2>
+        </div>
+      </div>
     </div>
   );
 };
