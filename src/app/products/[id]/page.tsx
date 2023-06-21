@@ -28,21 +28,7 @@ const Product = async ({ params }: any) => {
 
   const { id } = params;
 
-  // const [count, setCount] = useState<number>(1);
-
   const product: any = await getProductById(id);
-
-  // function handleDecrement() {
-  //   if (count > 1) {
-  //     setCount(count - 1);
-  //   }
-  // };
-
-  // function handleIncrement() {
-  //   if (count < 10) {
-  //     setCount(count + 1);
-  //   }
-  // };
 
   // const dispatch = useDispatch();
 
