@@ -11,23 +11,21 @@ const Womens: FC<Props> = ({ id, image, title, price, dresstype }) => {
             className="p-4 lg:p-6"
         >
             <Link href={`products/${id}`}>
-                <Image
+                <img
+                    className="w-full lg:h-[60%] h-[80%] object-cover object-center rounded my-4"
                     src={urlForImage(image).url()}
-                    alt="product"
-                    width={300}
-                    height={300}
-                    className="my-4 object-cover max-h-[300px]"
+                    alt="products"
                 />
 
                 <h2 className="text-xl my-1 font-bold">
                     {title}
                 </h2>
 
-                <h3 className="font-bold text-lg my-2">
+                <h3 className="font-bold text-lg my-2 text-zinc-600">
                     {dresstype}
                 </h3>
 
-                <h3 className="text-2xl my-4 font-bold">
+                <h3 className="text-2xl my-2 font-bold">
                     $ {price}
                 </h3>
             </Link>
