@@ -8,7 +8,7 @@ const Home = () => {
             <Hero />
             <Event />
             {/* @ts-ignore */}
-            {/* <Products /> */}
+            <Products />
         </>
     )
 };
