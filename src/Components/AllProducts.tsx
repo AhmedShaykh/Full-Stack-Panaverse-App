@@ -20,11 +20,11 @@ const AllProducts: FC<Props> = ({ id, image, title, price, dresstype }) => {
                     {title}
                 </h2>
 
-                <h3 className="font-bold text-lg my-2">
+                <h3 className="font-bold text-lg my-2 text-zinc-600">
                     {dresstype}
                 </h3>
 
-                <h3 className="text-2xl my-4 font-bold">
+                <h3 className="text-2xl my-2 font-bold">
                     $ {price}
                 </h3>
             </Link>
