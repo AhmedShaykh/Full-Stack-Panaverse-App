@@ -2,7 +2,6 @@
 import React, { FC } from "react";
 import { urlForImage } from "../../sanity/lib/image";
 import { Props } from "../../Types";
-import Image from "next/image";
 import Link from "next/link";
 
 const AllProducts: FC<Props> = ({ id, image, title, price, dresstype }) => {
@@ -11,12 +10,10 @@ const AllProducts: FC<Props> = ({ id, image, title, price, dresstype }) => {
             className="p-4 lg:p-6"
         >
             <Link href={`products/${id}`}>
-                <Image
+                <img
+                    className="w-full lg:h-[60%] h-[80%] object-cover object-center rounded my-4"
                     src={urlForImage(image).url()}
-                    alt="product"
-                    width={300}
-                    height={300}
-                    className="my-4 object-cover max-h-[300px]"
+                    alt="products"
                 />
 
                 <h2 className="text-xl my-1 font-bold">
