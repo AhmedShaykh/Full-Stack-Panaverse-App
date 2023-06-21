@@ -74,6 +74,7 @@ const Product = async ({ params }: any) => {
           <div className="flex mt-6 items-center pb-5 mb-5">
             <div className="flex items-center">
               <span className="mr-8">Size</span>
+
               <div className="relative">
                 <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-slate-700 focus:border-zinc-700 text-base pl-3 pr-10">
                   <option>XS</option>
