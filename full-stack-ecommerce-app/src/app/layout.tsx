@@ -1,11 +1,8 @@
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
+import Providers from '@/Redux/Providers';
+import Head from './Head';
 import './globals.css';
-
-export const metadata = {
-  title: 'Full Stack E-Commerce App',
-  description: 'Full Stack E-Commerce App',
-};
 
 export default function RootLayout({
   children,
@@ -14,10 +11,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Head />
       <body>
-        <Navbar />
-        {children}
-        <Footer />
+        <Providers>
+          <Navbar />
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   )
