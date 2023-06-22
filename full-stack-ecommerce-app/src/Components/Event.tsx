@@ -11,7 +11,7 @@ const Event = () => {
 
             <div className="w-full flex flex-col py-2 xl:flex-row gap-8">
                 <div className="flex flex-col w-full xl:w-1/2 space-y-4">
-                    <div className="h-full md:flex justify-around xl:justify-between sm:justify-between items-center py-4 px-4 sm:px-8 bg-[#D6D6D8] text-[#212121]">
+                    <div className="hidden md:flex h-full justify-around xl:justify-between sm:justify-between items-center py-4 px-4 sm:px-8 bg-[#D6D6D8] text-[#212121]">
                         <div>
                             <h3 className="font-bold text-xl sm:text-3xl mb-2 text-black">GET UP TO <span className="font-bolder text-2xl sm:text-4xl">60%</span></h3>
                             <p className="text-lg sm:text-xl text-black">For the summer season</p>
