@@ -1,12 +1,10 @@
-// "use client";
+"use client";
 import React from "react";
 import { client } from "@/lib/sanityClient";
-// import { cartActions } from "@/Store/slice/CartSlice";
-// import { useDispatch } from "react-redux";
 import { urlForImage } from "../../../../sanity/lib/image";
 import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const getProductById = async (id: any) => {
 
@@ -30,14 +28,22 @@ const Product = async ({ params }: any) => {
 
   const product: any = await getProductById(id);
 
-  // const dispatch = useDispatch();
+  const handleAddToCart = async () => {
 
-  // const addItems = () => {
-  //   dispatch(cartActions.addToCart({
-  //     quantity: 1
-  //   }));
-  //   toast.success("Product Added")
-  // };
+    const res = await fetch("/api/cart", {
+      method: "POST",
+      body: JSON.stringify({
+        product_id: id
+      })
+    });
+
+    const result = await res.json();
+
+    toast.success("Product Added");
+
+    console.log(result);
+
+  };
 
   return (
     <div className="my-16 mx-12 sm:mx-24">
@@ -48,7 +54,7 @@ const Product = async ({ params }: any) => {
           alt="products"
         />
 
-        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-12 lg:mt-0 px-1">
+        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-12 lg:mt-4 px-1">
           <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
             {product.title}
           </h1>
@@ -87,7 +93,7 @@ const Product = async ({ params }: any) => {
             </div>
           </div>
 
-          <div className="flex gap-x-12 my-4 items-center">
+          {/* <div className="flex gap-x-12 my-4 items-center">
             <h2 className="text-2xl font-bold">
               Qunatity:
             </h2>
@@ -103,12 +109,12 @@ const Product = async ({ params }: any) => {
                 <Minus />
               </button>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex gap-x-8 my-4 items-center">
             <button
               className="my-2 p-3 rounded bg-black text-white font-semibold w-40"
-            // onClick={addItems}
+              onClick={handleAddToCart}
             >
               Add To Cart
             </button>
