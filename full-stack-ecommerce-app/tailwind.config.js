@@ -4,11 +4,5 @@ module.exports = {
   content: [
     './src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  plugins: [
-    require("flowbite/plugin"),
-    require("daisyui")
-  ],
-  daisyui: {
-    themes: ["light"]
-  }
+  plugins: [],
 };

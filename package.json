@@ -11,23 +11,14 @@
   "dependencies": {
     "@heroicons/react": "^2.0.18",
     "@reduxjs/toolkit": "^1.9.5",
-    "@sanity/client": "^6.1.2",
-    "@sanity/icons": "2.0.0",
-    "@sanity/image-url": "1",
-    "@sanity/types": "3.0.0",
-    "@sanity/ui": "1.0.0",
-    "@sanity/vision": "3",
     "@types/node": "20.2.4",
     "@types/react": "18.2.7",
     "@types/react-dom": "18.2.4",
-    "@types/styled-components": "5.1.0",
     "@vercel/postgres": "^0.3.0",
     "autoprefixer": "10.4.14",
     "drizzle-orm": "^0.26.2",
     "eslint": "8.41.0",
     "eslint-config-next": "13.4.4",
-    "flowbite": "^1.6.5",
-    "flowbite-react": "^0.4.7",
     "lucide-react": "^0.246.0",
     "next": "13.0.0",
     "next-sanity": "4.3.3",
@@ -37,13 +28,10 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.9.0",
     "react-redux": "^8.0.7",
-    "sanity": "3.0.0",
-    "styled-components": "5.2.0",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
   },
   "devDependencies": {
-    "daisyui": "^3.1.0",
     "drizzle-kit": "^0.18.1"
   }
 }
