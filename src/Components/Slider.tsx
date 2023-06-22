@@ -16,9 +16,9 @@ const Slider: FC<Props> = ({ image, id }) => {
                 <Image
                     src={urlForImage(image).url()}
                     alt="products"
-                    width={370}
-                    height={400}
-                    className="cursor-pointer transform hover:scale-110"
+                    width={350}
+                    height={380}
+                    className="cursor-pointer transform hover:scale-110 object-fill"
                 />
             </Link>
         </>

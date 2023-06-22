@@ -105,7 +105,7 @@ const Product = async ({ params }: any) => {
             </div>
           </div>
 
-          <div className="flex gap-x-10 my-4 items-center">
+          <div className="flex gap-x-8 my-4 items-center">
             <button
               className="my-2 p-3 rounded bg-black text-white font-semibold w-40"
             // onClick={addItems}
