@@ -1,5 +1,5 @@
 "use client";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { client } from "@/lib/sanityClient";
 import { urlForImage } from "../../../../sanity/lib/image";
 import { Minus, Plus } from "lucide-react";
@@ -27,7 +27,15 @@ const Product = async ({ params }: any) => {
 
   const product: any = await getProductById(id);
 
-  let count: number = 2;
+  const [count, setCount] = useState(1);
+
+  const incrementCount = () => {
+    setCount(count + 1);
+  };
+
+  const decrementCount = () => {
+    setCount(count - 1);
+  };
 
   const handleAddToCart = async () => {
 
@@ -103,7 +111,7 @@ const Product = async ({ params }: any) => {
             <div className="flex items-center justify-center space-x-4">
               <button
                 className="rounded-full p-1 bg-zinc-900 text-white"
-                onClick={() => ++count}
+                onClick={incrementCount}
               >
                 <Plus />
               </button>
@@ -114,7 +122,7 @@ const Product = async ({ params }: any) => {
 
               <button
                 className="rounded-full p-1 bg-zinc-900 text-white"
-                onClick={() => --count}
+                onClick={decrementCount}
               >
                 <Minus />
               </button>
