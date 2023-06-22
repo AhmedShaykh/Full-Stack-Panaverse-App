@@ -1,8 +1,7 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import { client } from "@/lib/sanityClient";
 import { urlForImage } from "../../../../sanity/lib/image";
-import Image from "next/image";
 import { Minus, Plus } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -28,12 +27,15 @@ const Product = async ({ params }: any) => {
 
   const product: any = await getProductById(id);
 
+  let count: number = 2;
+
   const handleAddToCart = async () => {
 
     const res = await fetch("/api/cart", {
       method: "POST",
       body: JSON.stringify({
-        product_id: id
+        product_id: id,
+        quantity: count
       })
     });
 
@@ -54,7 +56,7 @@ const Product = async ({ params }: any) => {
           alt="products"
         />
 
-        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-12 lg:mt-4 px-1">
+        <div className="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-12 lg:mt-2 px-1">
           <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
             {product.title}
           </h1>
@@ -93,23 +95,31 @@ const Product = async ({ params }: any) => {
             </div>
           </div>
 
-          {/* <div className="flex gap-x-12 my-4 items-center">
-            <h2 className="text-2xl font-bold">
-              Qunatity:
+          <div className="flex gap-x-12 my-4 items-center">
+            <h2 className="text-xl font-bold">
+              Quantity:
             </h2>
 
             <div className="flex items-center justify-center space-x-4">
-              <button className="rounded-full p-1 bg-zinc-900 text-white">
+              <button
+                className="rounded-full p-1 bg-zinc-900 text-white"
+                onClick={() => ++count}
+              >
                 <Plus />
               </button>
+
               <span className="text-xl font-semibold">
-                1
+                {count}
               </span>
-              <button className="rounded-full p-1 bg-zinc-900 text-white">
+
+              <button
+                className="rounded-full p-1 bg-zinc-900 text-white"
+                onClick={() => --count}
+              >
                 <Minus />
               </button>
             </div>
-          </div> */}
+          </div>
 
           <div className="flex gap-x-8 my-4 items-center">
             <button
