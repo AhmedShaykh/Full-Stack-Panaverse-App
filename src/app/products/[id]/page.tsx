@@ -1,9 +1,8 @@
-"use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { client } from "@/lib/sanityClient";
 import { urlForImage } from "../../../../sanity/lib/image";
 import { Minus, Plus } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const getProductById = async (id: any) => {
 
@@ -21,29 +20,21 @@ const getProductById = async (id: any) => {
   return res;
 };
 
-const Product = ({ params }: any) => {
+const Product = async ({ params }: any) => {
 
   const { id } = params;
 
-  const [product, setProduct] = useState<any>(null);
+  const product: any = await getProductById(id);
 
-  const [count, setCount] = useState(1);
+  // const [count, setCount] = useState(1);
 
-  const incrementCount = () => {
+  // const incrementCount = () => {
+  //   setCount(count + 1);
+  // };
 
-    if (count < 8) {
-      setCount(count + 1);
-    }
-
-  };
-
-  const decrementCount = () => {
-
-    if (count > 1) {
-      setCount(count - 1);
-    }
-
-  };
+  // const decrementCount = () => {
+  //   setCount(count - 1);
+  // };
 
   const handleAddToCart = async () => {
 
@@ -51,7 +42,7 @@ const Product = ({ params }: any) => {
       method: "POST",
       body: JSON.stringify({
         product_id: id,
-        quantity: count
+        // quantity: count
       })
     });
 
@@ -61,23 +52,6 @@ const Product = ({ params }: any) => {
 
     console.log(result);
 
-  };
-
-  useEffect(() => {
-
-    const fetchProduct = async () => {
-
-      const productData = await getProductById(id);
-
-      setProduct(productData);
-    };
-
-    fetchProduct();
-
-  }, [id]);
-
-  if (!product) {
-    return <div>Loading...</div>;
   };
 
   return (
@@ -128,7 +102,7 @@ const Product = ({ params }: any) => {
             </div>
           </div>
 
-          <div className="flex gap-x-12 my-4 items-center">
+          {/* <div className="flex gap-x-12 my-4 items-center">
             <h2 className="text-xl font-bold">
               Quantity:
             </h2>
@@ -152,23 +126,22 @@ const Product = ({ params }: any) => {
                 <Minus />
               </button>
             </div>
-          </div>
+          </div> */}
 
           <div className="flex gap-x-8 my-4 items-center">
             <button
               className="my-2 p-3 rounded bg-black text-white font-semibold w-40"
-              onClick={handleAddToCart}
+              // onClick={handleAddToCart}
             >
               Add To Cart
             </button>
 
-            <h2 className="text-2xl font-bold">
+            <h2 className="text-3xl font-bold">
               ${product.price}.00
             </h2>
           </div>
         </div>
       </div>
-      <Toaster />
     </div>
   );
 };
