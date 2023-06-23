@@ -1,9 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { client } from "@/lib/sanityClient";
 import { urlForImage } from "../../../../sanity/lib/image";
 import { Minus, Plus } from "lucide-react";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const getProductById = async (id: any) => {
 
@@ -21,20 +21,28 @@ const getProductById = async (id: any) => {
   return res;
 };
 
-const Product = async ({ params }: any) => {
+const Product = ({ params }: any) => {
 
   const { id } = params;
 
-  const product: any = await getProductById(id);
+  const [product, setProduct] = useState<any>(null);
 
   const [count, setCount] = useState(1);
 
   const incrementCount = () => {
-    setCount(count + 1);
+
+    if (count < 8) {
+      setCount(count + 1);
+    }
+
   };
 
   const decrementCount = () => {
-    setCount(count - 1);
+
+    if (count > 1) {
+      setCount(count - 1);
+    }
+
   };
 
   const handleAddToCart = async () => {
@@ -53,6 +61,23 @@ const Product = async ({ params }: any) => {
 
     console.log(result);
 
+  };
+
+  useEffect(() => {
+
+    const fetchProduct = async () => {
+
+      const productData = await getProductById(id);
+
+      setProduct(productData);
+    };
+
+    fetchProduct();
+
+  }, [id]);
+
+  if (!product) {
+    return <div>Loading...</div>;
   };
 
   return (
@@ -137,12 +162,13 @@ const Product = async ({ params }: any) => {
               Add To Cart
             </button>
 
-            <h2 className="text-3xl font-bold">
+            <h2 className="text-2xl font-bold">
               ${product.price}.00
             </h2>
           </div>
         </div>
       </div>
+      <Toaster />
     </div>
   );
 };

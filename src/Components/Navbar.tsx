@@ -2,8 +2,8 @@
 import { useState } from "react";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { CgShoppingCart } from "react-icons/cg";
-import { useSelector } from "react-redux";
-import { RootState } from "@/Store/Store";
+// import { useSelector } from "react-redux";
+// import { RootState } from "@/Store/Store";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -35,9 +35,9 @@ const Navbar = () => {
 
     const [navbar, setNavbar] = useState(false);
 
-    const cartValue = useSelector(
-        (state: RootState) => state.cart.totalQuantity
-    );
+    // const cartValue = useSelector(
+    //     (state: RootState) => state.cart.totalQuantity
+    // );
 
     return (
         <div className="w-full mx-auto px-8 sm:px-20 z-10 top-0 shadow">
@@ -88,9 +88,9 @@ const Navbar = () => {
                             <Link href="/cart">
                                 <button className="bg-gray-300 p-2 rounded-full text-black relative">
                                     <CgShoppingCart size={25} />
-                                    <span className="absolute right-1 top-0 rounded-full bg-red-700 h-5 w-5 text-white text-sx text-center">
+                                    {/* <span className="absolute right-1 top-0 rounded-full bg-red-700 h-5 w-5 text-white text-sx text-center">
                                         {cartValue}
-                                    </span>
+                                    </span> */}
                                 </button>
                             </Link>
                         </div>
