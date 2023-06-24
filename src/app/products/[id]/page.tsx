@@ -1,9 +1,7 @@
 "use client";
-import React from "react";
 import { client } from "@/lib/sanityClient";
 import { urlForImage } from "../../../../sanity/lib/image";
-import { Minus, Plus } from "lucide-react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import AddProduct from "@/Components/AddProduct";
 
 const getProductById = async (id: any) => {
