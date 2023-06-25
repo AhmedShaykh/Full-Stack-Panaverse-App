@@ -4,6 +4,10 @@ import { v4 as uuid } from "uuid";
 import { cookies } from "next/dist/client/components/headers";
 import { eq } from "drizzle-orm";
 
+const sortId = cookies().get("user_id")?.value;
+
+fetch(`http://localhost:3000/api/cart?user_id=${sortId}`);
+
 export const GET = async (request: NextRequest) => {
 
     const req = request.nextUrl;
