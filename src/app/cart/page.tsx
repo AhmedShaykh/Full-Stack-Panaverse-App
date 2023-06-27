@@ -32,7 +32,7 @@ const getData = async () => {
 const getProductById = async (id: any) => {
 
     const res = await client.fetch(`
-      *[_type == "product" && _id == '${id}'][0] {
+      *[_type == "product" && _id == "${id}"][0] {
         title,
         image,
         price,
@@ -49,20 +49,24 @@ const Cart = async () => {
 
     const data = await getData();
 
-    const product = await getProductById(data?.res[0]?.id);
+    // const products = data?.res.map((item: any) => {
+    //     return item
+    // });
 
-    console.log(product?.id);
+    const product = await getProductById(data.res[0].product_id);
+
+    console.log(product);
 
     return (
         <>
-            {data?.res.length > 0 ? (
+            {/* {products?.length > 0 ? (
                 <div>
-                    {data.res.map((item: any, i: number) => (
+                    {products.map((item: any, i: number) => (
                         <div key={i}
                             className="my-16 mx-12 sm:mx-24"
                         >
                             <h1>
-                                {item.user_id}
+                                {item.product_id}
                             </h1>
                         </div>
                     ))}
@@ -73,7 +77,7 @@ const Cart = async () => {
                         Empty Cart
                     </h1>
                 </div>
-            )}
+            )} */}
         </>
     )
 };
