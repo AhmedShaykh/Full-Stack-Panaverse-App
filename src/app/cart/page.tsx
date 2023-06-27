@@ -49,17 +49,17 @@ const Cart = async () => {
 
     const data = await getData();
 
-    // const products = data?.res.map((item: any) => {
-    //     return item
-    // });
+    const products = data?.res.map((item: any) => {
+        return item
+    });
 
-    const product = await getProductById(data.res[0].product_id);
+    // const product = await getProductById(products.res[0].product_id);
 
-    console.log(product);
+    console.log(products);
 
     return (
         <>
-            {/* {products?.length > 0 ? (
+            {products?.length > 0 ? (
                 <div>
                     {products.map((item: any, i: number) => (
                         <div key={i}
@@ -77,7 +77,7 @@ const Cart = async () => {
                         Empty Cart
                     </h1>
                 </div>
-            )} */}
+            )}
         </>
     )
 };
