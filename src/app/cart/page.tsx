@@ -50,38 +50,40 @@ const Cart = async () => {
     const data = await getData();
 
     const products = data?.res.map((item: any) => {
-        return item.product_id
+        return item.product_id;
     });
 
 
-    products.forEach(async (res: any) => {
-
-        const product = await getProductById(res);
-        console.log(product);
-
-        // return (
-            <>
-                {/* {product?.length > 0 ? (
-                    <div className="my-16 mx-12 sm:mx-24">
-                        {product?.map((item: any, i: number) => {
-                            console.log('Item:', item);
-                            return (
-                                <div key={i}>
-                                    <h1>{item.title}</h1>
-                                </div>
-                            );
-                        })}
-                    </div>
-                ) : ( */}
-                    <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
-                        <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
-                            Empty Cart
-                        </h1>
-                    </div>
-                {/* )} */}
-            </>
-        // )
+    let getProduct: any = products.forEach((res: any) => {
+        console.log(res)
     });
+
+    const product = await getProductById(getProduct);
+
+    // console.log(product);
+
+    return (
+        <>
+            {product?.length > 0 ? (
+                <div className="my-16 mx-12 sm:mx-24">
+                    {product?.map((item: any, i: number) => {
+                        console.log('Item:', item);
+                        return (
+                            <div key={i}>
+                                <h1>{item.title}</h1>
+                            </div>
+                        );
+                    })}
+                </div>
+            ) : (
+                <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
+                    <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
+                        Empty Cart
+                    </h1>
+                </div>
+            )}
+        </>
+    )
 };
 
 export default Cart;
