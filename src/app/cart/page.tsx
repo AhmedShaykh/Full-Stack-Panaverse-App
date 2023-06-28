@@ -53,35 +53,26 @@ const Cart = async () => {
         return item.product_id;
     });
 
+    const product = await getProductById(products?.map((item: any) => item));
 
-    let getProduct: any = products.forEach((res: any) => {
-        console.log(res)
-    });
+    console.log(product);
 
-    const product = await getProductById(getProduct);
-
-    // console.log(product);
+    if (!product) {
+        return (
+            <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
+                <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
+                    Empty Cart
+                </h1>
+            </div>
+        );
+    }
 
     return (
         <>
-            {product?.length > 0 ? (
-                <div className="my-16 mx-12 sm:mx-24">
-                    {product?.map((item: any, i: number) => {
-                        console.log('Item:', item);
-                        return (
-                            <div key={i}>
-                                <h1>{item.title}</h1>
-                            </div>
-                        );
-                    })}
-                </div>
-            ) : (
-                <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
-                    <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
-                        Empty Cart
-                    </h1>
-                </div>
-            )}
+            <div className="my-16 mx-12 sm:mx-24">
+                {products?.map((item: any, i: number) => {
+                })}
+            </div>
         </>
     )
 };
