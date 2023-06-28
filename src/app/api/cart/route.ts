@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { db, cartTable } from "@/lib/drizzle";
 import { v4 as uuid } from "uuid";
 import { cookies } from "next/dist/client/components/headers";
+import { eq } from "drizzle-orm";
 
 export const GET = async (request: NextRequest) => {
 
@@ -47,6 +48,23 @@ export const POST = async (request: NextRequest) => {
         return NextResponse.json(
             { message: (error as { message: string }).message }
         );
+
+    }
+};
+
+export const DELETE = async (request: NextRequest) => {
+
+    const req = await request.json();
+
+    try {
+
+        const res = await db.delete(cartTable).where(eq(cartTable.id, req.id));
+
+        return NextResponse.json({ res, message: "Data Deleted" });
+
+    } catch (error) {
+
+        return NextResponse.json({ message: "Something Went Wrong" });
 
     }
 };
