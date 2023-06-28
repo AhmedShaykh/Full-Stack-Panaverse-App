@@ -20,6 +20,7 @@ const getData = async () => {
         const result = await res.json();
 
         return result;
+        
     }
     catch (error) {
 
@@ -42,6 +43,8 @@ const getProductById = async (id: any) => {
       }
     `);
 
+    console.log(res.title);
+
     return res;
 };
 
@@ -53,11 +56,7 @@ const Cart = async () => {
         return item.product_id;
     });
 
-    const product = await getProductById(products?.map((item: any) => item));
-
-    console.log(product);
-
-    if (!product) {
+    if (!products) {
         return (
             <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
                 <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
@@ -71,6 +70,9 @@ const Cart = async () => {
         <>
             <div className="my-16 mx-12 sm:mx-24">
                 {products?.map((item: any, i: number) => {
+                    <div key={i}>
+                        {getProductById(item)}
+                    </div>
                 })}
             </div>
         </>
