@@ -1,12 +1,12 @@
 import React from "react";
-import Womens from "@/Components/Womens";
+import Mens from "@/Components/Mens";
 import { client } from "@/lib/sanityClient";
-import { IProduct } from "../../../Types";
+import { IProduct } from "../../../../Types";
 
 const getProductData = async () => {
 
     const res = await client.fetch(`
-    *[_type=="product" && category -> name == "Female"] {
+    *[_type=="product" && category -> name == "Male"] {
         _id,
         title,
         image,
@@ -20,7 +20,7 @@ const getProductData = async () => {
     return res;
 };
 
-const Female = async () => {
+const Male = async () => {
 
     const data: IProduct[] = await getProductData();
 
@@ -28,7 +28,7 @@ const Female = async () => {
         <div className="my-16 mx-12 sm:mx-24 grid justify-center grid-cols-1 gap-x-4 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
             {data?.map((item, i: number) => (
                 <div key={i}>
-                    <Womens
+                    <Mens
                         id={item._id}
                         title={item.title}
                         image={item.image}
@@ -41,4 +41,4 @@ const Female = async () => {
     )
 };
 
-export default Female;
+export default Male;

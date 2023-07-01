@@ -1,6 +1,6 @@
 "use client";
 import { client } from "@/lib/sanityClient";
-import { urlForImage } from "../../../../sanity/lib/image";
+import { urlForImage } from "../../../../../sanity/lib/image";
 import toast from "react-hot-toast";
 import AddProduct from "@/Components/AddProduct";
 
@@ -25,16 +25,6 @@ const Product = async ({ params }: any) => {
   const { id } = params;
 
   const product: any = await getProductById(id);
-
-  // const [count, setCount] = useState(1);
-
-  // const incrementCount = () => {
-  //   setCount(count + 1);
-  // };
-
-  // const decrementCount = () => {
-  //   setCount(count - 1);
-  // };
 
   const handleAddToCart = async () => {
 
