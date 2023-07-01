@@ -1,7 +1,7 @@
 import React from "react";
 import { BsBagCheckFill } from 'react-icons/bs';
 
-const SuccessPay = () => {
+const OrderSuccess = () => {
     return (
         <div className="my-16 mx-12 sm:mx-24 flex flex-col justify-center items-center">
 
@@ -19,4 +19,4 @@ const SuccessPay = () => {
     )
 };
 
-export default SuccessPay;
+export default OrderSuccess;
