@@ -1,5 +1,5 @@
 import React from "react";
-import { client } from "../../../../sanity/lib/client";
+import GetProductCart from "@/Components/GetProductCart";
 
 const getData = async () => {
 
@@ -20,7 +20,7 @@ const getData = async () => {
         const result = await res.json();
 
         return result;
-        
+
     }
     catch (error) {
 
@@ -30,33 +30,11 @@ const getData = async () => {
 
 };
 
-const getProductById = async (id: any) => {
-
-    const res = await client.fetch(`
-      *[_type == "product" && _id == "${id}"][0] {
-        title,
-        image,
-        price,
-        dresstype -> {
-          name
-        }
-      }
-    `);
-
-    console.log(res.title);
-
-    return res;
-};
-
 const Cart = async () => {
 
     const data = await getData();
 
-    const products = data?.res.map((item: any) => {
-        return item.product_id;
-    });
-
-    if (!products) {
+    if (!data?.res) {
         return (
             <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
                 <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
@@ -69,11 +47,11 @@ const Cart = async () => {
     return (
         <>
             <div className="my-16 mx-12 sm:mx-24">
-                {products?.map((item: any, i: number) => {
+                {data?.res.map((item: any, i: number) => (
                     <div key={i}>
-                        {getProductById(item)}
+                        <GetProductCart item={item} />
                     </div>
-                })}
+                ))}
             </div>
         </>
     )
