@@ -1,7 +1,7 @@
 import React from "react";
 import AllProducts from "@/Components/AllProducts";
 import { client } from "@/lib/sanityClient";
-import { IProduct } from "../../../Types";
+import { IProduct } from "../../../../Types";
 
 const getProductData = async () => {
 
