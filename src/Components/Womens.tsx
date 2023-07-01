@@ -2,7 +2,6 @@
 import React, { FC } from "react";
 import { urlForImage } from "../../sanity/lib/image";
 import { Props } from "../../Types";
-import Image from "next/image";
 import Link from "next/link";
 
 const Womens: FC<Props> = ({ id, image, title, price, dresstype }) => {

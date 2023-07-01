@@ -1,11 +1,11 @@
 "use client";
 import React, { FC } from "react";
-// import { Minus, Plus } from "lucide-react";
 
 const AddProduct: FC<any> = ({ image, title, dresstype, price, handleAddToCart }) => {
     return (
         <div className="my-16 mx-12 sm:mx-24">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
+
                 <img
                     className="lg:w-1/2 w-full lg:h-[60%] h-[80%] object-cover object-center rounded"
                     src={image}
@@ -50,32 +50,6 @@ const AddProduct: FC<any> = ({ image, title, dresstype, price, handleAddToCart }
                             </div>
                         </div>
                     </div>
-
-                    {/* <div className="flex gap-x-12 my-4 items-center">
-            <h2 className="text-xl font-bold">
-              Quantity:
-            </h2>
-
-            <div className="flex items-center justify-center space-x-4">
-              <button
-                className="rounded-full p-1 bg-zinc-900 text-white"
-                onClick={incrementCount}
-              >
-                <Plus />
-              </button>
-
-              <span className="text-xl font-semibold">
-                {count}
-              </span>
-
-              <button
-                className="rounded-full p-1 bg-zinc-900 text-white"
-                onClick={decrementCount}
-              >
-                <Minus />
-              </button>
-            </div>
-          </div> */}
 
                     <div className="flex gap-x-8 my-4 items-center">
                         <button
