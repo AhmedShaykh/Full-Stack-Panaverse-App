@@ -39,7 +39,7 @@ const Product = async ({ params }: any) => {
 
     toast.success("New Product Added");
 
-    console.log(result);
+    return result;
   };
 
   return (

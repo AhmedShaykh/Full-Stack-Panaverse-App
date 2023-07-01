@@ -1,7 +1,10 @@
 "use client";
 import GetProductCart from "@/Components/GetProductCart";
+import { useRouter } from "next/navigation";
 
 const getData = async () => {
+
+    const { refresh } = useRouter();
 
     try {
 
@@ -12,6 +15,8 @@ const getData = async () => {
                 "Content-Type": "application/json"
             }
         });
+
+        refresh();
 
         if (!res.ok) {
             throw new Error("Failed to Fetch the Data")
@@ -60,6 +65,14 @@ const Cart = async () => {
                         />
                     </div>
                 ))}
+
+                <button
+                    className="mt-8 mb-5 py-3 px-6 sm:py-4 sm:px-8 rounded bg-black text-xl sm:text-2xl text-white font-bold"
+                    // onClick={handleCheckOut}
+                >
+                    Check Out
+                </button>
+
             </div>
         </>
     )
