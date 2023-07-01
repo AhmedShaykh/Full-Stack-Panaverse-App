@@ -1,9 +1,8 @@
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
-// import Providers from '@/Redux/Providers';
 import Head from './Head';
-import './globals.css';
 import { Toaster } from 'react-hot-toast';
+import './globals.css';
 
 export default function RootLayout({
   children,
@@ -14,12 +13,12 @@ export default function RootLayout({
     <html lang="en">
       <Head />
       <body>
-        {/* <Providers> */}
         <Navbar />
         {children}
-        <Toaster />
+        <Toaster
+          reverseOrder={true}
+        />
         <Footer />
-        {/* </Providers> */}
       </body>
     </html>
   )
