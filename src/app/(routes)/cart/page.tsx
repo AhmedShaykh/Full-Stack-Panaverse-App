@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 import GetProductCart from "@/Components/GetProductCart";
 
 const getData = async () => {
@@ -44,12 +44,20 @@ const Cart = async () => {
         );
     }
 
+    const handleProductData = (productData: any) => {
+
+        console.log(productData);
+    };
+
     return (
         <>
             <div className="my-16 mx-12 sm:mx-24">
                 {data?.res.map((item: any, i: number) => (
                     <div key={i}>
-                        <GetProductCart item={item} />
+                        <GetProductCart
+                            item={item}
+                            onProductData={handleProductData}
+                        />
                     </div>
                 ))}
             </div>
