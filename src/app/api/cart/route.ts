@@ -53,12 +53,12 @@ export const POST = async (request: NextRequest) => {
 };
 
 export const DELETE = async (request: NextRequest) => {
-
-    // const req = await request.json();
+    
+    const req = await request.json();
 
     try {
 
-        await db.delete(cartTable).where(eq(cartTable.id, 2)).returning();
+        await db.delete(cartTable).where(eq(cartTable.id, req.id));
 
         return NextResponse.json({ message: "Data Deleted" });
 
