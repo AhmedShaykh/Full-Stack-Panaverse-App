@@ -1,1 +1,1 @@
-# Full Stack E-Commerce App!
+# Hackathon E-Commerce App!
