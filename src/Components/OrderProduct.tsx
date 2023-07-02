@@ -1,29 +1,8 @@
 "use client";
-// import React, { FC } from 'react';
+import React, { FC } from 'react';
 import getStripePromise from '@/lib/stripe';
 
-const products = [
-    {
-        product: 1,
-        name: "Stripe Product",
-        price: 400,
-        quantity: 3,
-    },
-    {
-        product: 2,
-        name: "Stripe Product2",
-        price: 40,
-        quantity: 2,
-    },
-    {
-        product: 3,
-        name: "Stripe Product23",
-        price: 4000,
-        quantity: 1,
-    },
-];
-
-const OrderProduct = () => {
+const OrderProduct: FC<any> = ({ products }) => {
 
     const handleCheckOut = async () => {
 
@@ -47,9 +26,10 @@ const OrderProduct = () => {
         console.log(products);
 
     };
+
     return (
         <button
-            className="text-xl font-semibold p-6 w-full rounded-lg text-white bg-black"
+            className="text-xl font-semibold px-2 py-6 w-full rounded-lg text-white bg-black"
             onClick={handleCheckOut}
         >
             Check Out

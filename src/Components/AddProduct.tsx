@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const AddProduct: FC<any> = ({ product }) => {
 
     const [cookies, setCookie] = useCookies();
-    
+
     const [products, setProducts] = useState<any>(cookies.products || []);
 
     const [add, setAdd] = useState<number>(1);
@@ -60,6 +60,7 @@ const AddProduct: FC<any> = ({ product }) => {
 
                     <div className="flex mt-6 items-center pb-5 mb-5">
                         <div className="flex items-center">
+
                             <span className="mr-8">Size</span>
 
                             <div className="relative">
