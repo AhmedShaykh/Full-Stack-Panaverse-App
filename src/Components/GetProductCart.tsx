@@ -18,11 +18,9 @@ const getProductById = async (id: any) => {
   return res;
 };
 
-const GetProductCart = async ({ item, onProductData }: any) => {
+const GetProductCart = async ({ item }: any) => {
 
   const product = await getProductById(item.product_id);
-
-  onProductData(product);
 
   return (
     <div>

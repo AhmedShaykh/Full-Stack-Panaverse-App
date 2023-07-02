@@ -37,7 +37,7 @@ export const POST = async (request: NextRequest) => {
 
         const res = await db.insert(cartTable).values({
             product_id: req.product_id,
-            quantity: req.quantity || 1,
+            quantity: 1,
             user_id: cookies().get("user_id")?.value as string
         }).returning();
 
@@ -53,7 +53,7 @@ export const POST = async (request: NextRequest) => {
 };
 
 export const DELETE = async (request: NextRequest) => {
-    
+
     const req = await request.json();
 
     try {
