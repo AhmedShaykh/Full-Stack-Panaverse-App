@@ -8,14 +8,17 @@ import toast from "react-hot-toast";
 const AddProduct: FC<any> = ({ product }) => {
 
     const [cookies, setCookie] = useCookies();
-
+    
     const [products, setProducts] = useState<any>(cookies.products || []);
+
+    const [add, setAdd] = useState(1);
 
     const { refresh } = useRouter();
 
     const AddProductCart = () => {
 
         const newProduct = {
+            id: add,
             title: product.title,
             image: product.image,
             price: product.price,
@@ -29,6 +32,8 @@ const AddProduct: FC<any> = ({ product }) => {
         setCookie("products", updatedProducts);
 
         toast.success("New Product Added");
+
+        setAdd(add + 1);
 
         refresh();
 
