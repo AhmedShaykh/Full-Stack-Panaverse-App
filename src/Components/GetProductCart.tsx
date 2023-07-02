@@ -1,31 +1,11 @@
 "use client";
-import React from "react";
-import { client } from "@/lib/sanityClient";
+import React, { FC } from "react";
 
-const getProductById = async (id: any) => {
-
-  const res = await client.fetch(`
-      *[_type == "product" && _id == "${id}"][0] {
-        title,
-        image,
-        price,
-        dresstype -> {
-          name
-        }
-      }
-    `);
-
-  return res;
-};
-
-const GetProductCart = async ({ item }: any) => {
-
-  const product = await getProductById(item.product_id);
-
+const GetProductCart: FC<any> = ({ title, image, price, quantitym }) => {
   return (
     <div>
       <h1>
-        {product.title}
+        {title}
       </h1>
     </div>
   )

@@ -11,7 +11,7 @@ const AddProduct: FC<any> = ({ product }) => {
     
     const [products, setProducts] = useState<any>(cookies.products || []);
 
-    const [add, setAdd] = useState(1);
+    const [add, setAdd] = useState<number>(1);
 
     const { refresh } = useRouter();
 
