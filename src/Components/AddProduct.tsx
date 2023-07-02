@@ -1,24 +1,56 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
+import { urlForImage } from "../../sanity/lib/image";
+import { useCookies } from "react-cookie";
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
-const AddProduct: FC<any> = ({ image, title, dresstype, price, handleAddToCart }) => {
+const AddProduct: FC<any> = ({ product }) => {
+
+    const [cookies, setCookie] = useCookies();
+
+    const [products, setProducts] = useState<any>(cookies.products || []);
+
+    const { refresh } = useRouter();
+
+    const AddProductCart = () => {
+
+        const newProduct = {
+            title: product.title,
+            image: product.image,
+            price: product.price,
+            quantity: 1
+        };
+
+        const updatedProducts = [...products, newProduct];
+
+        setProducts(updatedProducts);
+
+        setCookie("products", updatedProducts);
+
+        toast.success("New Product Added");
+
+        refresh();
+
+    };
+
     return (
         <div className="my-16 mx-12 sm:mx-24">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
 
                 <img
                     className="lg:w-1/2 w-full lg:h-[60%] h-[80%] object-cover object-center rounded"
-                    src={image}
+                    src={urlForImage(product.image).url()}
                     alt="products"
                 />
 
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-12 lg:mt-2 px-1">
                     <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
-                        {title}
+                        {product.title}
                     </h1>
 
                     <h2 className="leading-relaxed font-bold text-2xl my-2 text-zinc-600">
-                        {dresstype}
+                        {product.dresstype.name}
                     </h2>
 
                     <div className="flex mt-6 items-center pb-5 mb-5">
@@ -54,13 +86,13 @@ const AddProduct: FC<any> = ({ image, title, dresstype, price, handleAddToCart }
                     <div className="flex gap-x-8 my-4 items-center">
                         <button
                             className="my-2 p-3 rounded bg-black text-white font-semibold w-40"
-                            onClick={handleAddToCart}
+                            onClick={AddProductCart}
                         >
                             Add To Cart
                         </button>
 
                         <h2 className="text-3xl font-bold">
-                            ${price}.00
+                            ${product.price}.00
                         </h2>
                     </div>
                 </div>
