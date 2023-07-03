@@ -1,11 +1,11 @@
 "use client";
+import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import OrderProduct from "@/Components/OrderProduct";
 import GetProductCart from "@/Components/GetProductCart";
 // import { useRouter } from "next/navigation";
 import { Trash } from "lucide-react";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
 
 const Cart = async () => {
 
@@ -21,23 +21,26 @@ const Cart = async () => {
 
     // const { refresh } = useRouter();
 
-    const handleDelete = (productId: number) => {
+    // const handleDelete = (productId: number) => {
 
-        const updatedProducts = products.filter((item: any) => item.id !== productId);
+    //     const updatedProducts = products.filter((item: any) => item.id !== productId);
 
-        setCookie('products', updatedProducts);
+    //     setCookie('products', updatedProducts);
 
-        toast.success("Delete Product");
+    //     toast.success("Delete Product");
 
-        // refresh();
-    };
+    //     refresh();
+
+    // };
+
+    console.log(products)
 
     return (
         <>
             <div>
                 {products?.length > 0 ? (
                     <div className="my-16 mx-12 sm:mx-24">
-                        {products?.map((item: any) => (
+                        {/* {products?.map((item: any) => (
                             <div className="flex justify-between items-center my-3">
                                 <div
                                     key={item.id}
@@ -51,7 +54,7 @@ const Cart = async () => {
                                     <Trash className="text-black" />
                                 </button>
                             </div>
-                        ))}
+                        ))} */}
                         <OrderProduct products={products} />
                     </div>
                 ) : (
