@@ -1,34 +1,48 @@
 "use client";
-import { client } from "@/lib/sanityClient";
 import React, { FC } from "react";
+import { client } from "@/lib/sanityClient";
+import { urlForImage } from "../../sanity/lib/image";
 
 const getProductById = async (title: any) => {
 
-    const res = await client.fetch(`
+  const res = await client.fetch(`
       *[_type == "product" && title == "${title}"][0] {
         title,
         image,
         price,
-        dresstype -> {
-          name
-        }
       }
     `);
 
-    return res;
+  return res;
 };
 
 const GetProductCart: FC<any> = async ({ item }) => {
 
-    const data = await getProductById(item.title);
+  const data = await getProductById(item.title);
 
-    return (
-        <div>
-            <h1>
-                {data.title}
-            </h1>
-        </div>
-    )
+  return (
+    <div className="p-4 flex flex-col items-center border border-gray-800 rounded-lg shadow md:flex-row">
+      <img
+        className="object-cover w-full rounded-lg h-96 md:h-auto md:w-48 md:rounded-none"
+        src={urlForImage(data.image).url()}
+        alt="products"
+      />
+
+      <div className="flex flex-col justify-between p-4 leading-normal">
+        <h2 className="text-xl my-1 font-bold">
+          {data.title}
+        </h2>
+
+        <h3 className="text-2xl my-2 font-bold">
+          $ {data.price}
+        </h3>
+
+        <h3 className="text-2xl my-2 font-bold">
+          {item.quantity}
+        </h3>
+      </div>
+    </div>
+  )
 };
 
 export default GetProductCart;
