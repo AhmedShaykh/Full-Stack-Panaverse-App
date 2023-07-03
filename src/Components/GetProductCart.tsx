@@ -22,8 +22,6 @@ const GetProductCart: FC<any> = async ({ item }) => {
 
     const data = await getProductById(item.title);
 
-    console.log(data);
-
     return (
         <div>
             <h1>
