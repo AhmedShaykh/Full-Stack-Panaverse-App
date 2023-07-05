@@ -1,5 +1,4 @@
 import React from "react";
-import OrderProduct from "@/Components/OrderProduct";
 import GetProductCart from "@/Components/GetProductCart";
 
 const getData = async () => {
@@ -55,7 +54,6 @@ const Cart = async () => {
                         />
                     </div>
                 ))}
-                <OrderProduct products={data} />
             </div>
         </>
     )
