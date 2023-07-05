@@ -4,6 +4,8 @@ import getStripePromise from '@/lib/stripe';
 
 const OrderProduct: FC<any> = ({ products }) => {
 
+    console.log(products);
+
     const handleCheckOut = async () => {
 
         const stripe = await getStripePromise();

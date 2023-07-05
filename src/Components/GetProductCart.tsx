@@ -9,15 +9,12 @@ const getProductById = async (id: any) => {
       *[_type == "product" && _id == "${id}"][0] {
         title,
         image,
-        price,
-        dresstype -> {
-          name
-        }
+        price
       }
     `);
 
   return res;
-  
+
 };
 
 const GetProductCart: FC<any> = async ({ item }) => {
@@ -25,7 +22,7 @@ const GetProductCart: FC<any> = async ({ item }) => {
   const data = await getProductById(item.product_id);
 
   return (
-    <div className="p-4 flex flex-col items-center border border-gray-800 rounded-lg shadow md:flex-row">
+    <div className="p-4 my-4 flex flex-col items-center border border-gray-800 rounded-lg shadow md:flex-row">
       <img
         className="object-cover w-full rounded-lg h-96 md:h-auto md:w-48 md:rounded-none"
         src={urlForImage(data.image).url()}

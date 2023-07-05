@@ -1,6 +1,6 @@
+import React from "react";
 import OrderProduct from "@/Components/OrderProduct";
 import GetProductCart from "@/Components/GetProductCart";
-import { Trash } from "lucide-react";
 
 const getData = async () => {
 
@@ -35,8 +35,6 @@ const Cart = async () => {
 
     const data: any = await getData();
 
-    console.log(data);
-
     if (!data?.res) {
         return (
             <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
@@ -57,6 +55,7 @@ const Cart = async () => {
                         />
                     </div>
                 ))}
+                <OrderProduct products={data} />
             </div>
         </>
     )
