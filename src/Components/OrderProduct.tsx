@@ -1,11 +1,8 @@
 "use client";
 import React, { FC } from 'react';
 import getStripePromise from '@/lib/stripe';
-import { useCookies } from "react-cookie";
 
 const OrderProduct: FC<any> = ({ products }) => {
-
-    const [, , removeCookie] = useCookies(["products"]);
 
     const handleCheckOut = async () => {
 
@@ -26,7 +23,6 @@ const OrderProduct: FC<any> = ({ products }) => {
             stripe?.redirectToCheckout({ sessionId: data.session.id });
         }
 
-        removeCookie("products");
     };
 
     return (

@@ -1,39 +1,23 @@
 "use client";
 import React, { FC, useState } from "react";
 import { urlForImage } from "../../sanity/lib/image";
-import { useCookies } from "react-cookie";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const AddProduct: FC<any> = ({ product }) => {
-
-    const [cookies, setCookie] = useCookies();
-
-    const [products, setProducts] = useState<any>(cookies.products || []);
-
-    const [add, setAdd] = useState<number>(1);
 
     const { refresh } = useRouter();
 
     const AddProductCart = () => {
 
         const newProduct = {
-            id: add,
             title: product.title,
             image: product.image,
             price: product.price,
             quantity: 1
         };
 
-        const updatedProducts = [...products, newProduct];
-
-        setProducts(updatedProducts);
-
-        setCookie("products", updatedProducts);
-
         toast.success("New Product Added");
-
-        setAdd(add + 1);
 
         refresh();
 
@@ -92,7 +76,7 @@ const AddProduct: FC<any> = ({ product }) => {
                     <div className="flex gap-x-8 my-4 items-center">
                         <button
                             className="my-2 p-3 rounded bg-black text-white font-semibold w-40"
-                            onClick={AddProductCart}
+                        // onClick={AddProductCart}
                         >
                             Add To Cart
                         </button>
