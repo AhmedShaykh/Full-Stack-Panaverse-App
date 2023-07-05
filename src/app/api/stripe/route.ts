@@ -36,7 +36,7 @@ export const POST = async (request: NextRequest) => {
                             },
                             unit_amount: item.price * 100,
                         },
-                        quantity: item.quantity,
+                        quantity: item.quantity || 1,
                         adjustable_quantity: {
                             enabled: true,
                             minimum: 1,

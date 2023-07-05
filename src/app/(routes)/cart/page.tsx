@@ -1,5 +1,8 @@
-import React from "react";
-import GetProductCart from "@/Components/GetProductCart";
+import React, { FC } from "react";
+import { client } from "@/lib/sanityClient";
+// import OrderProduct from "@/Components/OrderProduct";
+import ProductCart from "@/Components/ProductCart";
+import { urlForImage } from "../../../../sanity/lib/image";
 
 const getData = async () => {
 
@@ -30,6 +33,35 @@ const getData = async () => {
 
 };
 
+const getProductById = async (id: any) => {
+
+    const res = await client.fetch(`
+        *[_type == "product" && _id == "${id}"][0] {
+          title,
+          image,
+          price
+        }
+      `);
+
+    return res;
+
+};
+
+const GetProductCart: FC<any> = async ({ item }) => {
+
+    const dataCart = await getProductById(item.product_id);
+
+    return (
+        <>
+            <ProductCart
+                image={urlForImage(dataCart.image).url()}
+                title={dataCart.title}
+                price={dataCart.price}
+            />
+        </>
+    )
+};
+
 const Cart = async () => {
 
     const data: any = await getData();
@@ -54,6 +86,7 @@ const Cart = async () => {
                         />
                     </div>
                 ))}
+                {/* <OrderProduct products={data} /> */}
             </div>
         </>
     )
