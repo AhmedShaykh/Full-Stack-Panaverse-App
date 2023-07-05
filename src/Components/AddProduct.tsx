@@ -1,32 +1,10 @@
-"use client";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import { urlForImage } from "../../sanity/lib/image";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
 
-const AddProduct: FC<any> = ({ product }) => {
-
-    const { refresh } = useRouter();
-
-    const AddProductCart = () => {
-
-        const newProduct = {
-            title: product.title,
-            image: product.image,
-            price: product.price,
-            quantity: 1
-        };
-
-        toast.success("New Product Added");
-
-        refresh();
-
-    };
-
+const AddProduct: FC<any> = ({ product, handleAddToCart }) => {
     return (
         <div className="my-16 mx-12 sm:mx-24">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
-
                 <img
                     className="lg:w-1/2 w-full lg:h-[60%] h-[80%] object-cover object-center rounded"
                     src={urlForImage(product.image).url()}
@@ -76,7 +54,7 @@ const AddProduct: FC<any> = ({ product }) => {
                     <div className="flex gap-x-8 my-4 items-center">
                         <button
                             className="my-2 p-3 rounded bg-black text-white font-semibold w-40"
-                        // onClick={AddProductCart}
+                            onClick={handleAddToCart}
                         >
                             Add To Cart
                         </button>
