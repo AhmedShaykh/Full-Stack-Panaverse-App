@@ -12,7 +12,7 @@ interface Props {
 const Slider: FC<Props> = ({ image, id }) => {
     return (
         <>
-            <Link href={`products/${id}`}>
+            <Link href={`product/${id}`}>
                 <Image
                     src={urlForImage(image).url()}
                     alt="products"

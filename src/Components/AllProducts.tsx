@@ -9,7 +9,7 @@ const AllProducts: FC<Props> = ({ id, image, title, price, dresstype }) => {
         <div
             className="p-4 lg:p-6"
         >
-            <Link href={`products/${id}`}>
+            <Link href={`product/${id}`}>
                 <img
                     className="w-full lg:h-[60%] h-[80%] object-cover object-center rounded my-4"
                     src={urlForImage(image).url()}
