@@ -3,22 +3,26 @@ import React, { FC } from "react";
 import { client } from "@/lib/sanityClient";
 import { urlForImage } from "../../sanity/lib/image";
 
-const getProductById = async (title: any) => {
+const getProductById = async (id: any) => {
 
   const res = await client.fetch(`
-      *[_type == "product" && title == "${title}"][0] {
+      *[_type == "product" && _id == "${id}"][0] {
         title,
         image,
         price,
+        dresstype -> {
+          name
+        }
       }
     `);
 
   return res;
+  
 };
 
 const GetProductCart: FC<any> = async ({ item }) => {
 
-  const data = await getProductById(item.title);
+  const data = await getProductById(item.product_id);
 
   return (
     <div className="p-4 flex flex-col items-center border border-gray-800 rounded-lg shadow md:flex-row">
@@ -35,10 +39,6 @@ const GetProductCart: FC<any> = async ({ item }) => {
 
         <h3 className="text-2xl my-2 font-bold">
           $ {data.price}
-        </h3>
-
-        <h3 className="text-2xl my-2 font-bold">
-          {item.quantity}
         </h3>
       </div>
     </div>
