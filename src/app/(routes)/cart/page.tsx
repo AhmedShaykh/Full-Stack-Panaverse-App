@@ -51,8 +51,6 @@ const GetProductCart: FC<any> = async ({ item }) => {
 
     const dataCart = await getProductById(item.product_id);
 
-    console.log(dataCart);
-
     return (
         <>
             <ProductCart
@@ -88,7 +86,7 @@ const Cart = async () => {
                         />
                     </div>
                 ))}
-                {/* <OrderProduct products={data} /> */}
+                <OrderProduct products={data} />
             </div>
         </>
     )
