@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { client } from "@/lib/sanityClient";
-// import OrderProduct from "@/Components/OrderProduct";
+import OrderProduct from "@/Components/OrderProduct";
 import ProductCart from "@/Components/ProductCart";
 import { urlForImage } from "../../../../sanity/lib/image";
 
@@ -50,6 +50,8 @@ const getProductById = async (id: any) => {
 const GetProductCart: FC<any> = async ({ item }) => {
 
     const dataCart = await getProductById(item.product_id);
+
+    console.log(dataCart);
 
     return (
         <>
