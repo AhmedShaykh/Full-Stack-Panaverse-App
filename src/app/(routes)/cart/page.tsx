@@ -70,7 +70,7 @@ const Cart = async () => {
                         />
                     </div>
                 ))}
-                <OrderProduct products={data} />
+                <OrderProduct products={data?.res} />
             </div>
         </>
     )
