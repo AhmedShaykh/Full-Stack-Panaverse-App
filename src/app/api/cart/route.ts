@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cartTable, db } from "@/lib/drizzle";
-import { db as DBB, sql } from "@vercel/postgres";
+import { eq } from "drizzle-orm";
 
 export const GET = async (request: NextRequest) => {
 
@@ -42,20 +42,19 @@ export const POST = async (request: NextRequest) => {
     }
 };
 
-export async function DELETE(request: NextRequest) {
-
-    const client = await DBB.connect();
+export const DELETE = async (request: NextRequest) => {
 
     const req = await request.json();
 
-    if (req.id) {
+    try {
 
-        await client.sql`DELETE FROM Cart WHERE id = ${req.id}`;
+        await db.delete(cartTable).where(eq(cartTable.id, req.id));
 
-    } else {
+        return NextResponse.json({ message: "Data Deleted" });
 
-        return NextResponse.json({ message: req.id });
+    } catch (error) {
+
+        return NextResponse.json({ message: "Something Went Wrong" });
 
     }
-
 };
