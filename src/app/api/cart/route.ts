@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db, cartTable } from "@/lib/drizzle";
+import { cartTable, db } from "@/lib/drizzle";
+import { db as DBB, sql } from "@vercel/postgres";
 
 export const GET = async (request: NextRequest) => {
 
@@ -39,4 +40,22 @@ export const POST = async (request: NextRequest) => {
         );
 
     }
+};
+
+export async function DELETE(request: NextRequest) {
+
+    const client = await DBB.connect();
+
+    const req = await request.json();
+
+    if (req.id) {
+
+        await client.sql`DELETE FROM Cart WHERE id = ${req.id}`;
+
+    } else {
+
+        return NextResponse.json({ message: req.id });
+
+    }
+
 };
