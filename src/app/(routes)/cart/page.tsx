@@ -1,8 +1,6 @@
 import React, { FC } from "react";
-import { client } from "@/lib/sanityClient";
 import OrderProduct from "@/Components/OrderProduct";
 import ProductCart from "@/Components/ProductCart";
-import { urlForImage } from "../../../../sanity/lib/image";
 
 const getData = async () => {
 
@@ -33,24 +31,11 @@ const getData = async () => {
 
 };
 
-const GetProductCart: FC<any> = async ({ item }) => {
-
-    return (
-        <>
-            {/* <ProductCart
-                image={urlForImage(dataCart.image).url()}
-                title={dataCart.title}
-                price={dataCart.price}
-            /> */}
-        </>
-    )
-};
-
 const Cart = async () => {
 
     const data: any = await getData();
 
-    if (!data?.res) {
+    if (data?.res == 0) {
         return (
             <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
                 <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
@@ -65,7 +50,7 @@ const Cart = async () => {
             <div className="my-16 mx-12 sm:mx-24">
                 {data?.res.map((item: any, i: number) => (
                     <div key={i}>
-                        <GetProductCart
+                        <ProductCart
                             item={item}
                         />
                     </div>
