@@ -3,6 +3,7 @@ import { client } from "@/lib/sanityClient";
 import AddProduct from "@/Components/AddProduct";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { urlForImage } from "../../../../../sanity/lib/image";
 
 const getProductById = async (id: any) => {
 
@@ -18,6 +19,7 @@ const getProductById = async (id: any) => {
   `);
 
   return res;
+
 };
 
 const Product = async ({ params }: any) => {
@@ -33,7 +35,10 @@ const Product = async ({ params }: any) => {
     const res = await fetch("/api/cart", {
       method: "POST",
       body: JSON.stringify({
-        product_id: id
+        product_id: id,
+        title: product.title,
+        image: urlForImage(product.image).url(),
+        price: product.price
       })
     });
 

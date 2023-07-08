@@ -33,31 +33,15 @@ const getData = async () => {
 
 };
 
-const getProductById = async (id: any) => {
-
-    const res = await client.fetch(`
-        *[_type == "product" && _id == "${id}"][0] {
-          title,
-          image,
-          price
-        }
-      `);
-
-    return res;
-
-};
-
 const GetProductCart: FC<any> = async ({ item }) => {
-
-    const dataCart = await getProductById(item.product_id);
 
     return (
         <>
-            <ProductCart
+            {/* <ProductCart
                 image={urlForImage(dataCart.image).url()}
                 title={dataCart.title}
                 price={dataCart.price}
-            />
+            /> */}
         </>
     )
 };
