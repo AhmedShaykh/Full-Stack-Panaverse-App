@@ -1,6 +1,7 @@
 "use client";
 import React, { FC } from 'react';
 import getStripePromise from '@/lib/stripe';
+import toast from 'react-hot-toast';
 
 const OrderProduct: FC<any> = ({ products }) => {
 
@@ -16,6 +17,8 @@ const OrderProduct: FC<any> = ({ products }) => {
             cache: "no-cache",
             body: JSON.stringify(products)
         });
+
+        toast.loading("Please Wait");
 
         const data = await response.json();
 
