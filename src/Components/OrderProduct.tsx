@@ -18,7 +18,7 @@ const OrderProduct: FC<any> = ({ products }) => {
             body: JSON.stringify(products)
         });
 
-        toast.loading("Please Wait");
+        toast.loading("Please Wait")
 
         const data = await response.json();
 
