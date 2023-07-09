@@ -48,15 +48,15 @@ const Cart = async () => {
         <>
             <div className="my-16 mx-12 sm:mx-24">
                 {data?.res.map((item: any, i: number) => (
-                    <div
-                        key={i}
-                    >
+                    <div key={i}>
                         <ProductCart
                             item={item}
                         />
                     </div>
                 ))}
-                <OrderProduct products={data?.res} />
+                <OrderProduct
+                    products={data?.res}
+                />
             </div>
         </>
     )
