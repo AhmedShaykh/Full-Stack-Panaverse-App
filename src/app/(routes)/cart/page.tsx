@@ -1,3 +1,4 @@
+import React from "react";
 import OrderProduct from "@/Components/OrderProduct";
 import ProductCart from "@/Components/ProductCart";
 
@@ -47,13 +48,9 @@ const Cart = async () => {
     return (
         <>
             <div className="my-16 mx-12 sm:mx-24">
-                {data?.res.map((item: any, i: number) => (
-                    <div key={i}>
-                        <ProductCart
-                            item={item}
-                        />
-                    </div>
-                ))}
+                <ProductCart
+                    item={data?.res}
+                />
                 <OrderProduct
                     products={data?.res}
                 />
