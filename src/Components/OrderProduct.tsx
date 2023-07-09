@@ -18,7 +18,7 @@ const OrderProduct: FC<any> = ({ products }) => {
             body: JSON.stringify(products)
         });
 
-        toast.loading("Please Wait")
+        toast.loading("Please Wait");
 
         const data = await response.json();
 
@@ -29,9 +29,8 @@ const OrderProduct: FC<any> = ({ products }) => {
     };
 
     return (
-        <button
+        <button onClick={handleCheckOut}
             className="text-lg md:text-xl font-semibold px-3 py-6 w-full rounded-lg text-white bg-black"
-            onClick={handleCheckOut}
         >
             Check Out
         </button>
