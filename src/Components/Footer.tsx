@@ -9,6 +9,7 @@ const Footer = () => {
             <div className="mx-auto w-full max-w-screen-xl py-6 lg:py-8">
                 <div className="md:flex md:justify-between">
                     <div className="mb-6 md:mb-0">
+
                         <div className="mb-5">
                             <Link href="/">
                                 <Image
@@ -20,7 +21,7 @@ const Footer = () => {
                             </Link>
                         </div>
 
-                        <div className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start space-x-4">
+                        <div className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start space-x-3">
                             <Link className="cursor-pointer bg-gray-900 p-2 text-white rounded-lg" href="https://www.instagram.com/AHMXMusic/" target="_blank">
                                 <Instagram className="w-5 h-5" />
                             </Link>
@@ -42,8 +43,6 @@ const Footer = () => {
                             <h2 className="mb-4 text-md text-gray-900 font-medium">About</h2>
                             <h2 className="mb-4 text-md text-gray-900 font-medium">Terms of Use</h2>
                             <h2 className="mb-4 text-md text-gray-900 font-medium">Privacy Policy</h2>
-                            <h2 className="mb-4 text-md text-gray-900 font-medium">How it Works</h2>
-                            <h2 className="mb-4 text-md text-gray-900 font-medium">Contact Us</h2>
                         </div>
 
                         <div>
@@ -56,6 +55,7 @@ const Footer = () => {
                         <div>
                             <h2 className="mb-6 text-md font-semibold text-gray-900 uppercase">Contact</h2>
                             <h2 className="mb-4 text-md text-gray-900 font-medium">Whatsapp</h2>
+                            <h2 className="mb-4 text-md text-gray-900 font-medium">Twitter</h2>
                             <h2 className="mb-4 text-md text-gray-900 font-medium">Support 24h</h2>
                         </div>
                     </div>
