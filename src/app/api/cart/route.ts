@@ -48,11 +48,9 @@ export const DELETE = async (request: NextRequest) => {
 
     const reqID = req.searchParams.get("id");
 
-    console.log(reqID);
-
     try {
 
-        // await db.delete(cartTable).where(eq(cartTable.id, reqID.id));
+        // await db.delete(cartTable).where(eq(cartTable.id, reqID));
 
         return NextResponse.json({ message: "Data Deleted" });
 
