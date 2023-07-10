@@ -46,6 +46,8 @@ export const DELETE = async (request: NextRequest) => {
 
     const req = await request.json();
 
+    console.log(req.id);
+
     try {
 
         await db.delete(cartTable).where(eq(cartTable.id, req.id));
