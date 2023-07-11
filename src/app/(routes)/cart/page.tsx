@@ -1,6 +1,9 @@
+// "use client";
 import React from "react";
 import OrderProduct from "@/Components/OrderProduct";
 import ProductCart from "@/Components/ProductCart";
+// import { Trash2Icon } from "lucide-react";
+// import { toast } from "react-hot-toast";
 
 const getData = async () => {
 
@@ -35,6 +38,32 @@ const Cart = async () => {
 
     const data: any = await getData();
 
+    // const handleData = async (id: number) => {
+
+    //     console.log(id);
+
+    //     try {
+
+    //         const res = await fetch("/api/cart", {
+    //             method: "DELETE",
+    //             body: JSON.stringify({ id })
+    //         });
+
+    //         if (!res.ok) {
+
+    //             throw new Error("Failed to Delete the Data")
+    //         };
+
+    //         toast.success("Product Successfully Deleted");
+
+    //     } catch (error) {
+
+    //         console.log(error);
+
+    //     }
+
+    // };
+
     if (data?.res == 0) {
         return (
             <div className="wrapper flex justify-center items-center">
@@ -48,11 +77,18 @@ const Cart = async () => {
     return (
         <>
             <div className="wrapper">
-                {data?.res.map((item: any, i: number) => (
-                    <div key={i}>
+                {data?.res.map((item: any) => (
+                    <div key={item.id}
+                        className="flex justify-between items-center m-3"
+                    >
                         <ProductCart
                             item={item}
                         />
+                        {/* <div className="px-2">
+                            <button onClick={() => handleData(item.id)}>
+                                <Trash2Icon />
+                            </button>
+                        </div> */}
                     </div>
                 ))}
                 <OrderProduct
