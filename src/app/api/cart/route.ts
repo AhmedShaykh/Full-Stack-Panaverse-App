@@ -42,21 +42,21 @@ export const POST = async (request: NextRequest) => {
     }
 };
 
-export const DELETE = async (request: NextRequest) => {
+// export const DELETE = async (request: NextRequest) => {
 
-    const req = request.nextUrl;
+//     const req = request.nextUrl;
 
-    const reqID = req.searchParams.get("id");
+//     const reqID = req.searchParams.get("id");
 
-    try {
+//     try {
 
-        await db.delete(cartTable).where(eq(cartTable.id, reqID));
+//         await db.delete(cartTable).where(eq(cartTable.id, reqID));
 
-        return NextResponse.json({ message: "Data Deleted" });
+//         return NextResponse.json({ message: "Data Deleted" });
 
-    } catch (error) {
+//     } catch (error) {
 
-        return NextResponse.json({ message: "Something Went Wrong" });
+//         return NextResponse.json({ message: "Something Went Wrong" });
 
-    }
-};
+//     }
+// };
