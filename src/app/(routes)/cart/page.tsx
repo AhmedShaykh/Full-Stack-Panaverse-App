@@ -37,7 +37,7 @@ const Cart = async () => {
 
     if (data?.res == 0) {
         return (
-            <div className="my-16 mx-12 sm:mx-24 flex justify-center items-center">
+            <div className="wrapper flex justify-center items-center">
                 <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
                     Empty Cart
                 </h1>
@@ -47,7 +47,7 @@ const Cart = async () => {
 
     return (
         <>
-            <div className="my-16 mx-12 sm:mx-24">
+            <div className="wrapper">
                 {data?.res.map((item: any, i: number) => (
                     <div key={i}>
                         <ProductCart

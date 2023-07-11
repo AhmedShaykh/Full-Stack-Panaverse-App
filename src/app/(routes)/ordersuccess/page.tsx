@@ -8,7 +8,7 @@ const OrderSuccess = () => {
     const router = useRouter();
 
     return (
-        <div className="my-16 mx-12 sm:mx-24 flex flex-col justify-center items-center">
+        <div className="wrapper flex flex-col justify-center items-center">
 
             <div className="flex justify-center items-center mb-8 mt-4">
                 <BsBagCheckFill

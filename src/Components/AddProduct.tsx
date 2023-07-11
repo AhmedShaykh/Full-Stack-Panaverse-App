@@ -3,7 +3,7 @@ import { urlForImage } from "../../sanity/lib/image";
 
 const AddProduct: FC<any> = ({ product, handleAddToCart }) => {
     return (
-        <div className="my-16 mx-12 sm:mx-24">
+        <div className="wrapper">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
                 <img
                     className="lg:w-1/2 w-full lg:h-[60%] h-[80%] object-cover object-center rounded"

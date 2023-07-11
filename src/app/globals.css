@@ -7,3 +7,9 @@
 * {
   font-family: 'Poppins', sans-serif;
 }
+
+@layer components {
+  .wrapper {
+    @apply my-16 mx-12 sm:mx-24;
+  }
+}
