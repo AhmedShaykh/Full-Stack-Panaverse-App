@@ -50,7 +50,7 @@ export const DELETE = async (request: NextRequest) => {
 
     try {
 
-        // await db.delete(cartTable).where(eq(cartTable.id, reqID));
+        await db.delete(cartTable).where(eq(cartTable.id, reqID));
 
         return NextResponse.json({ message: "Data Deleted" });
 
