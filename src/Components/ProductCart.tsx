@@ -1,13 +1,35 @@
 "use client";
 import React, { FC } from "react";
 import { Trash2Icon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
 const ProductCart: FC<any> = ({ item }) => {
 
-    const handleData = (id: number) => {
+    const { refresh } = useRouter();
 
-        toast.success(`${id}`);
+    const handleData = async (id: number) => {
+
+        try {
+
+            const res = await fetch("/api/cart", {
+                method: "DELETE",
+                body: JSON.stringify({ id: id })
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to Delete the Data")
+            };
+
+            toast.success("Product Successfully Deleted");
+
+            refresh();
+
+        } catch (error) {
+
+            console.log(error);
+
+        }
 
     };
 
