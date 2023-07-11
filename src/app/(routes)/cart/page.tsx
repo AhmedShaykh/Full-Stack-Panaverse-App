@@ -10,10 +10,7 @@ const getData = async () => {
 
         const res = await fetch("http://127.0.0.1:3000/api/cart", {
             method: "GET",
-            cache: "no-store",
-            headers: {
-                "Content-Type": "application/json"
-            }
+            cache: "no-store"
         });
 
         if (!res.ok) {
