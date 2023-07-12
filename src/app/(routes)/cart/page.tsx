@@ -49,7 +49,7 @@ const Cart = async () => {
     return (
         <>
             <div className="wrapper">
-                {data?.res.map((item: any,) => (
+                {data?.res?.map((item: any,) => (
                     <div
                         className="flex justify-between items-center m-3"
                         key={item.id}
