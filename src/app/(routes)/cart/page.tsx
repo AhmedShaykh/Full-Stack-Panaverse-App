@@ -1,6 +1,6 @@
 import React from "react";
 import OrderProduct from "@/Components/OrderProduct";
-import ProductCart from "@/Components/ProductCart";
+// import ProductCart from "@/Components/ProductCart";
 import { Trash2Icon } from "lucide-react";
 
 const getData = async () => {
@@ -54,9 +54,24 @@ const Cart = async () => {
                         className="flex justify-between items-center m-3"
                         key={item.id}
                     >
-                        <ProductCart
-                            item={item}
-                        />
+                        <div className="px-3">
+                            <img
+                                className="object-cover w-full rounded-lg h-full md:h-auto md:w-48 md:rounded-none"
+                                src={item.image}
+                                alt="products"
+                            />
+
+                            <div>
+                                <h2 className="text-xl my-1 font-bold">
+                                    {item.title}
+                                </h2>
+
+                                <h3 className="text-2xl my-2 font-bold">
+                                    {item.price}
+                                </h3>
+                            </div>
+                        </div>
+                        
                         <div className="px-2">
                             <button>
                                 <Trash2Icon />
