@@ -1,8 +1,6 @@
-"use client";
+import React from "react";
 import { client } from "@/lib/sanityClient";
 import AddProduct from "@/Components/AddProduct";
-import toast from "react-hot-toast";
-import { urlForImage } from "../../../../../sanity/lib/image";
 
 const getProductById = async (id: any) => {
 
@@ -27,31 +25,11 @@ const Product = async ({ params }: any) => {
 
   const product: any = await getProductById(id);
 
-  const handleAddToCart = async () => {
-
-    const res = await fetch("/api/cart", {
-      method: "POST",
-      body: JSON.stringify({
-        product_id: id,
-        title: product.title,
-        image: urlForImage(product.image).url(),
-        price: product.price
-      })
-    });
-
-    const result = await res.json();
-
-    toast.success("New Product Added");
-
-    return result;
-
-  };
-
   return (
     <>
       <AddProduct
+        id={id}
         product={product}
-        handleAddToCart={handleAddToCart}
       />
     </>
   );

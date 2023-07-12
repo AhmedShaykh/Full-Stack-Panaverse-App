@@ -1,7 +1,30 @@
+"use client";
 import React, { FC } from "react";
 import { urlForImage } from "../../sanity/lib/image";
+import toast from "react-hot-toast";
 
-const AddProduct: FC<any> = ({ product, handleAddToCart }) => {
+const AddProduct: FC<any> = ({ id, product }) => {
+
+    const handleAddToCart = async () => {
+
+        const res = await fetch("/api/cart", {
+            method: "POST",
+            body: JSON.stringify({
+                product_id: id,
+                title: product.title,
+                image: urlForImage(product.image).url(),
+                price: product.price
+            })
+        });
+
+        const result = await res.json();
+
+        toast.success("New Product Added");
+
+        return result;
+
+    };
+
     return (
         <div className="wrapper">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
