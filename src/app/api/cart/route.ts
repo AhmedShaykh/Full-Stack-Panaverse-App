@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cartTable, db } from "@/lib/drizzle";
+// import { eq } from "drizzle-orm";
 
 export const GET = async (request: NextRequest) => {
 
