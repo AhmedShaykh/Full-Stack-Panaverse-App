@@ -9,7 +9,7 @@ const ProductCart: FC<any> = ({ item }) => {
                 alt="products"
             />
 
-            <div className="">
+            <div>
                 <h2 className="text-xl my-1 font-bold">
                     {item.title}
                 </h2>

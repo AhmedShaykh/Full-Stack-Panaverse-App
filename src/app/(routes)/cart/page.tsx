@@ -2,7 +2,6 @@ import React from "react";
 import OrderProduct from "@/Components/OrderProduct";
 import ProductCart from "@/Components/ProductCart";
 import { Trash2Icon } from "lucide-react";
-// import { toast } from "react-hot-toast";
 
 const getData = async () => {
 
@@ -10,7 +9,10 @@ const getData = async () => {
 
         const res = await fetch("http://127.0.0.1:3000/api/cart", {
             method: "GET",
-            cache: "no-store"
+            cache: "no-store",
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
 
         if (!res.ok) {
@@ -47,9 +49,10 @@ const Cart = async () => {
     return (
         <>
             <div className="wrapper">
-                {data?.res.map((item: any) => (
-                    <div key={item.id}
+                {data?.res.map((item: any,) => (
+                    <div
                         className="flex justify-between items-center m-3"
+                        key={item.id}
                     >
                         <ProductCart
                             item={item}
