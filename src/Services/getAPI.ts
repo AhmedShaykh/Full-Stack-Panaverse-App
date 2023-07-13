@@ -4,10 +4,7 @@ export const getCartData = async () => {
 
         const res = await fetch("http://127.0.0.1:3000/api/cart", {
             method: "GET",
-            cache: "no-store",
-            headers: {
-                "Content-Type": "application/json"
-            }
+            cache: "no-store"
         });
 
         if (!res.ok) {
@@ -34,10 +31,7 @@ export const clearData = async () => {
 
         const res = await fetch("http://127.0.0.1:3000/api/clearcart", {
             method: "GET",
-            cache: "no-store",
-            headers: {
-                "Content-Type": "application/json"
-            }
+            cache: "no-store"
         });
 
         if (!res.ok) {

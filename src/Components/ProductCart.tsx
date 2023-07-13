@@ -1,23 +1,43 @@
 import React, { FC } from "react";
+import OrderProduct from "@/Components/OrderProduct";
+import { Trash2Icon } from "lucide-react";
 
 const ProductCart: FC<any> = ({ item }) => {
     return (
         <div className="px-3">
-            <img
-                className="object-cover w-full rounded-lg h-full md:h-auto md:w-48 md:rounded-none"
-                src={item.image}
-                alt="products"
+            {item?.res?.map((item: any,) => (
+                <div
+                    className="flex justify-between items-center m-3"
+                    key={item.id}
+                >
+                    <div className="px-3">
+                        <img
+                            className="object-cover w-full rounded-lg h-full md:h-auto md:w-48 md:rounded-none"
+                            src={item.image}
+                            alt="products"
+                        />
+
+                        <div>
+                            <h2 className="text-xl my-1 font-bold">
+                                {item.title}
+                            </h2>
+
+                            <h3 className="text-2xl my-2 font-bold">
+                                {item.price}
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div className="px-2">
+                        <button>
+                            <Trash2Icon />
+                        </button>
+                    </div>
+                </div>
+            ))}
+            <OrderProduct
+                products={item?.res}
             />
-
-            <div>
-                <h2 className="text-xl my-1 font-bold">
-                    {item.title}
-                </h2>
-
-                <h3 className="text-2xl my-2 font-bold">
-                    {item.price}
-                </h3>
-            </div>
         </div>
     )
 };

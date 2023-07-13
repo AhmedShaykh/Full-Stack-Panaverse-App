@@ -1,40 +1,10 @@
 import React from "react";
-import OrderProduct from "@/Components/OrderProduct";
-// import ProductCart from "@/Components/ProductCart";
-import { Trash2Icon } from "lucide-react";
-
-const getAPIData = async () => {
-
-    try {
-
-        const res = await fetch("http://127.0.0.1:3000/api/cart", {
-            method: "GET",
-            cache: "no-store",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
-
-        if (!res.ok) {
-            throw new Error("Failed to Fetch the Data")
-        };
-
-        const result = await res.json();
-
-        return result;
-
-    }
-    catch (error) {
-
-        console.log(error);
-
-    }
-
-};
+import ProductCart from "@/Components/ProductCart";
+import { getCartData } from "@/Services/getAPI";
 
 const Cart = async () => {
 
-    const data: any = await getAPIData();
+    const data: any = await getCartData();
 
     if (data?.res == 0) {
         return (
@@ -49,39 +19,7 @@ const Cart = async () => {
     return (
         <>
             <div className="wrapper">
-                {data?.res?.map((item: any,) => (
-                    <div
-                        className="flex justify-between items-center m-3"
-                        key={item.id}
-                    >
-                        <div className="px-3">
-                            <img
-                                className="object-cover w-full rounded-lg h-full md:h-auto md:w-48 md:rounded-none"
-                                src={item.image}
-                                alt="products"
-                            />
-
-                            <div>
-                                <h2 className="text-xl my-1 font-bold">
-                                    {item.title}
-                                </h2>
-
-                                <h3 className="text-2xl my-2 font-bold">
-                                    {item.price}
-                                </h3>
-                            </div>
-                        </div>
-                        
-                        <div className="px-2">
-                            <button>
-                                <Trash2Icon />
-                            </button>
-                        </div>
-                    </div>
-                ))}
-                <OrderProduct
-                    products={data?.res}
-                />
+                <ProductCart item={data} />
             </div>
         </>
     )
