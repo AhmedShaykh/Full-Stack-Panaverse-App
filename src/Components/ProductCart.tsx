@@ -6,7 +6,12 @@ import { toast } from "react-hot-toast";
 
 const ProductCart: FC<any> = ({ item }) => {
 
-    const handleDelete = (id: number) => {
+    const handleDelete = async (id: any) => {
+
+        const res = await fetch("/api/cart", {
+            method: "DELETE",
+            body: JSON.stringify({ id })
+        });
 
         toast.success(`${id}`);
 
@@ -38,7 +43,9 @@ const ProductCart: FC<any> = ({ item }) => {
                     </div>
 
                     <div className="px-2">
-                        <button onClick={() => handleDelete(item.id)}>
+                        <button
+                            onClick={() => handleDelete(item.id)}
+                        >
                             <Trash2Icon />
                         </button>
                     </div>
