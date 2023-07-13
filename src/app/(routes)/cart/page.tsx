@@ -3,12 +3,12 @@ import OrderProduct from "@/Components/OrderProduct";
 // import ProductCart from "@/Components/ProductCart";
 import { Trash2Icon } from "lucide-react";
 
-const getData = async () => {
+const getAPIData = async () => {
 
     try {
 
         const res = await fetch("http://127.0.0.1:3000/api/cart", {
-            // method: "GET",
+            method: "GET",
             cache: "no-store",
             headers: {
                 "Content-Type": "application/json"
@@ -34,7 +34,7 @@ const getData = async () => {
 
 const Cart = async () => {
 
-    const data: any = await getData();
+    const data: any = await getAPIData();
 
     if (data?.res == 0) {
         return (

@@ -3,7 +3,36 @@ import React, { FC } from 'react';
 import getStripePromise from '@/lib/stripe';
 import toast from 'react-hot-toast';
 
-const OrderProduct: FC<any> = ({ products }) => {
+const clearData = async () => {
+
+    try {
+
+        const res = await fetch("http://127.0.0.1:3000/api/clearcart", {
+            method: "GET",
+            cache: "no-store",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!res.ok) {
+            throw new Error("Failed to Fetch the Data")
+        };
+
+        const result = await res.json();
+
+        return result;
+
+    }
+    catch (error) {
+
+        console.log(error);
+
+    }
+
+};
+
+const OrderProduct: FC<any> = async ({ products }) => {
 
     const handleCheckOut = async () => {
 
@@ -28,9 +57,12 @@ const OrderProduct: FC<any> = ({ products }) => {
 
     };
 
+    await clearData();
+
     return (
-        <button onClick={handleCheckOut}
+        <button
             className="text-lg md:text-xl font-semibold px-3 py-6 w-full rounded-lg text-white bg-black"
+            onClick={handleCheckOut}
         >
             Check Out
         </button>
