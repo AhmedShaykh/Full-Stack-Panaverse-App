@@ -1,8 +1,17 @@
+"use client";
 import React, { FC } from "react";
 import OrderProduct from "@/Components/OrderProduct";
 import { Trash2Icon } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 const ProductCart: FC<any> = ({ item }) => {
+
+    const handleDelete = (id: number) => {
+
+        toast.success(`${id}`);
+
+    };
+
     return (
         <div className="px-3">
             {item?.res?.map((item: any,) => (
@@ -29,7 +38,7 @@ const ProductCart: FC<any> = ({ item }) => {
                     </div>
 
                     <div className="px-2">
-                        <button>
+                        <button onClick={() => handleDelete(item.id)}>
                             <Trash2Icon />
                         </button>
                     </div>
