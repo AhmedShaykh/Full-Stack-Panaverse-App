@@ -1,7 +1,8 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { BsBagCheckFill } from 'react-icons/bs';
+import confetti from "canvas-confetti";
 
 const OrderSuccess = () => {
 
@@ -33,17 +34,30 @@ const OrderSuccess = () => {
 
     };
 
-    const handleClick = async () => {
+    const handleClick = () => {
 
-        await router.push("/");
+        router.push("/");
 
-        await clearData();
+        clearData();
 
     };
 
+    useEffect(() => {
+
+        const createConfetti = () => {
+            confetti({
+                particleCount: 100,
+                spread: 90,
+                origin: { y: 0.6 },
+            })
+        };
+
+        createConfetti();
+
+    }, []);
+
     return (
         <div className="wrapper flex flex-col justify-center items-center">
-
             <div className="flex justify-center items-center mb-8 mt-4">
                 <BsBagCheckFill
                     className="text-[#008000]"
