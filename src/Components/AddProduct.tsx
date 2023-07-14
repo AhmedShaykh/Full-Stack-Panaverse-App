@@ -1,9 +1,12 @@
 "use client";
 import React, { FC } from "react";
+import { useRouter } from "next/navigation";
 import { urlForImage } from "../../sanity/lib/image";
 import toast from "react-hot-toast";
 
 const AddProduct: FC<any> = ({ id, product }) => {
+
+    const { refresh } = useRouter();
 
     const handleAddToCart = async () => {
 
@@ -20,6 +23,8 @@ const AddProduct: FC<any> = ({ id, product }) => {
         const result = await res.json();
 
         toast.success("New Product Added");
+
+        refresh();
 
         return result;
 
