@@ -51,9 +51,9 @@ export const DELETE = async (request: NextRequest) => {
         if (req.searchParams.has("id")) {
 
             const reqID = req.searchParams.get("id");
-    
+
             await db.delete(cartTable).where(eq<any>(cartTable.id, reqID));
-    
+
             return NextResponse.json({ message: "Data Deleted" });
 
         }
