@@ -46,13 +46,19 @@ export const DELETE = async (request: NextRequest) => {
 
     const req = request.nextUrl;
 
-    const reqID = req.searchParams.get("id");
-
     try {
 
-        await db.delete(cartTable).where(eq<any>(cartTable.id, reqID));
+        if (req.searchParams.has("id")) {
 
-        return NextResponse.json({ message: "Data Deleted" });
+            const reqID = req.searchParams.get("id");
+    
+            await db.delete(cartTable).where(eq<any>(cartTable.id, reqID));
+    
+            return NextResponse.json({ message: "Data Deleted" });
+
+        }
+
+        return NextResponse.json({ message: "Invalid ID" });
 
     } catch (error) {
 
