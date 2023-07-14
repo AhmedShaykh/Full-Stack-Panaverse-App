@@ -5,32 +5,6 @@ import toast from 'react-hot-toast';
 
 const OrderProduct: FC<any> = ({ products }) => {
 
-    const clearData = async () => {
-
-        try {
-
-            const res = await fetch("http://127.0.0.1:3000/api/clearcart", {
-                method: "GET",
-                cache: "no-store"
-            });
-
-            if (!res.ok) {
-                throw new Error("Failed to Fetch the Data")
-            };
-
-            const result = await res.json();
-
-            return result;
-
-        }
-        catch (error) {
-
-            console.log(error);
-
-        }
-
-    };
-
     const handleCheckOut = async () => {
 
         const stripe = await getStripePromise();
@@ -52,14 +26,11 @@ const OrderProduct: FC<any> = ({ products }) => {
             stripe?.redirectToCheckout({ sessionId: data.session.id });
         }
 
-        clearData();
-
     };
 
     return (
-        <button
+        <button onClick={handleCheckOut}
             className="text-lg md:text-xl font-semibold px-3 py-6 w-full rounded-lg text-white bg-black"
-            onClick={handleCheckOut}
         >
             Check Out
         </button>

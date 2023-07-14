@@ -7,6 +7,40 @@ const OrderSuccess = () => {
 
     const router = useRouter();
 
+    const clearData = async () => {
+
+        try {
+
+            const res = await fetch("http://127.0.0.1:3000/api/clearcart", {
+                method: "GET",
+                cache: "no-store"
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to Fetch the Data")
+            };
+
+            const result = await res.json();
+
+            return result;
+
+        }
+        catch (error) {
+
+            console.log(error);
+
+        }
+
+    };
+
+    const handleClick = async () => {
+
+        await router.push("/");
+
+        await clearData();
+
+    };
+
     return (
         <div className="wrapper flex flex-col justify-center items-center">
 
@@ -23,7 +57,7 @@ const OrderSuccess = () => {
 
             <button
                 className="mt-8 mb-5 py-3 px-6 sm:py-4 sm:px-8 rounded bg-black text-xl sm:text-2xl text-white font-bold"
-                onClick={() => router.push("/")}
+                onClick={handleClick}
             >
                 Continue Shopping
             </button>
