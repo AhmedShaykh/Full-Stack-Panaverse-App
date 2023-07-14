@@ -1,7 +1,7 @@
 import React from "react";
 import ProductCart from "@/Components/ProductCart";
 
-export const getCartData = async () => {
+const getCartData = async () => {
 
     try {
 
@@ -44,7 +44,9 @@ const Cart = async () => {
     return (
         <>
             <div className="wrapper">
-                <ProductCart item={data} />
+                <ProductCart
+                    item={data}
+                />
             </div>
         </>
     )
