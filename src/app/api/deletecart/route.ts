@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cartTable, db } from "@/lib/drizzle";
-import { eq } from "drizzle-orm";
+import { db } from '@vercel/postgres';
 
 export const DELETE = async (request: NextRequest) => {
+
+    const client = await db.connect();
 
     const req = request.nextUrl;
 
@@ -12,7 +13,7 @@ export const DELETE = async (request: NextRequest) => {
 
             const reqID = req.searchParams.get("id");
 
-            await db.delete(cartTable).where(eq<number | any>(cartTable.id, reqID));
+            await client.sql`DELETE FROM Cart WHERE ID = ${reqID};`;
 
             return NextResponse.json({ message: "Data Deleted" });
 
@@ -25,4 +26,5 @@ export const DELETE = async (request: NextRequest) => {
         return NextResponse.json({ message: "Something Went Wrong" });
 
     }
+
 };

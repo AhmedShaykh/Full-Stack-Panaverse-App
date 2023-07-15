@@ -7,7 +7,7 @@ export const GET = async (request: NextRequest) => {
 
     try {
 
-        await client.sql`TRUNCATE TABLE Cart;`;
+        await client.sql`DELETE FROM Cart;`;
 
         return NextResponse.json({ message: "Table All Items Clear" });
 
