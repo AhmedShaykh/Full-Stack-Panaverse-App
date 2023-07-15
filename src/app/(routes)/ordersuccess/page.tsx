@@ -34,15 +34,9 @@ const OrderSuccess = () => {
 
     };
 
-    const handleClick = () => {
-
-        router.push("/");
+    useEffect(() => {
 
         clearData();
-
-    };
-
-    useEffect(() => {
 
         const createConfetti = () => {
             confetti({
@@ -71,7 +65,7 @@ const OrderSuccess = () => {
 
             <button
                 className="mt-8 mb-5 py-3 px-6 sm:py-4 sm:px-8 rounded bg-black text-xl sm:text-2xl text-white font-bold"
-                onClick={handleClick}
+                onClick={() => { router.push("/"); }}
             >
                 Continue Shopping
             </button>
