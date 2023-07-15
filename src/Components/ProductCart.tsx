@@ -11,12 +11,11 @@ const ProductCart: FC<any> = ({ item }) => {
 
     const handleDelete = async (id: number) => {
 
-        const res = await fetch("/api/deletecart", {
+        const res = await fetch(`/api/deletecart?id=${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ id: id })
+            }
         });
 
         const result = await res.json();
