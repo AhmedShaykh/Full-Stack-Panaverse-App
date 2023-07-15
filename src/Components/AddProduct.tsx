@@ -10,7 +10,7 @@ const AddProduct: FC<any> = ({ id, product }) => {
 
     const handleAddToCart = async () => {
 
-        const res = await fetch("/api/cart", {
+        const res = await fetch("/api/addcart", {
             method: "POST",
             body: JSON.stringify({
                 product_id: id,
