@@ -10,7 +10,7 @@ export const POST = async (request: NextRequest) => {
         const res = await db.insert(cartTable).values({
             product_id: req.product_id,
             title: req.title,
-            quantity: 1,
+            quantity: req.quantity || 1,
             price: req.price,
             image: req.image
         }).returning();

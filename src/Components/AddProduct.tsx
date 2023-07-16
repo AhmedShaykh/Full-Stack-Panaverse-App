@@ -1,10 +1,13 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { useRouter } from "next/navigation";
 import { urlForImage } from "../../sanity/lib/image";
 import toast from "react-hot-toast";
+import { Minus, Plus } from "lucide-react";
 
 const AddProduct: FC<any> = ({ id, product }) => {
+
+    const [count, setCount] = useState<any>(1);
 
     const { refresh } = useRouter();
 
@@ -16,13 +19,16 @@ const AddProduct: FC<any> = ({ id, product }) => {
                 product_id: id,
                 title: product.title,
                 image: urlForImage(product.image).url(),
-                price: product.price
+                price: product.price,
+                quantity: count
             })
         });
 
         const result = await res.json();
 
         toast.success("New Product Added");
+
+        setCount(1);
 
         refresh();
 
@@ -76,6 +82,44 @@ const AddProduct: FC<any> = ({ id, product }) => {
                                     </svg>
                                 </span>
                             </div>
+                        </div>
+                    </div>
+
+                    <div className="flex gap-x-12 my-4 items-center">
+                        <h2 className="text-xl font-bold">
+                            Quantity:
+                        </h2>
+
+                        <div className="flex items-center justify-center space-x-4">
+                            <button
+                                className="rounded-full p-1 bg-zinc-900 text-white"
+                                onClick={() => {
+                                    if (count < 8) {
+                                        setCount(count + 1);
+                                    } else {
+                                        toast("Sorry Item Limit Is 8", { icon: "🙃" })
+                                    }
+                                }}
+                            >
+                                <Plus />
+                            </button>
+
+                            <span className="text-xl font-semibold">
+                                {count}
+                            </span>
+
+                            <button
+                                className="rounded-full p-1 bg-zinc-900 text-white"
+                                onClick={() => {
+                                    if (count > 1) {
+                                        setCount(count - 1);
+                                    } else {
+                                        toast("Item Less Limit Is 1", { icon: "⚠️" })
+                                    }
+                                }}
+                            >
+                                <Minus />
+                            </button>
                         </div>
                     </div>
 
