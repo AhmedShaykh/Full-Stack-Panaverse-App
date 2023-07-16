@@ -24,7 +24,7 @@ const Hero = () => {
 
                     <button
                         className="bg-black text-white p-4 w-40"
-                        onClick={() => router.push("/products")}
+                        onClick={() => router.push("/allproducts")}
                         type="button"
                     >
                         Start Shopping
