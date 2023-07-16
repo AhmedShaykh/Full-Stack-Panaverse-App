@@ -50,6 +50,14 @@ const ProductCart: FC<any> = ({ item }) => {
                             <h3 className="text-2xl my-2 font-bold">
                                 {item.price}
                             </h3>
+
+                            <h3 className="text-xl my-2 font-bold">
+                                Quantity: {" "}
+
+                                <span className="text-lg my-2 font-bold">
+                                    {item.quantity}
+                                </span>
+                            </h3>
                         </div>
                     </div>
 
