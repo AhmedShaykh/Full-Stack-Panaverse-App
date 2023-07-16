@@ -15,7 +15,7 @@ const AddProduct: FC<any> = ({ id, product }) => {
             body: JSON.stringify({
                 product_id: id,
                 title: product.title,
-                // image: urlForImage(product.image).url(),
+                image: urlForImage(product.image).url(),
                 price: product.price
             })
         });

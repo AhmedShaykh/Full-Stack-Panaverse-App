@@ -12,7 +12,7 @@ export const POST = async (request: NextRequest) => {
             title: req.title,
             quantity: 1,
             price: req.price,
-            // image: req.image
+            image: req.image
         }).returning();
 
         return NextResponse.json({ res });

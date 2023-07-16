@@ -36,11 +36,11 @@ const ProductCart: FC<any> = ({ item }) => {
                     key={item.id}
                 >
                     <div className="px-3">
-                        {/* <img
+                        <img
                             className="object-cover w-full rounded-lg h-full md:h-auto md:w-48 md:rounded-none"
                             src={item.image}
                             alt="products"
-                        /> */}
+                        />
 
                         <div>
                             <h2 className="text-xl my-1 font-bold">
