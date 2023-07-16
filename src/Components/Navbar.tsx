@@ -24,8 +24,8 @@ const NAV_ITEMS: Array<NavItem> = [
         page: "/kids",
     },
     {
-        label: "All Products",
-        page: "allproducts",
+        label: "Products",
+        page: "/products",
     }
 ];
 
@@ -64,10 +64,10 @@ const Navbar = () => {
                         ${navbar ? "block" : "hidden"}`}
                     >
                         <div className="flex flex-col items-center justify-center space-y-8 my-4 md:my-0 md:flex-row md:space-x-8 md:space-y-0">
-                            {NAV_ITEMS.map((item, idx) => {
+                            {NAV_ITEMS.map((item, i) => {
                                 return (
                                     <Link
-                                        key={idx}
+                                        key={i}
                                         href={item.page}
                                         onClick={() => setNavbar(!navbar)}
                                     >
