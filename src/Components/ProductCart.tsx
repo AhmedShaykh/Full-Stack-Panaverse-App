@@ -32,32 +32,32 @@ const ProductCart: FC<any> = ({ item }) => {
         <div className="px-3">
             {item?.res.map((item: any,) => (
                 <div
-                    className="flex justify-between items-center m-3"
+                    className="flex flex-col md:flex-row justify-between items-center m-3"
                     key={item.id}
                 >
-                    <div className="px-3">
+                    <div className="px-2 py-6 flex flex-col md:flex-row">
                         <img
-                            className="object-cover w-full rounded-lg h-full md:h-auto md:w-48 md:rounded-none"
+                            className="object-cover w-full rounded-lg h-auto md:w-60 md:rounded-none"
                             src={item.image}
                             alt="products"
                         />
 
-                        <div>
-                            <h2 className="text-xl my-1 font-bold">
+                        <div className="px-0 py-3 md:px-6 md:py-0 flex flex-col justify-center">
+                            <h2 className="text-2xl my-2 font-bold">
                                 {item.title}
                             </h2>
 
-                            <h3 className="text-2xl my-2 font-bold">
-                                {item.price}
-                            </h3>
+                            <h2 className="text-xl my-4 font-bold">
+                                $ {item.price}
+                            </h2>
 
-                            <h3 className="text-xl my-2 font-bold">
+                            <h2 className="text-xl my-2 font-bold">
                                 Quantity: {" "}
 
-                                <span className="text-lg my-2 font-bold">
+                                <span className="text-xl my-2 font-bold">
                                     {item.quantity}
                                 </span>
-                            </h3>
+                            </h2>
                         </div>
                     </div>
 
