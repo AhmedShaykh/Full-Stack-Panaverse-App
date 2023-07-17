@@ -41,7 +41,7 @@ const OrderSuccess = () => {
         const createConfetti = () => {
             confetti({
                 particleCount: 100,
-                spread: 90,
+                spread: 100,
                 origin: { y: 0.6 },
             })
         };

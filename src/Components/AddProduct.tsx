@@ -46,7 +46,7 @@ const AddProduct: FC<any> = ({ id, product }) => {
                 />
 
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-12 lg:mt-2 px-1">
-                    <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+                    <h1 className="text-gray-900 text-3xl font-bold mb-1">
                         {product.title}
                     </h1>
 
