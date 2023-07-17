@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cartTable, db } from "@/lib/drizzle";
-import { revalidatePath } from "next/cache";
 
 export const POST = async (request: NextRequest) => {
 
@@ -15,7 +14,6 @@ export const POST = async (request: NextRequest) => {
             price: req.price,
             image: req.image
         }).returning();
-        // revalidatePath(new URL("/cart"))
 
         return NextResponse.json({ res });
 
