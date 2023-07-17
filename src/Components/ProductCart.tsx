@@ -29,20 +29,20 @@ const ProductCart: FC<any> = ({ item }) => {
     };
 
     return (
-        <div className="px-3">
+        <div className="px-0 lg:px-3">
             {item?.res.map((item: any,) => (
                 <div
-                    className="flex flex-col md:flex-row justify-between items-center m-3"
+                    className="flex flex-col md:flex-row justify-between items-center m-1 lg:m-3"
                     key={item.id}
                 >
-                    <div className="px-2 py-6 flex flex-col md:flex-row">
+                    <div className="px-2 py-6 flex flex-col lg:flex-row">
                         <img
-                            className="object-cover w-full rounded-lg h-auto md:w-60 md:rounded-none"
+                            className="object-cover w-80 rounded-lg h-80 lg:h-60 lg:w-60 lg:rounded-none"
                             src={item.image}
                             alt="products"
                         />
 
-                        <div className="px-0 py-3 md:px-6 md:py-0 flex flex-col justify-center">
+                        <div className="px-0 py-3 lg:px-6 lg:py-4">
                             <h2 className="text-2xl my-2 font-bold">
                                 {item.title}
                             </h2>
@@ -51,7 +51,7 @@ const ProductCart: FC<any> = ({ item }) => {
                                 $ {item.price}
                             </h2>
 
-                            <h2 className="text-xl my-2 font-bold">
+                            <h2 className="text-xl mt-6 lg:last:mt-12 mb-2 font-bold">
                                 Quantity: {" "}
 
                                 <span className="text-xl my-2 font-bold">
@@ -65,7 +65,7 @@ const ProductCart: FC<any> = ({ item }) => {
                         <button
                             onClick={() => handleDelete(item.id)}
                         >
-                            <Trash2Icon />
+                            <Trash2Icon className="hover:text-red-700" />
                         </button>
                     </div>
                 </div>
