@@ -9,12 +9,13 @@ const getCartData = async () => {
             method: "GET",
             cache: "no-store"
         });
-
+console.log("status ",res.ok)
         if (!res.ok) {
             throw new Error("Failed to Fetch the Data")
         };
 
         const result = await res.json();
+        console.log("Function Result ", result)
 
         return result;
 
@@ -30,7 +31,7 @@ const getCartData = async () => {
 const Cart = async () => {
 
     const data: any = await getCartData();
-
+    console.log(data)
     if (data?.res == 0) {
         return (
             <div className="wrapper flex justify-center items-center">
