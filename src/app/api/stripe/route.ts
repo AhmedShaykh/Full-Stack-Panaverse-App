@@ -45,7 +45,7 @@ export const POST = async (request: NextRequest) => {
                     };
                 }),
                 success_url: `${request.headers.get("origin")}/ordersuccess`,
-                cancel_url: `${request.headers.get("origin")}/?canceled=true`,
+                cancel_url: `${request.headers.get("origin")}/cart?canceled=true`,
             });
 
             return NextResponse.json({ session });

@@ -30,7 +30,7 @@ const OrderProduct: FC<any> = ({ products }) => {
 
     return (
         <button onClick={handleCheckOut}
-            className="text-lg md:text-xl font-semibold px-3 py-6 w-full rounded-lg text-white bg-black"
+            className="text-lg md:text-xl font-semibold px-3 py-6 mt-2 lg:mt-0 w-full rounded-lg text-white bg-black"
         >
             Check Out
         </button>
