@@ -7,10 +7,6 @@ import { toast } from "react-hot-toast";
 
 const ProductCart: FC<any> = ({ item }) => {
 
-    const data = item?.res.map((data: any) => data.quantity)
-
-    const [count, setCount] = useState<number>(data);
-
     const { refresh } = useRouter();
 
     const handleDelete = async (id: number) => {
@@ -32,7 +28,11 @@ const ProductCart: FC<any> = ({ item }) => {
 
     };
 
-    const handleUpdatePlus = async (id: number) => {
+    const handleUpdatePlus: FC<any> = async (id, quantity) => {
+
+        const [count, setCount] = useState<any>(quantity);
+
+        console.log(quantity)
 
         setCount(count + 1);
 
@@ -56,7 +56,9 @@ const ProductCart: FC<any> = ({ item }) => {
 
     };
 
-    const handleUpdateMinus = async (id: number) => {
+    const handleUpdateMinus = async (id: number, quantity: number) => {
+
+        const [count, setCount] = useState<number>(quantity);
 
         setCount(count - 1);
 
@@ -118,7 +120,7 @@ const ProductCart: FC<any> = ({ item }) => {
                                         //         toast("Sorry Item Limit Is 8", { icon: "🙃" })
                                         //     }
                                         // }}
-                                        onClick={() => handleUpdatePlus(item.id)}
+                                        onClick={() => { handleUpdatePlus(item.id, item.quantity); }}
                                     >
                                         <Plus />
                                     </button>
@@ -136,7 +138,7 @@ const ProductCart: FC<any> = ({ item }) => {
                                         //         toast("Item Less Limit Is 1", { icon: "⚠️" })
                                         //     }
                                         // }}
-                                        onClick={() => handleUpdateMinus(item.id)}
+                                        onClick={() => handleUpdateMinus(item.id, item.quantity)}
                                     >
                                         <Minus />
                                     </button>
