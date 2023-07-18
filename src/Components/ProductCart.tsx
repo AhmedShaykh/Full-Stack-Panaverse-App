@@ -32,8 +32,6 @@ const ProductCart: FC<any> = ({ item }) => {
 
         const [count, setCount] = useState<any>(quantity);
 
-        console.log(quantity)
-
         setCount(count + 1);
 
         const res = await fetch(`/api/updatecart?id=${id}`, {
@@ -56,7 +54,7 @@ const ProductCart: FC<any> = ({ item }) => {
 
     };
 
-    const handleUpdateMinus = async (id: number, quantity: number) => {
+    const handleUpdateMinus: FC<any> = async (id, quantity) => {
 
         const [count, setCount] = useState<number>(quantity);
 
