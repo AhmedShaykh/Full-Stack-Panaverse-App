@@ -7,7 +7,7 @@ import { Minus, Plus } from "lucide-react";
 
 const AddProduct: FC<any> = ({ id, product }) => {
 
-    const [count, setCount] = useState<any>(1);
+    const [count, setCount] = useState<number>(1);
 
     const { refresh } = useRouter();
 

@@ -1,11 +1,13 @@
 "use client";
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import OrderProduct from "@/Components/OrderProduct";
 import { useRouter } from "next/navigation";
-import { Trash2Icon } from "lucide-react";
+import { Minus, Plus, Trash2Icon } from "lucide-react";
 import { toast } from "react-hot-toast";
 
 const ProductCart: FC<any> = ({ item }) => {
+
+    const [count, setCount] = useState<number>(1);
 
     const { refresh } = useRouter();
 
@@ -21,6 +23,50 @@ const ProductCart: FC<any> = ({ item }) => {
         const result = await res.json();
 
         toast.success("Product Delete");
+
+        refresh();
+
+        return result;
+
+    };
+
+    const handleUpdatePlus = async (id: number) => {
+
+        const res = await fetch(`/api/updatecart?id=${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                quantity: setCount(count + 1)
+            })
+        });
+
+        const result = await res.json();
+
+        toast.success("Quanity Update");
+
+        refresh();
+
+        return result;
+
+    };
+
+    const handleUpdateMinus = async (id: number) => {
+
+        const res = await fetch(`/api/updatecart?id=${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                quantity: setCount(count - 1)
+            })
+        });
+
+        const result = await res.json();
+
+        toast.success("Quanity Update");
 
         refresh();
 
@@ -51,13 +97,46 @@ const ProductCart: FC<any> = ({ item }) => {
                                 $ {item.price}
                             </h2>
 
-                            <h2 className="text-xl mt-6 lg:last:mt-12 mb-2 font-bold">
-                                Quantity: {" "}
+                            <div className="flex gap-x-12 items-center text-xl mt-6 lg:last:mt-12 mb-2 font-bold">
+                                <h2 className="text-xl font-bold">
+                                    Quantity:
+                                </h2>
 
-                                <span className="text-xl my-2 font-bold">
-                                    {item.quantity}
-                                </span>
-                            </h2>
+                                <div className="flex items-center justify-center space-x-4">
+                                    <button
+                                        className="rounded-full p-1 bg-zinc-900 text-white"
+                                        // onClick={() => {
+                                        //     if (count < 8) {
+                                        //         setCount(count + 1);
+                                        //     } else {
+                                        //         toast("Sorry Item Limit Is 8", { icon: "🙃" })
+                                        //     }
+                                        // }}
+                                        onClick={() => handleUpdatePlus(item.id)}
+                                    >
+                                        <Plus />
+                                    </button>
+
+                                    <span className="text-xl my-2 font-bold">
+                                        {item.quantity}
+                                    </span>
+
+                                    <button
+                                        className="rounded-full p-1 bg-zinc-900 text-white"
+                                        // onClick={() => {
+                                        //     if (count > 1) {
+                                        //         setCount(count - 1);
+                                        //     } else {
+                                        //         toast("Item Less Limit Is 1", { icon: "⚠️" })
+                                        //     }
+                                        // }}
+                                        onClick={() => handleUpdateMinus(item.id)}
+                                    >
+                                        <Minus />
+                                    </button>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
