@@ -7,7 +7,9 @@ import { toast } from "react-hot-toast";
 
 const ProductCart: FC<any> = ({ item }) => {
 
-    const [count, setCount] = useState<number>(1);
+    const data = item?.res.map((data: any) => data.quantity)
+
+    const [count, setCount] = useState<number>(data);
 
     const { refresh } = useRouter();
 
@@ -32,13 +34,15 @@ const ProductCart: FC<any> = ({ item }) => {
 
     const handleUpdatePlus = async (id: number) => {
 
+        setCount(count + 1);
+
         const res = await fetch(`/api/updatecart?id=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                quantity: setCount(count + 1)
+                quantity: count
             })
         });
 
@@ -54,13 +58,15 @@ const ProductCart: FC<any> = ({ item }) => {
 
     const handleUpdateMinus = async (id: number) => {
 
+        setCount(count - 1);
+
         const res = await fetch(`/api/updatecart?id=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                quantity: setCount(count - 1)
+                quantity: count
             })
         });
 
