@@ -5,7 +5,9 @@ const getCartData = async () => {
 
     try {
 
-        const res = await fetch("http://127.0.0.1:3000/api/getcart", {
+        const URL = process.env.PORT || "http://127.0.0.1:3000";
+
+        const res = await fetch(`${URL}/api/getcart`, {
             method: "GET",
             cache: "no-store"
         });
@@ -44,9 +46,7 @@ const Cart = async () => {
     return (
         <>
             <div className="wrapper">
-                <ProductCart
-                    item={data}
-                />
+                <ProductCart item={data} />
             </div>
         </>
     )
