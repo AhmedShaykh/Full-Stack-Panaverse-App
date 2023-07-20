@@ -28,7 +28,6 @@ const OrderProduct: FC<any> = ({ products }) => {
             console.log(error);
 
         }
-
     };
 
     const handleCheckOut = async () => {
@@ -44,23 +43,24 @@ const OrderProduct: FC<any> = ({ products }) => {
             body: JSON.stringify(products)
         });
 
-        toast.loading("Please Wait");
+        toast.loading("Please Wait...");
 
         const data = await response.json();
 
-        if (data.session.statusCode === 200) {
-            clearData();
-        }
-
         if (data.session) {
+
             stripe?.redirectToCheckout({ sessionId: data.session.id });
+
+            clearData();
+
         }
 
     };
 
     return (
-        <button onClick={handleCheckOut}
+        <button
             className="text-lg md:text-xl font-semibold px-3 py-6 mt-4 lg:mt-0 w-full rounded-lg text-white bg-black"
+            onClick={handleCheckOut}
         >
             Check Out
         </button>
