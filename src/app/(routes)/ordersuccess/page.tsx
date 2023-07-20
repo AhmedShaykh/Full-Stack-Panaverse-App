@@ -8,43 +8,15 @@ const OrderSuccess = () => {
 
     const router = useRouter();
 
-    const clearData = async () => {
-
-        try {
-
-            const res = await fetch("http://127.0.0.1:3000/api/clearcart", {
-                method: "GET",
-                cache: "no-store"
-            });
-
-            if (!res.ok) {
-                throw new Error("Failed to Fetch the Data")
-            };
-
-            const result = await res.json();
-
-            return result;
-
-        }
-        catch (error) {
-
-            console.log(error);
-
-        }
-
+    const createConfetti = () => {
+        confetti({
+            particleCount: 100,
+            spread: 100,
+            origin: { y: 0.6 },
+        })
     };
 
     useEffect(() => {
-
-        clearData();
-
-        const createConfetti = () => {
-            confetti({
-                particleCount: 100,
-                spread: 100,
-                origin: { y: 0.6 },
-            })
-        };
 
         createConfetti();
 
