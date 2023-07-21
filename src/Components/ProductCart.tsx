@@ -30,45 +30,59 @@ const ProductCart: FC<any> = ({ item }) => {
 
     const handleUpdatePlus: FC<any> = async (id, quantity) => {
 
-        const res = await fetch(`/api/updatecart?id=${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                quantity: quantity + 1
-            })
-        });
+        if (quantity < 8) {
 
-        const result = await res.json();
+            const res = await fetch(`/api/updatecart?id=${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    quantity: quantity + 1
+                })
+            });
 
-        toast.success("Quanity Update");
+            const result = await res.json();
 
-        refresh();
+            toast.success("Quanity Update");
 
-        return result;
+            refresh();
+
+            return result;
+
+        }
+        else {
+            toast("Sorry Item Limit Is 8", { icon: "🙃" });
+        }
 
     };
 
     const handleUpdateMinus: FC<any> = async (id, quantity) => {
 
-        const res = await fetch(`/api/updatecart?id=${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                quantity: quantity - 1
-            })
-        });
+        if (quantity > 1) {
 
-        const result = await res.json();
+            const res = await fetch(`/api/updatecart?id=${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    quantity: quantity - 1
+                })
+            });
 
-        toast.success("Quanity Update");
+            const result = await res.json();
 
-        refresh();
+            toast.success("Quanity Update");
 
-        return result;
+            refresh();
+
+            return result;
+
+        }
+        else {
+            toast("Item Less Limit Is 1", { icon: "⚠️" });
+        }
 
     };
 
@@ -103,13 +117,6 @@ const ProductCart: FC<any> = ({ item }) => {
                                 <div className="flex items-center justify-center space-x-4">
                                     <button
                                         className="rounded-full p-1 bg-zinc-900 text-white"
-                                        // onClick={() => {
-                                        //     if (count < 8) {
-                                        //         setCount(count + 1);
-                                        //     } else {
-                                        //         toast("Sorry Item Limit Is 8", { icon: "🙃" })
-                                        //     }
-                                        // }}
                                         onClick={() => { handleUpdatePlus(item.id, item.quantity); }}
                                     >
                                         <Plus />
@@ -121,20 +128,12 @@ const ProductCart: FC<any> = ({ item }) => {
 
                                     <button
                                         className="rounded-full p-1 bg-zinc-900 text-white"
-                                        // onClick={() => {
-                                        //     if (count > 1) {
-                                        //         setCount(count - 1);
-                                        //     } else {
-                                        //         toast("Item Less Limit Is 1", { icon: "⚠️" })
-                                        //     }
-                                        // }}
                                         onClick={() => handleUpdateMinus(item.id, item.quantity)}
                                     >
                                         <Minus />
                                     </button>
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
