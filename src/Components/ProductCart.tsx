@@ -1,5 +1,5 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { FC } from "react";
 import OrderProduct from "@/Components/OrderProduct";
 import { useRouter } from "next/navigation";
 import { Minus, Plus, Trash2Icon } from "lucide-react";
@@ -28,57 +28,49 @@ const ProductCart: FC<any> = ({ item }) => {
 
     };
 
-    // const handleUpdatePlus: FC<any> = async (id, quantity) => {
+    const handleUpdatePlus: FC<any> = async (id, quantity) => {
 
-    //     const [count, setCount] = useState<number>(quantity);
+        const res = await fetch(`/api/updatecart?id=${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                quantity: quantity + 1
+            })
+        });
 
-    //     setCount(count + 1);
+        const result = await res.json();
 
-    //     const res = await fetch(`/api/updatecart?id=${id}`, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             quantity: count
-    //         })
-    //     });
+        toast.success("Quanity Update");
 
-    //     const result = await res.json();
+        refresh();
 
-    //     toast.success("Quanity Update");
+        return result;
 
-    //     refresh();
+    };
 
-    //     return result;
+    const handleUpdateMinus: FC<any> = async (id, quantity) => {
 
-    // };
+        const res = await fetch(`/api/updatecart?id=${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                quantity: quantity - 1
+            })
+        });
 
-    // const handleUpdateMinus: FC<any> = async (id, quantity) => {
+        const result = await res.json();
 
-    //     const [count, setCount] = useState<number>(quantity);
+        toast.success("Quanity Update");
 
-    //     setCount(count - 1);
+        refresh();
 
-    //     const res = await fetch(`/api/updatecart?id=${id}`, {
-    //         method: "PUT",
-    //         headers: {
-    //             "Content-Type": "application/json"
-    //         },
-    //         body: JSON.stringify({
-    //             quantity: count
-    //         })
-    //     });
+        return result;
 
-    //     const result = await res.json();
-
-    //     toast.success("Quanity Update");
-
-    //     refresh();
-
-    //     return result;
-
-    // };
+    };
 
     return (
         <div className="px-0 lg:px-3">
@@ -111,14 +103,14 @@ const ProductCart: FC<any> = ({ item }) => {
                                 <div className="flex items-center justify-center space-x-4">
                                     <button
                                         className="rounded-full p-1 bg-zinc-900 text-white"
-                                    // onClick={() => {
-                                    //     if (count < 8) {
-                                    //         setCount(count + 1);
-                                    //     } else {
-                                    //         toast("Sorry Item Limit Is 8", { icon: "🙃" })
-                                    //     }
-                                    // }}
-                                    // onClick={() => { handleUpdatePlus(item.id, item.quantity); }}
+                                        // onClick={() => {
+                                        //     if (count < 8) {
+                                        //         setCount(count + 1);
+                                        //     } else {
+                                        //         toast("Sorry Item Limit Is 8", { icon: "🙃" })
+                                        //     }
+                                        // }}
+                                        onClick={() => { handleUpdatePlus(item.id, item.quantity); }}
                                     >
                                         <Plus />
                                     </button>
@@ -129,14 +121,14 @@ const ProductCart: FC<any> = ({ item }) => {
 
                                     <button
                                         className="rounded-full p-1 bg-zinc-900 text-white"
-                                    // onClick={() => {
-                                    //     if (count > 1) {
-                                    //         setCount(count - 1);
-                                    //     } else {
-                                    //         toast("Item Less Limit Is 1", { icon: "⚠️" })
-                                    //     }
-                                    // }}
-                                    // onClick={() => handleUpdateMinus(item.id, item.quantity)}
+                                        // onClick={() => {
+                                        //     if (count > 1) {
+                                        //         setCount(count - 1);
+                                        //     } else {
+                                        //         toast("Item Less Limit Is 1", { icon: "⚠️" })
+                                        //     }
+                                        // }}
+                                        onClick={() => handleUpdateMinus(item.id, item.quantity)}
                                     >
                                         <Minus />
                                     </button>
