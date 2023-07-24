@@ -5,7 +5,7 @@ const getCartData = async () => {
 
     try {
 
-        const URL = "http://127.0.0.1:3000" || process.env.URL;
+        const URL = process.env.URL;
 
         const res = await fetch(`${URL}/api/getcart`, {
             method: "GET",
