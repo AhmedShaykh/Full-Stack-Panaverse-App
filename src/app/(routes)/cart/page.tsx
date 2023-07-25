@@ -1,31 +1,12 @@
-import React from "react";
 import ProductCart from "@/Components/ProductCart";
 
 const getCartData = async () => {
 
-    try {
+    const res = await fetch(`http://localhost:3000//api/getcart`);
 
-        const URL = "http://127.0.0.1:3000" || process.env.URL;
+    const result = await res.json();
 
-        const res = await fetch(`${URL}/api/getcart`, {
-            method: "GET",
-            cache: "no-store"
-        });
-
-        if (!res.ok) {
-            throw new Error("Failed to Fetch the Data")
-        };
-
-        const result = await res.json();
-
-        return result;
-
-    }
-    catch (error) {
-
-        console.log(error);
-
-    }
+    return result;
 
 };
 
