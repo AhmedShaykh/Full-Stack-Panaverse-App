@@ -3,7 +3,7 @@ import { client } from "@/lib/sanityClient";
 
 const getCartData = async () => {
 
-    const res = await fetch(`http://localhost:3000/api/getcart`);
+    const res = await fetch(`http://localhost:3000/api/getcart`, { cache: "no-store" });
 
     const result = await res.json();
 
@@ -28,16 +28,16 @@ const getProductByData = async (id: any) => {
 
 };
 
-const getData = async (data: any) => {
+const getDataInCart = async (data: any) => {
 
-    // const cartData: any = await getCartData();
+    const cartData: any[] = await getProductByData(data.product_id);
 
-    console.log(data?.product_id);
+    console.log(cartData)
 
     return (
-        {/* <div className="wrapper">
-                <ProductCart item={data} />
-            </div> */}
+        <div className="wrapper">
+            {/* <ProductCart /> */}
+        </div>
     )
 };
 
@@ -57,7 +57,9 @@ const Cart = async () => {
 
     return (
         <>
-            {getData(data?.res[0])}
+            {data?.res.map((data: any) => {
+                { getDataInCart(data) }
+            })}
         </>
     )
 };

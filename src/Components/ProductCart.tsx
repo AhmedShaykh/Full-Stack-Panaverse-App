@@ -5,90 +5,91 @@ import { useRouter } from "next/navigation";
 import { Minus, Plus, Trash2Icon } from "lucide-react";
 import { toast } from "react-hot-toast";
 
-const ProductCart: FC<any> = ({ item }) => {
+const ProductCart: FC<any> = () => {
 
-    const { refresh } = useRouter();
+    // const { refresh } = useRouter();
 
-    const handleDelete = async (id: number) => {
+    // const handleDelete = async (id: number) => {
 
-        const res = await fetch(`/api/deletecart?id=${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+    //     const res = await fetch(`/api/deletecart?id=${id}`, {
+    //         method: "DELETE",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     });
 
-        const result = await res.json();
+    //     const result = await res.json();
 
-        toast.success("Product Delete");
+    //     toast.success("Product Delete");
 
-        refresh();
+    //     refresh();
 
-        return result;
+    //     return result;
 
-    };
+    // };
 
-    const handleUpdatePlus: FC<any> = async (id, quantity) => {
+    // const handleUpdatePlus: FC<any> = async (id, quantity) => {
 
-        if (quantity < 8) {
+    //     if (quantity < 8) {
 
-            const res = await fetch(`/api/updatecart?id=${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    quantity: quantity + 1
-                })
-            });
+    //         const res = await fetch(`/api/updatecart?id=${id}`, {
+    //             method: "PUT",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 quantity: quantity + 1
+    //             })
+    //         });
 
-            const result = await res.json();
+    //         const result = await res.json();
 
-            toast.success("Quanity Update");
+    //         toast.success("Quanity Update");
 
-            refresh();
+    //         refresh();
 
-            return result;
+    //         return result;
 
-        }
-        else {
-            toast("Sorry Item Limit Is 8", { icon: "🙃" });
-        }
+    //     }
+    //     else {
+    //         toast("Sorry Item Limit Is 8", { icon: "🙃" });
+    //     }
 
-    };
+    // };
 
-    const handleUpdateMinus: FC<any> = async (id, quantity) => {
+    // const handleUpdateMinus: FC<any> = async (id, quantity) => {
 
-        if (quantity > 1) {
+    //     if (quantity > 1) {
 
-            const res = await fetch(`/api/updatecart?id=${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    quantity: quantity - 1
-                })
-            });
+    //         const res = await fetch(`/api/updatecart?id=${id}`, {
+    //             method: "PUT",
+    //             headers: {
+    //                 "Content-Type": "application/json"
+    //             },
+    //             body: JSON.stringify({
+    //                 quantity: quantity - 1
+    //             })
+    //         });
 
-            const result = await res.json();
+    //         const result = await res.json();
 
-            toast.success("Quanity Update");
+    //         toast.success("Quanity Update");
 
-            refresh();
+    //         refresh();
 
-            return result;
+    //         return result;
 
-        }
-        else {
-            toast("Item Less Limit Is 1", { icon: "⚠️" });
-        }
+    //     }
+    //     else {
+    //         toast("Item Less Limit Is 1", { icon: "⚠️" });
+    //     }
 
-    };
+    // };
 
     return (
         <div className="px-0 lg:px-3">
-            {item?.res.map((item: any,) => (
+            <h1>Hello</h1>
+            {/* {item?.map((item: any,) => (
                 <div
                     className="flex flex-col md:flex-row justify-between items-center m-1 lg:m-3"
                     key={item.id}
@@ -145,10 +146,10 @@ const ProductCart: FC<any> = ({ item }) => {
                         </button>
                     </div>
                 </div>
-            ))}
-            <OrderProduct
+            ))} */}
+            {/* <OrderProduct
                 products={item?.res}
-            />
+            /> */}
         </div>
     )
 };
