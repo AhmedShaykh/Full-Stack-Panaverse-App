@@ -32,11 +32,9 @@ const getDataInCart = async (data: any) => {
 
     const cartData: any[] = await getProductByData(data.product_id);
 
-    console.log(cartData)
-
     return (
         <div className="wrapper">
-            {/* <ProductCart /> */}
+            <ProductCart item={cartData} />
         </div>
     )
 };
@@ -57,9 +55,11 @@ const Cart = async () => {
 
     return (
         <>
-            {data?.res.map((data: any) => {
-                { getDataInCart(data) }
-            })}
+            {data?.res.map((data: any) => (
+                <>
+                    {getDataInCart(data)}
+                </>
+            ))}
         </>
     )
 };
