@@ -1,5 +1,4 @@
 import ProductCart from "@/Components/ProductCart";
-import { client } from "@/lib/sanityClient";
 
 const getCartData = async () => {
 
@@ -9,34 +8,6 @@ const getCartData = async () => {
 
     return result;
 
-};
-
-const getProductByData = async (id: any) => {
-
-    const res = await client.fetch(`
-      *[_type == "product" && _id == '${id}'][0] {
-        title,
-        image,
-        price,
-        dresstype -> {
-          name
-        }
-      }
-    `);
-
-    return res;
-
-};
-
-const getDataInCart = async (data: any) => {
-
-    const cartData: any[] = await getProductByData(data.product_id);
-
-    return (
-        <div className="wrapper">
-            <ProductCart item={cartData} />
-        </div>
-    )
 };
 
 const Cart = async () => {
@@ -55,11 +26,9 @@ const Cart = async () => {
 
     return (
         <>
-            {data?.res.map((data: any) => (
-                <>
-                    {getDataInCart(data)}
-                </>
-            ))}
+            <div className="wrapper">
+                <ProductCart item={data} />
+            </div>
         </>
     )
 };

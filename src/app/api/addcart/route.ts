@@ -22,10 +22,10 @@ export const POST = async (request: NextRequest) => {
         const res = await db.insert(cartTable).values({
             user_id: cookies().get("user_id")?.value as string,
             product_id: req.product_id,
-            // title: req.title,
+            title: req.title,
             quantity: req.quantity || 1,
-            // price: req.price,
-            // image: req.image
+            price: req.price,
+            image: req.image
         }).returning();
 
         return NextResponse.json({ res });
