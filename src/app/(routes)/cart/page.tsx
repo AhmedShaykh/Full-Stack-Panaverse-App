@@ -2,11 +2,23 @@ import ProductCart from "@/Components/ProductCart";
 
 const getCartData = async () => {
 
-    const res = await fetch(`http://localhost:3000/api/getcart`, { cache: "no-store" });
+    try {
 
-    const result = await res.json();
+        const res = await fetch(`http://localhost:3000/api/getcart`, {
+            method: "GET",
+            cache: "no-store"
+        });
 
-    return result;
+        const result = await res.json();
+
+        return result;
+
+    }
+    catch (error) {
+
+        console.log(error);
+
+    }
 
 };
 
