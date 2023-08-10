@@ -1,1 +1,1 @@
-# Hackathon E-Commerce App!
+# Hackathon Dine E-Commerce App!
