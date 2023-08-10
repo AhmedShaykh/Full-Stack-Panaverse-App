@@ -1,12 +1,14 @@
 import ProductCart from "@/Components/ProductCart";
 
-const getCartData = async () => {
+async function getCartData() {
 
     try {
 
-        const res = await fetch(`http://localhost:3000/api/getcart`, {
+        const URL = "http://127.0.0.1:3000" || "http://localhost:3000" || "";
+
+        const res = await fetch(`${URL}/api/getcart`, {
             method: "GET",
-            cache: "no-store"
+            next: { revalidate: 2 }
         });
 
         const result = await res.json();
@@ -39,7 +41,9 @@ const Cart = async () => {
     return (
         <>
             <div className="wrapper">
-                <ProductCart item={data} />
+                <ProductCart
+                    item={data}
+                />
             </div>
         </>
     )
