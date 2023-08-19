@@ -3,17 +3,24 @@ import getDomain from "@/lib/getDomain";
 
 async function getCartData() {
 
-    const domain = getDomain();
+    try {
 
-    const res = await fetch(`${domain}/api/getcart`, { cache: 'no-store' });
+        const domain = getDomain();
 
-    if (!res.ok) {
-        throw new Error("Failed To Fetch Data");
+        const res = await fetch(`${domain}/api/getcart`, { cache: 'no-store' });
+
+        if (!res.ok) {
+            throw new Error("Failed To Fetch Data");
+        }
+
+        return res.json();
+
     }
+    catch (error) {
 
-    const result = await res.json();
+        console.log(error);
 
-    return result;
+    }
 
 };
 
