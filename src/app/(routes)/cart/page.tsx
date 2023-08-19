@@ -1,15 +1,17 @@
 import ProductCart from "@/Components/ProductCart";
+import getDomain from "@/lib/getDomain";
 
 async function getCartData() {
 
+    const domain = getDomain();
+
     try {
 
-        const URL = "http://127.0.0.1:3000" || "http://localhost:3000" || "";
+        const res = await fetch(`${domain}/api/getcart`, { cache: 'no-store' });
 
-        const res = await fetch(`${URL}/api/getcart`, {
-            method: "GET",
-            next: { revalidate: 2 }
-        });
+        if (!res.ok) {
+            throw new Error("Failed To Fetch Data");
+        }
 
         const result = await res.json();
 
