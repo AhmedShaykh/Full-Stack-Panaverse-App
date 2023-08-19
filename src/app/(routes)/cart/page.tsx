@@ -5,24 +5,15 @@ async function getCartData() {
 
     const domain = getDomain();
 
-    try {
+    const res = await fetch(`${domain}/api/getcart`, { cache: 'no-store' });
 
-        const res = await fetch(`${domain}/api/getcart`, { cache: 'no-store' });
-
-        if (!res.ok) {
-            throw new Error("Failed To Fetch Data");
-        }
-
-        const result = await res.json();
-
-        return result;
-
+    if (!res.ok) {
+        throw new Error("Failed To Fetch Data");
     }
-    catch (error) {
 
-        console.log(error);
+    const result = await res.json();
 
-    }
+    return result;
 
 };
 
