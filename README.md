@@ -1,1 +1,1 @@
-# Hackathon Full Stack E-Commerce App!
+# Hackathon Full Stack Dine Market App!
