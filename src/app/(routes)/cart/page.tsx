@@ -7,7 +7,7 @@ async function getCartData() {
 
     const url = `${domain}/api/getcart`;
 
-    const res = await fetch(url, { next: { revalidate: 2 } });
+    const res = await fetch(url, { cache: "no-store" });
 
     if (!res.ok) {
         throw new Error("Failed To Fetch Data");
