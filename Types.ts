@@ -22,3 +22,14 @@ export interface IData {
     _id: string;
     image: IImage;
 };
+
+export interface Product {
+    _id: string;
+    name: string;
+    price: number;
+    totalPrice: number;
+    subcat: string;
+    image: Array<IImage>;
+    userId: string;
+    quantity: number;
+};

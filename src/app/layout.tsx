@@ -1,3 +1,4 @@
+import Providers from '@/Components/Providers';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import Head from './Head';
@@ -12,14 +13,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Head />
-      <body>
-        <Navbar />
-        {children}
-        <Toaster
-          reverseOrder={true}
-        />
-        <Footer />
-      </body>
+      <Providers>
+        <body>
+          <Navbar />
+          {children}
+          <Toaster
+            reverseOrder={true}
+          />
+          <Footer />
+        </body>
+      </Providers>
     </html>
   )
 };
