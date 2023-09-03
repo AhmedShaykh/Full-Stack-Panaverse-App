@@ -1,30 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cartTable, db } from "@/lib/drizzle";
-import { eq } from "drizzle-orm";
+import { AddCart, cartTable, db } from "@/lib/drizzle";
+import { and, eq } from "drizzle-orm";
+import { auth } from "@clerk/nextjs";
 
 export const PUT = async (request: NextRequest) => {
 
-    const req = request.nextUrl;
+    const req: AddCart = await request.json();
 
-    const reqbody = await request.json();
-
-    const quantity = reqbody.quantity;
+    const { userId } = auth();
 
     try {
 
-        if (req.searchParams.has("id")) {
+        if (req) {
 
-            const reqID = req.searchParams.get("id");
+            const res = await db.update(cartTable).set({
+                quantity: req.quantity,
+                total_price: req.price,
+            }).where(and(eq(cartTable.user_id, userId as string),
+                eq(cartTable.product_id, req.product_id)
+            )).returning();
 
-            await db.update(cartTable).set(<number | any>{
-                quantity
-            }).where(eq<number | any>(cartTable.id, reqID));
+            return NextResponse.json({ res });
 
-            return NextResponse.json({ message: "Item Updated" });
+        } else {
+
+            throw new Error("Failed to Update Data");
 
         }
-
-        return NextResponse.json({ message: "Invalid ID" });
 
     } catch (error) {
 

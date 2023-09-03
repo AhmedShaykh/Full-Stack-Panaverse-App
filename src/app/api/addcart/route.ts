@@ -1,21 +1,35 @@
 import { NextRequest, NextResponse } from "next/server";
-import { cartTable, db } from "@/lib/drizzle";
+import { AddCart, cartTable, db } from "@/lib/drizzle";
+import { auth } from "@clerk/nextjs";
 
 export const POST = async (request: NextRequest) => {
 
-    const req = await request.json();
+    const req: AddCart = await request.json();
+
+    const { userId } = auth();
 
     try {
 
-        const res = await db.insert(cartTable).values({
-            product_id: req.product_id,
-            title: req.title,
-            quantity: req.quantity || 1,
-            price: req.price,
-            image: req.image
-        }).returning();
+        if (req) {
 
-        return NextResponse.json({ res });
+            const res = await db.insert(cartTable).values({
+                user_id: userId as string,
+                product_id: req.product_id,
+                quantity: req.quantity,
+                image: req.image,
+                price: req.price,
+                product_name: req.product_name,
+                subcat: req.subcat,
+                total_price: req.price * req.quantity,
+            }).returning();
+
+            return NextResponse.json({ res });
+
+        } else {
+
+            throw new Error("Failed to Insert Data");
+
+        }
 
     } catch (error) {
 
@@ -24,4 +38,5 @@ export const POST = async (request: NextRequest) => {
         );
 
     }
+
 };
