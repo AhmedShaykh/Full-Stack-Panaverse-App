@@ -6,8 +6,7 @@ export default authMiddleware({
         "/female",
         "/male",
         "/kids",
-        "/products",
-        "/studio"
+        "/products"
     ]
 });
 
