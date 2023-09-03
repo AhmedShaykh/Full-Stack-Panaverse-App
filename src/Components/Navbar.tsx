@@ -1,5 +1,7 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/redux/store";
+import { fetchData } from "@/redux/features/cartSlice";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { CgShoppingCart } from "react-icons/cg";
 import Link from "next/link";
@@ -32,6 +34,10 @@ const NAV_ITEMS: Array<NavItem> = [
 const Navbar = () => {
 
     const [navbar, setNavbar] = useState<boolean>(false);
+
+    const dispatch = useAppDispatch();
+
+    const totalItems = useAppSelector((state) => state.cart.totalQuantity);
 
     return (
         <div className="w-full mx-auto px-8 sm:px-20 z-10 top-0 shadow">
@@ -81,8 +87,12 @@ const Navbar = () => {
                             })}
 
                             <Link href="/cart">
-                                <button className="p-2 rounded-full text-black">
+                                <button className="p-2 rounded-full text-black bg-gray-300">
                                     <CgShoppingCart size={25} />
+
+                                    <span className="absolute rigth-12 top-[340px] md:top-4 bg-red-600 text-white w-6 h-6 rounded-full">
+                                        {totalItems}
+                                    </span>
                                 </button>
                             </Link>
                         </div>
