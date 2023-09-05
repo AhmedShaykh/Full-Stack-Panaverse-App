@@ -25,11 +25,23 @@ export interface IData {
 
 export interface Product {
     _id: string;
-    name: string;
-    price: number;
-    totalPrice: number;
-    subcat: string;
-    image: Array<IImage>;
     userId: string;
+    title: string;
+    image: Array<IImage>;
+    price: number;
     quantity: number;
+    totalPrice: number;
+};
+
+export interface ProductData {
+    _id?: string;
+    userId?: string;
+    title?: string;
+    image?: IImage | any;
+    price?: number | any;
+    quantity?: number;
+    totalPrice?: number;
+    dresstype?: {
+        name?: string | any;
+    } | any;
 };
