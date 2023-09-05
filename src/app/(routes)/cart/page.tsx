@@ -3,21 +3,21 @@ import getDomain from "@/lib/getDomain";
 
 async function getCartData() {
 
-    const domain = getDomain();
+    // const domain = getDomain();
 
-    const url = `${domain}/api/getcart`;
+    // const url = `${domain}/api/getcart`;
 
-    const res = await fetch(url, { cache: "no-store" });
+    // const res = await fetch(url, { cache: "no-store" });
 
-    if (!res.ok) {
-        throw new Error("Failed To Fetch Data");
-    }
+    // if (!res.ok) {
+    //     throw new Error("Failed To Fetch Data");
+    // }
 
-    if (res.headers.get("content-type") !== "application/json") {
-        return { res: [] };
-    }
+    // if (res.headers.get("content-type") !== "application/json") {
+    //     return { res: [] };
+    // }
 
-    return res.json();
+    // return res.json();
 };
 
 const Cart = async () => {
@@ -36,10 +36,15 @@ const Cart = async () => {
 
     return (
         <>
-            <div className="wrapper">
+            {/* <div className="wrapper">
                 <ProductCart
                     item={data}
                 />
+            </div> */}
+            <div className="wrapper flex justify-center items-center">
+                <h1 className="text-4xl md:text-5xl font-extrabold leading-[3rem]">
+                    Empty Cart
+                </h1>
             </div>
         </>
     )

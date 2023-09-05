@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { fetchData } from "@/redux/features/cartSlice";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { UserButton } from "@clerk/nextjs";
 import { CgShoppingCart } from "react-icons/cg";
 import Link from "next/link";
 import Image from "next/image";
@@ -31,13 +32,19 @@ const NAV_ITEMS: Array<NavItem> = [
     }
 ];
 
-const Navbar = () => {
+const Navbar = ({ userId }: { userId: string }) => {
 
     const [navbar, setNavbar] = useState<boolean>(false);
 
     const dispatch = useAppDispatch();
 
     const totalItems = useAppSelector((state) => state.cart.totalQuantity);
+
+    useEffect(() => {
+
+        dispatch(fetchData(userId as string));
+
+    }, [dispatch, userId]);
 
     return (
         <div className="w-full mx-auto px-8 sm:px-20 z-10 top-0 shadow">
@@ -95,6 +102,8 @@ const Navbar = () => {
                                     </span>
                                 </button>
                             </Link>
+
+                            <UserButton afterSignOutUrl="/" />
                         </div>
                     </div>
                 </div>
