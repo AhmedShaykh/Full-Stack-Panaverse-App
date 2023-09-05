@@ -32,7 +32,9 @@ const NAV_ITEMS: Array<NavItem> = [
     }
 ];
 
-const Navbar = ({ userId }: { userId: string }) => {
+const Navbar = (
+    // { userId }: { userId: string }
+) => {
 
     const [navbar, setNavbar] = useState<boolean>(false);
 
@@ -40,11 +42,11 @@ const Navbar = ({ userId }: { userId: string }) => {
 
     const totalItems = useAppSelector((state) => state.cart.totalQuantity);
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        dispatch(fetchData(userId as string));
+    //     dispatch(fetchData(userId as string));
 
-    }, [dispatch, userId]);
+    // }, [dispatch, userId]);
 
     return (
         <div className="w-full mx-auto px-8 sm:px-20 z-10 top-0 shadow">
@@ -103,7 +105,7 @@ const Navbar = ({ userId }: { userId: string }) => {
                                 </button>
                             </Link>
 
-                            <UserButton afterSignOutUrl="/" />
+                            {/* <UserButton afterSignOutUrl="/" /> */}
                         </div>
                     </div>
                 </div>

@@ -5,8 +5,9 @@ export default authMiddleware({
         "/",
         "/female",
         "/male",
-        "/kids",
-        "/products"
+        "/product/:path*",
+        "/products",
+        "/cart"
     ]
 });
 

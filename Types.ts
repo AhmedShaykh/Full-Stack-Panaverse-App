@@ -5,9 +5,7 @@ export interface IProduct {
     title: string;
     image: IImage;
     price: number;
-    dresstype: {
-        name: string;
-    }
+    dresstype: { name: string; }
 };
 
 export interface Props {
@@ -23,15 +21,15 @@ export interface IData {
     image: IImage;
 };
 
-export interface Product {
-    _id: string;
-    userId: string;
-    title: string;
-    image: Array<IImage>;
-    price: number;
-    quantity: number;
-    totalPrice: number;
-};
+// export interface Product {
+//     _id: string;
+//     userId?: string;
+//     title: string;
+//     image: any;
+//     price: number;
+//     quantity: number;
+//     totalPrice: number;
+// };
 
 export interface ProductData {
     _id?: string;

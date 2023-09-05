@@ -1,43 +1,19 @@
 import { urlForImage } from "../../../sanity/lib/image";
-import { Product } from "../../../Types";
-import getDomain from "@/lib/getDomain";
-import { RootState } from "../store";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+// import { Product } from "../../../Types";
+import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface CartState {
-    items: Array<Product>;
+    items: Array<any>;
     totalAmount: number;
     totalQuantity: number;
-    isLoading: boolean;
-    error: any;
 };
 
 const initialState: CartState = {
     items: [],
     totalQuantity: 0,
     totalAmount: 0,
-    isLoading: false,
-    error: null,
 };
-
-export const fetchData = createAsyncThunk("getcart/fetchData",
-
-    async (userId: string) => {
-
-        const res = await fetch(
-            `${getDomain}/api/getcart/${userId}`
-        );
-
-        if (!res.ok) {
-            console.log("Failed to Fetch Data From API");
-        }
-
-        const data = await res.json();
-
-        return data;
-    }
-);
 
 export const cartSlice = createSlice({
     name: "cart",
@@ -45,7 +21,10 @@ export const cartSlice = createSlice({
     reducers: {
         addToCart(
             state: CartState,
-            action: PayloadAction<{ product: Product; quantity: number }>
+            action: PayloadAction<{
+                product: any;
+                quantity: number
+            }>
         ) {
             const newItem = action.payload.product;
 
@@ -61,8 +40,6 @@ export const cartSlice = createSlice({
 
                 state.items.push({
                     ...newItem,
-                    // @ts-ignore
-                    image: urlForImage(newItem.image[0]).url(),
                     quantity: action.payload.quantity,
                     totalPrice
                 });
@@ -106,30 +83,9 @@ export const cartSlice = createSlice({
 
                 existingItem!.totalPrice = existingItem!.totalPrice - existingItem?.price!;
             }
-        },
-        clearCart(state: CartState) {
-            state = initialState;
         }
-    },
-    extraReducers: (builder) => {
-        builder.addCase(fetchData.pending, (state) => {
-            state.isLoading = true;
-        });
-        builder.addCase(fetchData.fulfilled, (state, action) => {
-            const { cartItems, totalQuantity, totalAmount } = action.payload;
-            state.items = cartItems;
-            state.totalAmount = totalAmount;
-            state.totalQuantity = totalQuantity;
-            state.isLoading = false;
-        });
-        builder.addCase(fetchData.rejected, (state, action) => {
-            state.isLoading = false;
-            state.error = action.error;
-        });
     }
 });
-
-export const selectIsLoading = (state: RootState) => state.cart.isLoading;
 
 export const cartActions = cartSlice.actions;
 

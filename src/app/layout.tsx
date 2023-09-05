@@ -25,7 +25,7 @@ export default function RootLayout({
         <Providers>
           <body>
             <Navbar
-              userId={userId as string}
+            // userId={userId as string}
             />
             {children}
             <Toaster

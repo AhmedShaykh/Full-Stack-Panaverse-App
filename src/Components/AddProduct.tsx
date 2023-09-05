@@ -1,10 +1,11 @@
 "use client";
 import React, { useState } from "react";
-import { useRouter } from "next/navigation";
+import { cartActions } from "@/redux/features/cartSlice";
 import { urlForImage } from "../../sanity/lib/image";
-import toast from "react-hot-toast";
-import { Minus, Plus } from "lucide-react";
+import { useAppDispatch } from "@/redux/store";
 import { ProductData } from "../../Types";
+import { Minus, Plus } from "lucide-react";
+import toast from "react-hot-toast";
 
 type Props = {
     id: string;
@@ -17,31 +18,92 @@ const AddProduct = (prop: Props) => {
 
     const [count, setCount] = useState<number>(1);
 
-    const { refresh } = useRouter();
+    // const [isLoading, setIsLoading] = useState(false);
 
-    const handleAddToCart = async () => {
+    const dispatch = useAppDispatch();
 
-        const res = await fetch("/api/addcart", {
-            method: "POST",
-            body: JSON.stringify({
-                product_id: prop.id,
-                title: prop.product.title,
-                image: urlForImage(prop.product.image).url(),
-                price: prop.product.price,
-                quantity: count,
-                totalPrice: prop.product.price * prop.count
-            })
-        });
+    // const handleAddToCart = async () => {
 
-        const result = await res.json();
+    //     const res = await fetch("/api/addcart", {
+    //         method: "POST",
+    //         body: JSON.stringify({
+    //             product_id: prop.id,
+    //             title: prop.product.title,
+    //             image: urlForImage(prop.product.image).url(),
+    //             price: prop.product.price,
+    //             quantity: count,
+    //             totalPrice: prop.product.price * prop.count
+    //         })
+    //     });
+
+    //     const result = await res.json();
+
+    //     setCount(1);
+
+    //     return result;
+    // };
+
+    // const handleRequestData = async () => {
+
+    //     const res = await fetch(`${getDomain}/api/getcart/${prop.userId}`);
+
+    //     const data = await res.json();
+
+    //     return data;
+    // };
+
+    // const handleCart = async () => {
+
+    //     try {
+
+    //         const cartData = await handleRequestData();
+
+    //         const existingItem = cartData.cartItems.find(
+    //             (item: any) => item._id === prop.product._id
+    //         );
+
+    //         if (existingItem) {
+
+    //             const newQuantity = existingItem.quantity + count;
+
+    //             const newPrice = prop.product.price * newQuantity;
+
+    //             const res = await fetch(
+    //                 `${process.env.NEXT_PUBLIC_BASE_URL}/api/getcart`,
+    //                 {
+    //                     method: "PUT",
+    //                     body: JSON.stringify({
+    //                         product_id: prop.product._id,
+    //                         quantity: newQuantity,
+    //                         price: newPrice,
+    //                     }),
+    //                 }
+    //             );
+
+    //             if (!res.ok) {
+
+    //                 throw new Error("Failed To Update Data");
+
+    //             }
+    //         } else {
+
+    //             await handleAddToCart();
+
+    //         }
+
+    //     } catch (error) {
+
+    //         console.log((error as { message: string }).message);
+
+    //     }
+
+    // };
+
+    const addtoCart = () => {
 
         toast.success("New Product Added");
 
-        setCount(1);
-
-        refresh();
-
-        return result;
+        dispatch(cartActions.addToCart({ product: prop.product as any, quantity: count }));
     };
 
     return (
@@ -134,7 +196,7 @@ const AddProduct = (prop: Props) => {
                     <div className="flex gap-x-8 my-4 items-center">
                         <button
                             className="my-2 p-3 rounded bg-black text-white font-semibold w-40"
-                            onClick={handleAddToCart}
+                            onClick={addtoCart}
                         >
                             Add To Cart
                         </button>
