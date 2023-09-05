@@ -21,12 +21,12 @@ const initialState: CartState = {
     error: null,
 };
 
-export const fetchData = createAsyncThunk("cart/fetchData",
+export const fetchData = createAsyncThunk("getcart/fetchData",
 
     async (userId: string) => {
 
         const res = await fetch(
-            `${getDomain}/api/cart/${userId}`
+            `${getDomain}/api/getcart/${userId}`
         );
 
         if (!res.ok) {

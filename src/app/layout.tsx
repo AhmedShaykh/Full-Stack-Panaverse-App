@@ -24,7 +24,9 @@ export default function RootLayout({
       <html lang="en">
         <Providers>
           <body>
-            <Navbar userId={userId as string} />
+            <Navbar
+              userId={userId as string}
+            />
             {children}
             <Toaster
               reverseOrder={true}
