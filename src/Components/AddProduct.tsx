@@ -1,11 +1,19 @@
 "use client";
-import React, { FC, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { urlForImage } from "../../sanity/lib/image";
 import toast from "react-hot-toast";
 import { Minus, Plus } from "lucide-react";
+import { ProductData } from "../../Types";
 
-const AddProduct: FC<any> = ({ id, product }) => {
+type Props = {
+    id: string;
+    count: number;
+    product: ProductData;
+    userId: string;
+};
+
+const AddProduct = (prop: Props) => {
 
     const [count, setCount] = useState<number>(1);
 
@@ -16,11 +24,12 @@ const AddProduct: FC<any> = ({ id, product }) => {
         const res = await fetch("/api/addcart", {
             method: "POST",
             body: JSON.stringify({
-                product_id: id,
-                title: product.title,
-                image: urlForImage(product.image).url(),
-                price: product.price,
-                quantity: count
+                product_id: prop.id,
+                title: prop.product.title,
+                image: urlForImage(prop.product.image).url(),
+                price: prop.product.price,
+                quantity: count,
+                totalPrice: prop.product.price * prop.count
             })
         });
 
@@ -33,7 +42,6 @@ const AddProduct: FC<any> = ({ id, product }) => {
         refresh();
 
         return result;
-
     };
 
     return (
@@ -41,17 +49,17 @@ const AddProduct: FC<any> = ({ id, product }) => {
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
                 <img
                     className="lg:w-1/2 w-full lg:h-[60%] h-[80%] object-cover object-center rounded"
-                    src={urlForImage(product.image).url()}
-                    alt="products"
+                    src={urlForImage(prop.product.image).url()}
+                    alt="product"
                 />
 
                 <div className="lg:w-1/2 w-full lg:pl-10 lg:py-2 mt-12 lg:mt-2 px-1">
                     <h1 className="text-gray-900 text-3xl font-bold mb-1">
-                        {product.title}
+                        {prop.product.title}
                     </h1>
 
                     <h2 className="leading-relaxed font-bold text-2xl my-2 text-zinc-600">
-                        {product.dresstype.name}
+                        {prop.product.dresstype.name}
                     </h2>
 
                     <div className="flex mt-6 items-center pb-5 mb-5">
@@ -132,7 +140,7 @@ const AddProduct: FC<any> = ({ id, product }) => {
                         </button>
 
                         <h2 className="text-3xl font-bold">
-                            ${product.price}.00
+                            ${prop.product.price}.00
                         </h2>
                     </div>
                 </div>
