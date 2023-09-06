@@ -10,8 +10,6 @@ const CartPage = () => {
 
     const totalPrice = useAppSelector((state) => state.cart.totalAmount);
 
-    console.log(cartItems);
-
     if (cartItems.length === 0) {
         return (
             <div className="wrapper flex justify-center items-center">
@@ -30,6 +28,25 @@ const CartPage = () => {
                     item={item}
                 />
             ))}
+
+            <div className="flex flex-col items-center justify-between gap-5">
+                <div className="flex justify-between items-center w-full">
+                    <div>
+                        <p>Quantity</p>
+                    </div>
+                    <div>
+                        <p>{totalItems}</p>
+                    </div>
+                </div>
+                <div className="flex justify-between items-center w-full">
+                    <div>
+                        <p>Total Amount</p>
+                    </div>
+                    <div>
+                        <p>${totalPrice}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 };

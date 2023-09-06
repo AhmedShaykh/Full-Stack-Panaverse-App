@@ -7,7 +7,9 @@ export const PUT = async (request: NextRequest) => {
 
     const req: AddCart = await request.json();
 
-    const { userId } = auth();
+    // const { userId } = auth();
+
+    const userId = "648623846286482";
 
     try {
 
