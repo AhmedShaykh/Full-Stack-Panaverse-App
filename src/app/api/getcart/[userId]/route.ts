@@ -23,6 +23,7 @@ export const GET = async (
             image: item.image,
             userId: item.user_id,
             quantity: item.quantity,
+            dressname: item.dressname
         }));
 
         const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);

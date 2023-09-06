@@ -19,6 +19,7 @@ export const POST = async (request: NextRequest) => {
                 image: req.image,
                 price: req.price,
                 title: req.title,
+                dressname: req.dressname,
                 total_price: req.price * req.quantity,
             }).returning();
 

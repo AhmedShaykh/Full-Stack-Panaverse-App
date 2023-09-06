@@ -22,26 +22,27 @@ const AddProduct = (prop: Props) => {
 
     const dispatch = useAppDispatch();
 
-    // const handleAddToCart = async () => {
+    const handleAddToCart = async () => {
 
-    //     const res = await fetch("/api/addcart", {
-    //         method: "POST",
-    //         body: JSON.stringify({
-    //             product_id: prop.id,
-    //             title: prop.product.title,
-    //             image: urlForImage(prop.product.image).url(),
-    //             price: prop.product.price,
-    //             quantity: count,
-    //             totalPrice: prop.product.price * prop.count
-    //         })
-    //     });
+        const res = await fetch("/api/addcart", {
+            method: "POST",
+            body: JSON.stringify({
+                product_id: prop.id,
+                title: prop.product.title,
+                image: urlForImage(prop.product.image).url(),
+                price: prop.product.price,
+                dressname: prop.product.dresstype.name,
+                quantity: count,
+                totalPrice: prop.product.price * prop.count
+            })
+        });
 
-    //     const result = await res.json();
+        //     const result = await res.json();
 
-    //     setCount(1);
+        //     setCount(1);
 
-    //     return result;
-    // };
+        //     return result;
+    };
 
     // const handleRequestData = async () => {
 
@@ -101,7 +102,11 @@ const AddProduct = (prop: Props) => {
 
     const addtoCart = () => {
 
-        toast.success("New Product Added");
+        toast.promise(handleAddToCart(), {
+            loading: "Please Wait...",
+            success: "New Product Added",
+            error: "Failed Product To Cart"
+        })
 
         dispatch(cartActions.addToCart({ product: prop.product as any, quantity: count }));
     };
