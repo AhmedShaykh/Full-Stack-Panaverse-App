@@ -18,8 +18,6 @@ const AddProduct = (prop: Props) => {
 
     const [count, setCount] = useState<number>(1);
 
-    // const [isLoading, setIsLoading] = useState(false);
-
     const dispatch = useAppDispatch();
 
     const handleAddToCart = async () => {
@@ -37,68 +35,10 @@ const AddProduct = (prop: Props) => {
             })
         });
 
-        //     const result = await res.json();
+        const result = await res.json();
 
-        //     setCount(1);
-
-        //     return result;
+        return result;
     };
-
-    // const handleRequestData = async () => {
-
-    //     const res = await fetch(`${getDomain}/api/getcart/${prop.userId}`);
-
-    //     const data = await res.json();
-
-    //     return data;
-    // };
-
-    // const handleCart = async () => {
-
-    //     try {
-
-    //         const cartData = await handleRequestData();
-
-    //         const existingItem = cartData.cartItems.find(
-    //             (item: any) => item._id === prop.product._id
-    //         );
-
-    //         if (existingItem) {
-
-    //             const newQuantity = existingItem.quantity + count;
-
-    //             const newPrice = prop.product.price * newQuantity;
-
-    //             const res = await fetch(
-    //                 `${process.env.NEXT_PUBLIC_BASE_URL}/api/getcart`,
-    //                 {
-    //                     method: "PUT",
-    //                     body: JSON.stringify({
-    //                         product_id: prop.product._id,
-    //                         quantity: newQuantity,
-    //                         price: newPrice,
-    //                     }),
-    //                 }
-    //             );
-
-    //             if (!res.ok) {
-
-    //                 throw new Error("Failed To Update Data");
-
-    //             }
-    //         } else {
-
-    //             await handleAddToCart();
-
-    //         }
-
-    //     } catch (error) {
-
-    //         console.log((error as { message: string }).message);
-
-    //     }
-
-    // };
 
     const addtoCart = () => {
 
@@ -106,9 +46,12 @@ const AddProduct = (prop: Props) => {
             loading: "Please Wait...",
             success: "New Product Added",
             error: "Failed Product To Cart"
-        })
+        });
 
         dispatch(cartActions.addToCart({ product: prop.product as any, quantity: count }));
+
+        setCount(1);
+
     };
 
     return (
