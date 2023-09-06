@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
-import { fetchData } from "@/redux/features/cartSlice";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { UserButton } from "@clerk/nextjs";
 import { CgShoppingCart } from "react-icons/cg";
