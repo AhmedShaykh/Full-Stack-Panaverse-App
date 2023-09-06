@@ -32,7 +32,7 @@ const NAV_ITEMS: Array<NavItem> = [
 ];
 
 const Navbar = (
-    // { userId }: { userId: string }
+    { userId }: { userId: string }
 ) => {
 
     const [navbar, setNavbar] = useState<boolean>(false);
@@ -104,7 +104,7 @@ const Navbar = (
                                 </button>
                             </Link>
 
-                            {/* <UserButton afterSignOutUrl="/" /> */}
+                            <UserButton afterSignOutUrl="/" />
                         </div>
                     </div>
                 </div>

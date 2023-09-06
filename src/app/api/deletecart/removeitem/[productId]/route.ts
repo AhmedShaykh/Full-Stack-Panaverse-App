@@ -8,9 +8,7 @@ export const DELETE = async (
     { params: { productId } }: { params: { productId: string } }
 ) => {
 
-    // const { userId } = auth();
-
-    const userId = "648623846286482";
+    const { userId } = auth();
 
     try {
 
