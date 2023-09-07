@@ -55,7 +55,7 @@ const ProductCart: FC<any> = ({ item }) => {
 
     const handleDelete = async () => {
 
-        await fetch(`/api/deletecart/removeitem/${item._id}`, {
+        await fetch(`/api/deletecart/${item._id}`, {
             method: "DELETE",
         });
 
