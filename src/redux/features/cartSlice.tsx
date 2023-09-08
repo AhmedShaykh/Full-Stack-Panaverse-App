@@ -1,19 +1,42 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import getDomain from "@/lib/getDomain";
 import { urlForImage } from "../../../sanity/lib/image";
-// import { Product } from "../../../Types";
-import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction } from "@reduxjs/toolkit";
 
 interface CartState {
     items: Array<any>;
     totalAmount: number;
     totalQuantity: number;
+    isLoading: boolean;
+    error: any;
 };
 
 const initialState: CartState = {
     items: [],
     totalQuantity: 0,
     totalAmount: 0,
+    isLoading: false,
+    error: null
 };
+
+export const fetchData = createAsyncThunk("cart/fetchData",
+
+    async (userId: string) => {
+
+        const res = await fetch(
+            `${getDomain}/api/getcart/${userId}`
+        );
+
+        if (!res.ok) {
+            console.log("Failed To Fetch Data From API");
+        }
+
+        const data = await res.json();
+
+        return data;
+
+    }
+);
 
 export const cartSlice = createSlice({
     name: "cart",
@@ -28,30 +51,31 @@ export const cartSlice = createSlice({
         ) {
             const newItem = action.payload.product;
 
-            const existingItem = state.items.find((item) => item._id === newItem._id);
+            // const existingItem = state.items.find((item) => item._id === newItem._id);
 
             state.totalQuantity = state.totalQuantity + action.payload.quantity;
 
             state.totalAmount = state.totalAmount + action.payload.quantity * action.payload.product.price;
 
-            if (!existingItem) {
+            // if (!existingItem) {
 
-                const totalPrice = newItem.price * action.payload.quantity;
+            const totalPrice = newItem.price * action.payload.quantity;
 
-                state.items.push({
-                    ...newItem,
-                    quantity: action.payload.quantity,
-                    totalPrice
-                });
+            state.items.push({
+                ...newItem,
+                image: urlForImage(newItem.image).url(),
+                quantity: action.payload.quantity,
+                totalPrice
+            });
 
-            } else {
+            // } else {
 
-                const totalPrice = existingItem.totalPrice + existingItem.price * action.payload.quantity;
+            //     const totalPrice = existingItem.totalPrice + existingItem.price * action.payload.quantity;
 
-                existingItem.quantity += action.payload.quantity;
+            //     existingItem.quantity += action.payload.quantity;
 
-                existingItem.totalPrice = totalPrice;
-            }
+            //     existingItem.totalPrice = totalPrice;
+            // }
         },
         removeProduct(state: CartState, action: PayloadAction<string>) {
 
@@ -63,27 +87,65 @@ export const cartSlice = createSlice({
 
             state.totalAmount = state.items.reduce((total, item) => total + item.totalPrice, 0);
         },
-        removeFromCart(state: CartState, action: PayloadAction<string>) {
+        updateFromCart(state: CartState, action: PayloadAction<string>) {
 
             const productId = action.payload;
 
-            const existingItem = state.items.find((item) => item._id === productId);
+            // const existingItem = state.items.find((item) => item._id === productId);
 
-            state.totalQuantity--;
+            // state.totalQuantity--;
 
-            state.totalAmount = state.totalAmount - existingItem?.price!;
+            // state.totalAmount = state.totalAmount - existingItem?.price!;
 
-            if (existingItem?.quantity === 1) {
+            // if (existingItem?.quantity === 1) {
 
-                state.items = state.items.filter((item) => item._id !== productId);
+            //     state.items = state.items.filter((item) => item._id !== productId);
 
-            } else {
+            // } else {
 
-                existingItem!.quantity--;
+            //     existingItem!.quantity--;
 
-                existingItem!.totalPrice = existingItem!.totalPrice - existingItem?.price!;
+            //     existingItem!.totalPrice = existingItem!.totalPrice - existingItem?.price!;
+            // }
+
+            const existingItemIndex = state.items.findIndex((item) => item._id === productId);
+
+            if (existingItemIndex !== -1) {
+                const existingItem = state.items[existingItemIndex];
+
+                if (existingItem.quantity === 1) {
+                    // Agar item ki quantity 1 hai to use remove kar do
+                    state.items.splice(existingItemIndex, 1);
+                } else {
+                    // Agar item ki quantity 1 se zyada hai to quantity aur totalPrice update karo
+                    existingItem.quantity--;
+                    existingItem.totalPrice -= existingItem.price;
+                }
+
+                // Cart ki totalQuantity aur totalAmount update karo
+                state.totalQuantity--;
+                state.totalAmount -= existingItem.price;
             }
+        },
+        clearCart(state: CartState) {
+            state = initialState;
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(fetchData.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(fetchData.fulfilled, (state, action) => {
+            const { cartItems, totalQuantity, totalAmount } = action.payload;
+            state.items = cartItems;
+            state.totalAmount = totalAmount;
+            state.totalQuantity = totalQuantity;
+            state.isLoading = false;
+        });
+        builder.addCase(fetchData.rejected, (state, action) => {
+            state.isLoading = false;
+            state.error = action.error;
+        });
     }
 });
 

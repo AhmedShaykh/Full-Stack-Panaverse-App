@@ -59,7 +59,7 @@ const AddProduct = (prop: Props) => {
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
                 <img
                     className="lg:w-1/2 w-full lg:h-[60%] h-[80%] object-cover object-center rounded"
-                    src={urlForImage(prop.product.image).url()}
+                    src={urlForImage(prop.product?.image).url()}
                     alt="product"
                 />
 

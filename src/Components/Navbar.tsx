@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { fetchData } from "@/redux/features/cartSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { Bars2Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { UserButton } from "@clerk/nextjs";
@@ -41,11 +42,11 @@ const Navbar = (
 
     const totalItems = useAppSelector((state) => state.cart.totalQuantity);
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     dispatch(fetchData(userId as string));
+        dispatch(fetchData(userId as string));
 
-    // }, [dispatch, userId]);
+    }, [dispatch, userId]);
 
     return (
         <div className="w-full mx-auto px-8 sm:px-20 z-10 top-0 shadow">

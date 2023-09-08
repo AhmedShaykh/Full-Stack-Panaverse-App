@@ -5,7 +5,6 @@ import { cartActions } from "@/redux/features/cartSlice";
 import { urlForImage } from "../../sanity/lib/image";
 import { useAppDispatch } from "@/redux/store";
 import getDomain from "@/lib/getDomain";
-import { useRouter } from "next/navigation";
 import { Minus, Plus, Trash2Icon } from "lucide-react";
 import { toast } from "react-hot-toast";
 
@@ -73,7 +72,7 @@ const ProductCart: FC<any> = ({ item }) => {
 
             setQty(qty + 1);
 
-            dispatch(cartActions.addToCart({ product: item, quantity: 1 }));
+            dispatch(cartActions.updateFromCart(item._id));
         }
     };
 
@@ -88,7 +87,7 @@ const ProductCart: FC<any> = ({ item }) => {
 
             setQty(qty - 1);
 
-            dispatch(cartActions.removeFromCart(item._id));
+            dispatch(cartActions.updateFromCart(item._id));
         }
     };
 

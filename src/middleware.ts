@@ -4,7 +4,7 @@ export default authMiddleware({
     publicRoutes: [
         "/",
         "/female",
-        "kids",
+        "/kids",
         "/male",
         "/products",
     ]
