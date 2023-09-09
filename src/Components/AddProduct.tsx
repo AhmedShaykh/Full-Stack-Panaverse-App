@@ -4,6 +4,7 @@ import { cartActions } from "@/redux/features/cartSlice";
 import { urlForImage } from "../../sanity/lib/image";
 import { useAppDispatch } from "@/redux/store";
 import { ProductData } from "../../Types";
+import getDomain from "@/lib/getDomain";
 import { Minus, Plus } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -19,6 +20,25 @@ const AddProduct = (prop: Props) => {
     const [count, setCount] = useState<number>(1);
 
     const dispatch = useAppDispatch();
+
+    const handleRequestData = async () => {
+
+        const res = await fetch(`${getDomain}/api/getcart/${prop.userId}`, {
+            cache: "no-store"
+        });
+
+        if (!res.ok) {
+
+            throw new Error("Failed To Fetch Data From API");
+
+        }
+
+        const data = await res.json();
+
+        console.log(data);
+
+        return data;
+    };
 
     const handleAddToCart = async () => {
 
@@ -40,9 +60,55 @@ const AddProduct = (prop: Props) => {
         return result;
     };
 
+    const handleCart = async () => {
+
+        try {
+
+            const cartData = await handleRequestData();
+
+            const existingItem = cartData.cartItems.find(
+                (item: any) => item._id === prop.product._id
+            );
+
+            if (existingItem) {
+
+                const newQuantity = existingItem.quantity + count;
+
+                const newPrice = prop.product.price * newQuantity;
+
+                const res = await fetch(`api/updatecart`, {
+                    method: "PUT",
+                    body: JSON.stringify({
+                        product_id: prop.product._id,
+                        quantity: newQuantity,
+                        price: newPrice,
+                    }),
+                });
+
+                if (!res.ok) {
+
+                    throw new Error("Failed to Update Data");
+
+                }
+            }
+
+            else {
+
+                await handleAddToCart();
+
+            }
+
+        } catch (error) {
+
+            console.log(error);
+
+        }
+
+    };
+
     const addtoCart = () => {
 
-        toast.promise(handleAddToCart(), {
+        toast.promise(handleCart(), {
             loading: "Please Wait...",
             success: "New Product Added",
             error: "Failed Product To Cart"
