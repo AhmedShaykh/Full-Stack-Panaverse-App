@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import getDomain from "@/lib/getDomain";
 import { urlForImage } from "../../../sanity/lib/image";
+import getDomain from "@/lib/getDomain";
+import { RootState } from "../store";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 interface CartState {
@@ -34,7 +35,6 @@ export const fetchData = createAsyncThunk("cart/fetchData",
         const data = await res.json();
 
         return data;
-
     }
 );
 
@@ -148,6 +148,8 @@ export const cartSlice = createSlice({
         });
     }
 });
+
+export const selectIsLoading = (state: RootState) => state.cart.isLoading;
 
 export const cartActions = cartSlice.actions;
 
